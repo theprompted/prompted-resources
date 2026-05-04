@@ -483,7 +483,6 @@ footer a { color: var(--text-black); }
         <li><a href="#s9">Schedule it to run every 15 minutes</a></li>
         <li><a href="#s10">Use the skills inside Claude Code</a></li>
         <li><a href="#s11">If something goes wrong</a></li>
-        <li><a href="#s12">What this bundle does NOT include</a></li>
     </ol>
 </nav>
 
@@ -1007,17 +1006,6 @@ xcopy /E /I skills\hourly-analysis .claude\skills\hourly-analysis</code></pre></
 
     <h4>I'm stuck on something not in this list</h4>
     <p>Open Claude Code in the project folder and describe what's wrong. Claude can read your <code>.env</code>, look at error messages, and walk you through fixes interactively.</p>
-</section>
-
-<!-- ════════════ SECTION 12 ════════════ -->
-<section id="s12">
-    <h2 class="section-title"><span class="num">12</span>What this bundle does NOT include</h2>
-    <p>To set expectations clearly:</p>
-    <ul>
-        <li><strong>No bid throttling / cost cap automation.</strong> The YouTube video ended with a script that automatically tightened bids at 6pm and loosened them at 8am. That script is intentionally not in this bundle — it's the most account-specific piece (depends on your campaign structure, your Meta optimization goal type, your tolerance for scheduled changes). The discovery layer (<code>hourly-analysis</code>) is the high-leverage part. Once you know which hours leak money, building the throttle is straightforward.</li>
-        <li><strong>No Telegram, Slack, or email notifications.</strong> The cron writes a JSONL log and refreshes the HTML dashboard. If you want push notifications, the JSONL log is easy to hook into.</li>
-        <li><strong>No automatic SKU updates.</strong> When you add new products, you'll need to update <code>unit-economics.json</code> by hand. Worth automating once you outgrow this — but at the size where that matters, you have a data team.</li>
-    </ul>
 </section>
 
 <footer>
