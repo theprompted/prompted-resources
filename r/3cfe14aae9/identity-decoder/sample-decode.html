@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IM8 — Identity Decode · The Stack Collapser</title>
+<style>
+    :root {
+        --bg-page: #F8F8F7;
+        --bg-white: #ffffff;
+        --bg-blue: #EBF9FF;
+        --bg-purple: #F7F1FF;
+        --bg-yellow: #FFFDE7;
+        --bg-green: #E8F5E9;
+        --accent-teal: #53DBC9;
+        --accent-yellow: #FFDE00;
+        --accent-purple: #9D4EDD;
+        --accent-red: #E53935;
+        --text-black: #000000;
+        --text-dark: #1a1a1a;
+        --text-gray: #4a4a4a;
+        --text-muted: #6b6b6b;
+        --shadow-lg: -0.31rem 0.31rem 0 0 #383838;
+        --shadow-sm: -0.19rem 0.19rem 0 0 #383838;
+        --border: 2px solid black;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        font-size: 1rem; line-height: 1.7; color: var(--text-dark);
+        background: var(--bg-page); padding: 2rem 1.5rem;
+    }
+    .container { max-width: 980px; margin: 0 auto; }
+    h1, h2, h3, h4 {
+        font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+        font-weight: 700; color: var(--text-black);
+    }
+    h1 { font-size: 2.1rem; line-height: 1.2; }
+    h2 { font-size: 1.4rem; }
+    h3 { font-size: 1.05rem; }
+    h4 { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-gray); }
+    p { margin-bottom: 0.5rem; }
+    .card { background: var(--bg-white); border: var(--border); box-shadow: var(--shadow-lg); margin-bottom: 1.75rem; }
+    .card-header { padding: 0.9rem 1.5rem; border-bottom: var(--border); background: var(--bg-page); display:flex; align-items:center; gap:0.75rem; }
+    .card-content { padding: 1.5rem; }
+    .section-blue { background: var(--bg-blue); }
+    .section-purple { background: var(--bg-purple); }
+    .section-yellow { background: var(--bg-yellow); }
+    .section-green { background: var(--bg-green); }
+    .tag {
+        display: inline-block; background: var(--accent-teal); border: var(--border);
+        padding: 0.25rem 0.75rem; font-family: ui-monospace, monospace; font-size: 0.72rem; font-weight: 700;
+    }
+    .principle {
+        background: var(--bg-purple); border-left: 4px solid var(--accent-purple);
+        padding: 0.85rem 1.1rem; margin-bottom: 1rem; font-style: italic; color: var(--text-gray); font-size: 0.92rem;
+    }
+    .principle strong { font-style: normal; color: var(--text-black); display:block; font-family: ui-monospace, monospace; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.3rem; }
+    .archetype-preface { margin-bottom: 1rem; }
+    ul.findings { list-style: none; padding-left: 0; margin: 0.5rem 0; }
+    ul.findings li {
+        border-left: 3px solid var(--accent-teal); background: var(--bg-page);
+        padding: 0.6rem 0.9rem; margin-bottom: 0.6rem;
+    }
+    .contradiction-box { border: var(--border); box-shadow: var(--shadow-sm); padding: 1rem 1.25rem; margin-top: 0.75rem; }
+    .contradiction-box.tension { background: var(--bg-yellow); }
+    .contradiction-box.sharp { background: var(--bg-blue); margin-top: 1rem; }
+    .group-banner {
+        background: var(--text-dark); color: #fff; border: var(--border); box-shadow: var(--shadow-lg);
+        padding: 1.1rem 1.5rem; margin: 2.5rem 0 1.75rem;
+    }
+    .group-banner h2 { color: var(--accent-teal); }
+    .group-banner p { color: #d6d6d6; font-size: 0.9rem; margin-top: 0.4rem; margin-bottom: 0; }
+    .num-badge {
+        display: inline-flex; align-items: center; justify-content: center;
+        width: 1.8rem; height: 1.8rem; background: var(--accent-teal); border: var(--border);
+        border-radius: 50%; font-family: ui-monospace, monospace; font-size: 0.8rem; font-weight: 700; flex-shrink:0;
+    }
+    .media-cat { border: var(--border); box-shadow: var(--shadow-sm); margin-bottom: 1rem; }
+    .media-cat-head { background: var(--bg-blue); padding: 0.6rem 1rem; border-bottom: var(--border); font-family: ui-monospace, monospace; font-weight: 700; font-size: 0.95rem; }
+    .media-cat-body { padding: 0.85rem 1rem; }
+    .media-cat-body ul { margin: 0.4rem 0 0.7rem; padding-left: 1.2rem; }
+    .media-cat-body li { margin-bottom: 0.35rem; }
+    .why-engage { font-size: 0.85rem; color: var(--text-gray); border-top: 1px dashed #bbb; padding-top: 0.5rem; }
+    .why-engage strong { font-family: ui-monospace, monospace; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.75rem 0 1rem; }
+    .chip {
+        background: var(--accent-teal); border: var(--border); padding: 0.3rem 0.7rem;
+        font-family: ui-monospace, monospace; font-size: 0.8rem; font-weight: 700;
+    }
+    ol.hooks { padding-left: 0; list-style: none; counter-reset: hk; }
+    ol.hooks li {
+        counter-increment: hk; border-left: 3px solid var(--accent-purple); background: var(--bg-purple);
+        padding: 0.6rem 0.9rem 0.6rem 2.4rem; margin-bottom: 0.6rem; position: relative; font-weight: 600;
+    }
+    ol.hooks li:before {
+        content: counter(hk); position: absolute; left: 0.7rem; top: 0.55rem;
+        font-family: ui-monospace, monospace; color: var(--accent-purple); font-weight: 700;
+    }
+    @media (max-width: 600px) {
+        body { padding: 1rem; }
+        h1 { font-size: 1.5rem; }
+        .card-content { padding: 1.1rem; }
+    }
+</style>
+</head>
+<body>
+<div class="container">
+
+    <!-- HEADER -->
+    <div class="card">
+        <div class="card-content">
+            <div style="width:3rem;height:3rem;background:var(--accent-purple);border:var(--border);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1rem;color:#fff;">🧠</div>
+            <span class="tag">STEP 2+3 · DEEP DECODE</span>
+            <h1 style="margin-top:0.75rem;">The Stack Collapser</h1>
+            <p style="color:var(--text-muted);margin-top:0.5rem;">Auto-selected top pick (opportunity 9.4) from the IM8 Identity Scan. Full-fidelity decode: 10 psychology sections + media diet + words &amp; hooks. Everything below belongs to this one buyer — the 42-year-old staring at nine capsules on the counter, wishing the whole thing were one clean scoop.</p>
+            <div style="background:var(--bg-green);border:var(--border);padding:0.9rem 1.1rem;margin-top:1rem;box-shadow:var(--shadow-sm);">
+                <h4>Who they are, in one breath</h4>
+                <p style="margin-bottom:0;">Already a believer in supplementation, already spending $200-300/mo across scattered bottles, already feeling faintly ridiculous about the morning pill parade. Not skeptical of the category — exhausted by its <em>incoherence</em>. IM8's literal headline ("replaces 16+ supplements") is their unspoken wish said out loud.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PSYCH GROUP BANNER -->
+    <div class="group-banner">
+        <h2>PSYCHOLOGY</h2>
+        <p>People don't buy with logic — they buy with emotion and justify with logic later. These ten sections reveal the emotional operating system running beneath their conscious awareness: what triggers them, what stops them, what they're really reaching for.</p>
+    </div>
+
+    <!-- 1 TRIGGER MOMENTS -->
+    <div class="card">
+        <div class="card-header"><span class="num-badge">1</span><h2>Trigger Moments</h2></div>
+        <div class="card-content">
+            <div class="principle"><strong>The Principle</strong>People don't go from zero to purchase because of an ad. Something was already brewing — a comment that stung, a moment of doubt, a question they couldn't shake. Your ad doesn't create the desire. It meets them when the desire is already forming. The brands that win aren't the loudest. They're the ones that show up at the exact moment someone is finally ready to hear it. Timing isn't luck — it's understanding what's already happening in their life before they ever see your ad.</div>
+            <p class="archetype-preface">For this buyer the brewing pressure is the daily friction of the pill parade itself — and the small, recurring humiliations of managing a stack that has quietly outgrown them. The moment to meet them is whenever the incoherence becomes briefly visible.</p>
+            <ul class="findings">
+                <li>The monthly reorder hour — sitting with a cart of seven different bottles, totaling the cost, and thinking "there has to be a cleaner way to do this."</li>
+                <li>Knocking the open fish-oil bottle across the counter and watching capsules scatter, again, before 7am.</li>
+                <li>Finding two half-finished magnesium bottles and an expired probiotic in the cabinet and realizing they have no idea what's actually working.</li>
+                <li>A partner half-joking, "do you really need all of those?" — and not having a good answer.</li>
+                <li>Packing for a trip and staring at the ziploc bag of loose pills they have to assemble like a drug mule.</li>
+                <li>A friend mentions they switched to "one scoop in the morning" and feels great, and it lands as quiet envy.</li>
+                <li>The annual physical where the doctor asks "what are you taking?" and they trail off after the third item.</li>
+                <li>Reading a David Beckham / IM8 headline that says "replaces 16+ supplements" and feeling personally called out.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 2 LIMITING BELIEFS -->
+    <div class="card">
+        <div class="card-header"><span class="num-badge">2</span><h2>Limiting Beliefs</h2></div>
+        <div class="card-content">
+            <div class="principle"><strong>The Principle</strong>The thing stopping them from buying isn't price or timing. It's a story they've told themselves so many times it feels like fact. "I'm not the kind of person who spends money on this." "This probably won't work for someone like me." "I've tried things before." These beliefs run quietly in the background, filtering out your message before it ever lands. Name the belief out loud, and something shifts. You're no longer selling a product — you're offering permission to think differently about themselves.</div>
+            <p class="archetype-preface">Their beliefs aren't anti-supplement — they're anti-shortcut and anti-marketing. They've been burned by greens powders that over-promised, so the stories they tell protect them from being fooled again.</p>
+            <ul class="findings">
+                <li>"All-in-ones are a marketing gimmick — you can't put a real dose of everything in one scoop." (And reviewers <em>did</em> ding IM8's nootropic dose, which they half-suspect.)</li>
+                <li>"My carefully chosen individual brands must be better than one company's blend of everything."</li>
+                <li>"If I drop my current stack I'll lose the one or two things that were actually working."</li>
+                <li>"It's a celebrity product, so I'm paying for Beckham's face, not the formula."</li>
+                <li>"$78 a month sounds like a lot" — forgetting they already spend more than double that across bottles.</li>
+                <li>"I'm too far into my system to start over — switching feels like admitting the last three years were wasted."</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 3 PRIVATE SHAME -->
+    <div class="card">
+        <div class="card-header"><span class="num-badge">3</span><h2>Private Shame / Frustration</h2></div>
+        <div class="card-content">
+            <div class="principle"><strong>The Principle</strong>What they complain about publicly is rarely what keeps them up at night. The real friction lives in the things they'd never post — the quiet frustrations they assume nobody else would understand. The embarrassment they laugh off. The resentment they swallow. This is where purchase decisions actually get made — not in logic, but in the need to stop feeling a certain way. When your marketing speaks to the thing they've never said out loud, they don't just feel seen. They feel relieved that someone finally gets it.</div>
+            <p class="archetype-preface">The shame here isn't about health — it's about competence. They've built an elaborate routine to feel in control and privately suspect it's making them look like the opposite.</p>
+            <ul class="findings">
+                <li>They don't actually know if half their supplements do anything — and they're embarrassed to have spent years and thousands not knowing.</li>
+                <li>The pill organizer makes them feel decades older than they are, like they've prematurely become "a pillbox person."</li>
+                <li>They skip doses constantly because the routine is annoying, then feel like a fraud for owning all these bottles they don't consistently take.</li>
+                <li>They've quietly thrown out expired, half-used bottles and felt the small sting of wasted money every time.</li>
+                <li>They suspect their "optimized" stack is really just clutter they're too proud to admit isn't working.</li>
+                <li>They're irritated that something they meant to make life simpler has become one more thing to manage.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 4 CURRENT WORKAROUNDS -->
+    <div class="card">
+        <div class="card-header"><span class="num-badge">4</span><h2>Current Workarounds</h2></div>
+        <div class="card-content">
+            <div class="principle"><strong>The Principle</strong>Before they find you, they're already solving the problem — badly. Duct tape solutions, half-measures, making do. They've Frankensteined something together from YouTube videos, Amazon purchases, and advice from people who don't really understand. These workarounds reveal what they actually care about — they cared enough to try. When you understand what they're cobbling together, you understand what they're ready to replace. Your product isn't introducing a new problem to solve. It's offering a better answer to one they've been wrestling with for a while.</div>
+            <p class="archetype-preface">Their workarounds are all attempts to impose order on a stack that refuses to stay organized — and every one of them is a tell for what IM8 can replace wholesale.</p>
+            <ul class="findings">
+                <li>A 7-day, 2x-a-day pill organizer they refill every Sunday like a chore.</li>
+                <li>Already drinking AG1 or another greens powder <em>on top of</em> their capsules, doubling up "just in case."</li>
+                <li>A phone reminder or habit-tracker app pinging them to take pills they still forget.</li>
+                <li>A spreadsheet or mental list of what to take with food vs. empty stomach, AM vs. PM.</li>
+                <li>Buying in bulk on Amazon Subscribe &amp; Save across five different brands to manage cost and restock.</li>
+                <li>A travel ziploc of loose, unlabeled pills they assemble before every trip.</li>
+                <li>Periodically googling "is [supplement] actually worth taking" and never reaching a clean answer.</li>
+                <li>Rotating supplements in and out based on the last podcast or article they heard, with no real system.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 5 ASPIRATIONAL IDENTITY -->
+    <div class="card">
+        <div class="card-header"><span class="num-badge">5</span><h2>Aspirational Identity</h2></div>
+        <div class="card-content">
+            <div class="principle"><strong>The Principle</strong>People don't buy products. They buy the version of themselves they're trying to become. The question isn't what your product does — it's who they believe they'll be once they own it. Every purchase is a bet on a future self: more put-together, more confident, more aligned with who they want to be seen as. The features matter less than the identity they're reaching toward. When your marketing reflects that future version back to them — clearly, specifically — you're not convincing them to buy. You're helping them become who they already want to be.</div>
+            <p class="archetype-preface">They don't aspire to "take more supplements." They aspire to be the person who has health <em>handled</em> — quietly, without fuss, the way put-together people seem to.</p>
+            <ul class="findings">
+                <li>The person whose health routine is one clean, 30-second ritual — no cabinet of bottles, no decisions.</li>
+                <li>Someone who has clearly "figured it out," whose system looks effortless from the outside.</li>
+                <li>A high-performer who fuels the body deliberately instead of cobbling it together reactively.</li>
+                <li>The friend others ask "what do you take?" — and who can answer in a single sentence.</li>
+                <li>A 50-year-old who reads as disciplined and dialed-in, like the Beckham archetype they admire.</li>
+                <li>Someone who has reclaimed the mental bandwidth they were spending on supplement logistics.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 6 HIDDEN RISKS -->
+    <div class="card">
+        <div class="card-header"><span class="num-badge">6</span><h2>Hidden Risks</h2></div>
+        <div class="card-content">
+            <div class="principle"><strong>The Principle</strong>Every purchase carries an unspoken fear: what if this doesn't work? What if I look foolish? What if it's not for someone like me? These aren't objections they'll type in a chat box. They're the quiet hesitations that make them close the tab and "think about it." Until you address the risk they're not saying out loud, they'll hesitate — even when they want to buy. The best marketing doesn't just sell the upside. It quietly removes the fear that's been blocking the decision all along.</div>
+            <p class="archetype-preface">Their fears cluster around two things: being conned by a celebrity markup, and downgrading a stack they spent years building. Both are about not wanting to feel stupid.</p>
+            <ul class="findings">
+                <li>"What if it's a worse version of everything — a little of each, not enough of any?" (The exact dosing critique reviewers raised.)</li>
+                <li>"What if I'm just paying a Beckham tax for a glorified greens powder?"</li>
+                <li>"What if I cancel my current supplements, feel nothing, and have to sheepishly re-buy them all?"</li>
+                <li>"What if my gut reacts badly?" — a real Trustpilot thread of bloating/upset stomach lives in the back of their mind.</li>
+                <li>"What if I get locked into a $78/month subscription that's a hassle to cancel?"</li>
+                <li>"What if I take it inconsistently like everything else, and it becomes another wasted bottle?"</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 7 TINY WINS -->
+    <div class="card">
+        <div class="card-header"><span class="num-badge">7</span><h2>Tiny Wins</h2></div>
+        <div class="card-content">
+            <div class="principle"><strong>The Principle</strong>Transformation isn't one big moment. It's a series of small signals that something is working — a glance, a comment, a feeling they notice before anyone else does. The compliment they weren't expecting. The morning they felt slightly different. The moment they caught themselves doing something they didn't used to do. These micro-victories are what they're really buying. Not the end state — the early evidence that they're on their way. Your marketing should name these small wins specifically, because that's what makes the bigger promise feel believable.</div>
+            <p class="archetype-preface">The wins that hook this buyer are split between <em>feeling</em> (the body responding) and <em>relief</em> (the logistics disappearing). Both need naming — the second is the one competitors forget.</p>
+            <ul class="findings">
+                <li>The first morning they realize they didn't reach for the second coffee — and didn't crash at 3pm either.</li>
+                <li>The clean counter: the row of bottles gone, replaced by one tub and a scoop.</li>
+                <li>Feeling "less bloated, especially after lunch" within the first couple of weeks.</li>
+                <li>A 90-minute work block where they didn't check their phone — "that never happens."</li>
+                <li>Packing for a trip in ten seconds because there's nothing to assemble.</li>
+                <li>Actually looking forward to the morning drink instead of dreading the pill-swallow.</li>
+                <li>Noticing they've taken it every day for two weeks — the first routine they've ever kept.</li>
+                <li>Recovering a little faster between gym sessions — "subtle, but over time you realize."</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 8 MOMENT OF TRIUMPH -->
+    <div class="card">
+        <div class="card-header"><span class="num-badge">8</span><h2>Moment of Triumph</h2></div>
+        <div class="card-content">
+            <div class="principle"><strong>The Principle</strong>There's a scene they've imagined — a future moment where the struggle is behind them and the change is undeniable. Maybe it's a vacation photo, a conversation with an old friend, or just a quiet morning where they finally feel at home in themselves. They can see it. They've rehearsed it in their mind. Your product is the bridge between where they are and that mental snapshot of who they'll become. When your marketing puts them in that moment — viscerally, specifically — you're not selling. You're showing them what's possible.</div>
+            <p class="archetype-preface">Their triumph fantasy isn't dramatic — it's the quiet vindication of having simplified, and being right to have done it.</p>
+            <ul class="findings">
+                <li>The doctor asking "what are you taking?" and answering, in one clean sentence: "one scoop of IM8."</li>
+                <li>A friend complaining about their own bloated stack, and getting to say "I collapsed all of that into one drink."</li>
+                <li>Opening a near-empty supplement cabinet and feeling lightness instead of guilt.</li>
+                <li>Six months in, realizing it's the first health habit they've ever actually sustained.</li>
+                <li>A trip where they pack one tub, not a ziploc of loose pills, and don't think about it once.</li>
+                <li>Catching their reflection at 50 and feeling dialed-in rather than held together with duct tape.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 9 IDENTITY CONTRADICTION -->
+    <div class="card">
+        <div class="card-header"><span class="num-badge">9</span><h2>Identity Contradiction</h2></div>
+        <div class="card-content">
+            <div class="principle"><strong>The Principle</strong>They hold two beliefs at once: who they think they should be, and who they secretly are. The responsible one who wants to be reckless. The independent one who craves support. The practical one who dreams of something indulgent. This tension is uncomfortable — and it's where the most resonant marketing lives. Acknowledge the contradiction, and they feel understood in a way they rarely experience. You're not calling them out. You're giving them permission to be both things at once — and showing how your product fits into that complexity.</div>
+            <p class="archetype-preface">The Stack Collapser prides themselves on being a discerning optimizer — but secretly the elaborate stack is performance, and what they actually crave is for someone to make it simple so they can stop.</p>
+            <div class="contradiction-box tension">
+                <h4>The Tension</h4>
+                <p style="margin-bottom:0;">"I want to be a sophisticated optimizer who hand-picks the best individual dose of everything — but I'm exhausted by the routine and secretly wish someone would just hand me one thing that's good enough so I can stop thinking about it."</p>
+            </div>
+            <div class="contradiction-box sharp">
+                <h4>Sharper</h4>
+                <p style="margin-bottom:0;">They built a nine-bottle stack to prove they take their health seriously — and the real fantasy is throwing all of it in the trash and never looking at a supplement label again.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 10 AVOIDANCE IDENTITY -->
+    <div class="card">
+        <div class="card-header"><span class="num-badge">10</span><h2>Avoidance Identity</h2></div>
+        <div class="card-content">
+            <div class="principle"><strong>The Principle</strong>Knowing who they want to become only tells half the story. The other half is who they're terrified of becoming — the version of themselves they're running from. The out-of-touch parent. The person who let themselves go. The one who gave up on something that mattered. This fear often drives behavior more than aspiration does. They're not just moving toward a better self — they're sprinting away from an unacceptable one. When you understand both directions, you understand the full emotional weight behind their decisions.</div>
+            <p class="archetype-preface">What they're sprinting from is the image of someone whose health "routine" is really just disorganized decline dressed up as diligence.</p>
+            <ul class="findings">
+                <li>The "pillbox person" — defined by their organizer, looking and feeling older than they are.</li>
+                <li>The cabinet of expired, half-used bottles — visible evidence of money wasted and good intentions abandoned.</li>
+                <li>The sucker who got fleeced by every supplement trend and has nothing to show for it.</li>
+                <li>The person who "let themselves go" by quietly stopping, because the routine was too annoying to keep.</li>
+                <li>The cluttered, overwhelmed optimizer who's busy <em>managing</em> health instead of actually being healthy.</li>
+                <li>Their own parent's medicine-shelf chaos — the future they're determined not to inherit.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- MEDIA DIET BANNER -->
+    <div class="group-banner">
+        <h2>MEDIA DIET</h2>
+        <p>Every person has a visual diet — the content that stops their scroll, earns their attention, shapes their taste. These sections decode what that looks like for this archetype, so your creative feels native instead of intrusive.</p>
+    </div>
+
+    <!-- IMAGE CONTENT -->
+    <div class="card">
+        <div class="card-header"><h2>Image Content They Consume</h2></div>
+        <div class="card-content">
+            <div class="principle"><strong>The Principle</strong>Your ad doesn't exist in a vacuum. It drops into a feed already full of content that trained their eye, shaped their taste, and earned their attention. The images they stop for aren't random — they're signals of what resonates: the aesthetics, the emotions, the visual language that feels like "theirs." Ads that mirror this visual diet feel native. Ads that ignore it feel like interruptions.</div>
+            <p class="archetype-preface">Their feed is split between aspirational order (clean routines, minimalist counters) and self-deprecating recognition (the absurdity of the stack). Both stop the scroll for opposite reasons.</p>
+
+            <div class="media-cat">
+                <div class="media-cat-head">The "Supplement Stack" Reveal Photo</div>
+                <div class="media-cat-body">
+                    <ul>
+                        <li>A flat-lay of 14 different bottles arranged in a grid with the caption "my daily routine."</li>
+                        <li>A bathroom counter buried in greens tubs, capsule bottles, and a weekly pill organizer.</li>
+                        <li>A hand holding a fistful of 9 assorted pills over a glass of water.</li>
+                    </ul>
+                    <p class="why-engage"><strong>Why they engage</strong> It's a mirror. They recognize their own counter and feel the dissonance between "this looks impressive" and "this is insane" — exactly the tension IM8 resolves.</p>
+                </div>
+            </div>
+
+            <div class="media-cat">
+                <div class="media-cat-head">Minimalist "One Clean Ritual" Aesthetic</div>
+                <div class="media-cat-body">
+                    <ul>
+                        <li>A single matte tub and a scoop on an empty marble counter, morning light.</li>
+                        <li>A glass of dark-berry drink beside a laptop and notebook — the "dialed-in morning."</li>
+                        <li>Before/after of a cluttered cabinet vs. one tub on a clean shelf.</li>
+                    </ul>
+                    <p class="why-engage"><strong>Why they engage</strong> It's the aspirational identity made visual — the calm, handled version of their morning they're reaching for.</p>
+                </div>
+            </div>
+
+            <div class="media-cat">
+                <div class="media-cat-head">Ingredient / Dose Infographics</div>
+                <div class="media-cat-body">
+                    <ul>
+                        <li>A labeled breakdown: "what's actually in your greens powder vs. clinical dose."</li>
+                        <li>A side-by-side comparison chart of two all-in-one supplements' panels.</li>
+                        <li>An NSF Certified for Sport seal blown up with "what this badge actually means."</li>
+                    </ul>
+                    <p class="why-engage"><strong>Why they engage</strong> The optimizer in them needs to feel they're scrutinizing, not just trusting — these satisfy the "I did my homework" instinct that justifies the switch.</p>
+                </div>
+            </div>
+
+            <div class="media-cat">
+                <div class="media-cat-head">Relatable Supplement-Fatigue Memes</div>
+                <div class="media-cat-body">
+                    <ul>
+                        <li>"Me organizing 47 supplements I'll take consistently for 4 days."</li>
+                        <li>A drake-format meme: pill organizer (no) vs. one scoop (yes).</li>
+                        <li>"My supplement cabinet" with a photo of absolute chaos.</li>
+                    </ul>
+                    <p class="why-engage"><strong>Why they engage</strong> Humor lets them admit the private shame safely — sharing it is a low-stakes confession that they're ready to change.</p>
+                </div>
+            </div>
+
+            <div class="media-cat">
+                <div class="media-cat-head">Aspirational "Aging Well" Male Figures</div>
+                <div class="media-cat-body">
+                    <ul>
+                        <li>Beckham at 50, lean and composed, in understated athleisure.</li>
+                        <li>A fit 45-55 man mid-run at sunrise, candid and unposed.</li>
+                        <li>A grey-templed founder-type looking sharp and energetic in a clean kitchen.</li>
+                    </ul>
+                    <p class="why-engage"><strong>Why they engage</strong> This is the avoidance/aspiration axis in a single image — proof that aging dialed-in (not "pillbox person") is achievable.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VIDEO CONTENT -->
+    <div class="card">
+        <div class="card-header"><h2>Video Content They Consume</h2></div>
+        <div class="card-content">
+            <div class="principle"><strong>The Principle</strong>The algorithm already knows what makes them stop scrolling. The reels they watch, save, and share reveal their emotional priorities — the pacing they respond to, the narratives that hook them, the moments that make them feel something. Video ads that match this rhythm don't feel like ads. They feel like content they chose to watch. Study what they already consume, and your ads inherit the permission they've already granted.</div>
+            <p class="archetype-preface">They watch to be reassured they're not crazy for wanting to simplify, and to be given a credible reason it's safe to switch. Honest, slightly skeptical reviewers earn their trust faster than polished ads.</p>
+
+            <div class="media-cat">
+                <div class="media-cat-head">Honest "I Tried It For 30 Days" Reviews</div>
+                <div class="media-cat-body">
+                    <ul>
+                        <li>A creator's 8-week IM8 vs. AG1 diary: "here's what actually changed, and what didn't."</li>
+                        <li>"I replaced my entire supplement stack with one drink — honest results."</li>
+                        <li>A skeptic who opens with "I assumed this was a Beckham cash grab" and walks back.</li>
+                    </ul>
+                    <p class="why-engage"><strong>Why they engage</strong> They trust the slightly-skeptical reviewer over the brand. Hearing someone admit the doubt they hold — then resolve it — is what de-risks the switch.</p>
+                </div>
+            </div>
+
+            <div class="media-cat">
+                <div class="media-cat-head">"What's Actually In Your Supplements" Explainers</div>
+                <div class="media-cat-body">
+                    <ul>
+                        <li>A pharmacist or dietitian reading a label and flagging under-dosed proprietary blends.</li>
+                        <li>"Why your $40 greens powder might be mostly filler."</li>
+                        <li>A breakdown of which of the 16 supplements you take are actually redundant.</li>
+                    </ul>
+                    <p class="why-engage"><strong>Why they engage</strong> It feeds the optimizer's need to feel informed — and quietly builds the case that their scattered stack was never as smart as they thought.</p>
+                </div>
+            </div>
+
+            <div class="media-cat">
+                <div class="media-cat-head">Morning-Routine / "Day In The Life" Reels</div>
+                <div class="media-cat-body">
+                    <ul>
+                        <li>A founder's 5am routine where the supplement step is one calm scoop, not a pill parade.</li>
+                        <li>"My simplified morning after I cut my stack from 12 things to 1."</li>
+                        <li>Aesthetic, low-talk reels of a clean counter, a stir, a sip, then out the door.</li>
+                    </ul>
+                    <p class="why-engage"><strong>Why they engage</strong> It sells the aspirational identity in motion — the effortless, handled morning they want to step into.</p>
+                </div>
+            </div>
+
+            <div class="media-cat">
+                <div class="media-cat-head">Celebrity / Founder Origin-Story Clips</div>
+                <div class="media-cat-body">
+                    <ul>
+                        <li>Beckham explaining he was taking a dozen pills a day and wanted one thing that worked.</li>
+                        <li>Behind-the-scenes of the formulation with the Mayo Clinic / NASA advisor angle.</li>
+                        <li>An interview where Beckham talks about aging and discipline, not just the product.</li>
+                    </ul>
+                    <p class="why-engage"><strong>Why they engage</strong> The origin story is literally their problem ("I was taking a dozen pills") spoken by the aspirational figure — instant identification plus credibility transfer.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WORDS & HOOKS -->
+    <div class="card">
+        <div class="card-header"><h2>Words &amp; Hooks</h2></div>
+        <div class="card-content">
+            <div class="principle"><strong>The Principle</strong>Words are the last thing they process — but the first thing they remember. A single phrase that names what they've felt but never articulated can do more than paragraphs of explanation. The right hook doesn't convince — it resonates. It makes them stop and think, "how did they know?" This isn't about being clever. It's about being precise. The words that work don't sound like marketing. They sound like something they've quietly thought to themselves but never heard anyone else say out loud.</div>
+            <p class="archetype-preface">Their vocabulary lives at the intersection of optimization-speak and exhaustion. Mirror the words they use for the stack — then the words they use for the relief they want.</p>
+
+            <h4>Vocabulary That Resonates</h4>
+            <div class="chips">
+                <span class="chip">the pill parade</span>
+                <span class="chip">my stack</span>
+                <span class="chip">supplement fatigue</span>
+                <span class="chip">replace 16 bottles</span>
+                <span class="chip">one scoop</span>
+                <span class="chip">just give me one thing</span>
+                <span class="chip">cabinet full of half-used bottles</span>
+                <span class="chip">is this actually doing anything?</span>
+                <span class="chip">dialed in</span>
+                <span class="chip">handled</span>
+                <span class="chip">clinical dose</span>
+                <span class="chip">an investment, not an expense</span>
+            </div>
+
+            <h4>Scroll-Stopping Hooks</h4>
+            <ol class="hooks">
+                <li>You don't have a supplement routine. You have a graveyard of half-used bottles.</li>
+                <li>Nine pills every morning to feel "optimized." Be honest — do you even know which ones work?</li>
+                <li>The math nobody does: you're already spending $200 a month to feel this disorganized.</li>
+                <li>What if the whole stack could be one scoop — and you'd stop thinking about it by 7am?</li>
+                <li>Beckham was taking a dozen pills a day too. Then he just… stopped.</li>
+                <li>Throw out the pill organizer. You're not 80.</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- FOOTER / COMPLETENESS -->
+    <div class="card section-green" style="border:var(--border);">
+        <div class="card-content">
+            <h4>Decode Completeness</h4>
+            <p style="margin-bottom:0;"><strong>10/10 psychology sections</strong> (triggerMoments 8 · limitingBeliefs 6 · privateShame 6 · currentWorkarounds 8 · aspirationalIdentity 6 · hiddenRisks 6 · tinyWins 8 · momentOfTriumph 6 · identityContradiction tension+sharp · avoidanceIdentity 6) · <strong>Image content 5 categories</strong> · <strong>Video content 4 categories</strong> · <strong>Vocabulary 12 · Hooks 6.</strong> All findings grounded in the review-tier sources named in the scan; no fabricated quotes.</p>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
