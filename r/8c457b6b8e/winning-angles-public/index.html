@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Winning Angles — Setup Guide</title>
+<style>
+:root {
+    --bg-page: #FAFAF9;
+    --bg-card: #FFFFFF;
+    --bg-code: #F4F1EB;
+    --bg-callout: #FFFDE7;
+    --bg-warning: #FFF4E5;
+    --accent-teal: #53DBC9;
+    --accent-teal-light: #C9F5EE;
+    --accent-purple: #9D4EDD;
+    --text-black: #0A0A0A;
+    --text-dark: #1a1a1a;
+    --text-gray: #4a4a4a;
+    --text-muted: #6b6b6b;
+    --border-light: 1px solid #E5E2DD;
+    --border-medium: 2px solid #0A0A0A;
+    --shadow-sm: -0.19rem 0.19rem 0 0 #0A0A0A;
+    --mono: 'SF Mono', 'Fira Code', 'JetBrains Mono', Consolas, Menlo, monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 1rem; }
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: var(--text-dark);
+    background: var(--bg-page);
+    padding: 2rem 1.5rem 6rem;
+    max-width: 760px;
+    margin: 0 auto;
+}
+.hero {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: var(--border-medium);
+}
+.hero .eyebrow {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--accent-teal);
+    padding: 0.25rem 0.6rem;
+    border: var(--border-medium);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 1.25rem;
+    color: #0A0A0A;
+}
+.hero h1 {
+    font-family: var(--mono);
+    font-size: 2.25rem;
+    line-height: 1.15;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+    color: var(--text-black);
+}
+.hero .lead {
+    font-size: 1.1875rem;
+    line-height: 1.6;
+    color: var(--text-gray);
+    margin-bottom: 1.5rem;
+}
+.hero ul.outcomes {
+    list-style: none;
+    margin: 1.25rem 0 0;
+}
+.hero ul.outcomes li {
+    padding: 0.4rem 0 0.4rem 1.5rem;
+    position: relative;
+    color: var(--text-gray);
+}
+.hero ul.outcomes li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent-teal);
+    font-weight: 700;
+    font-family: var(--mono);
+}
+.hero .video-credit {
+    font-style: italic;
+    color: var(--text-muted);
+    font-size: 0.9375rem;
+    margin-top: 1.5rem;
+}
+.download-cta {
+    background: var(--accent-teal-light);
+    border: var(--border-medium);
+    box-shadow: var(--shadow-sm);
+    padding: 1.75rem;
+    margin: 1.5rem 0 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+.download-cta .label {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.25rem;
+}
+.download-cta .title {
+    font-family: var(--mono);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--text-black);
+}
+.download-cta .meta {
+    font-size: 0.875rem;
+    color: var(--text-gray);
+    margin-top: 0.25rem;
+}
+.download-cta a.btn {
+    display: inline-block;
+    background: var(--text-black);
+    color: white;
+    padding: 0.875rem 1.5rem;
+    text-decoration: none;
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 0.9375rem;
+    letter-spacing: 0.05em;
+    border: var(--border-medium);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.1s ease;
+}
+.download-cta a.btn:hover {
+    transform: translate(-2px, 2px);
+    box-shadow: -0.08rem 0.08rem 0 0 #0A0A0A;
+}
+section { margin: 3rem 0 2rem; }
+section h2.section-title {
+    font-family: var(--mono);
+    font-size: 1.5rem;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--text-black);
+    padding-bottom: 0.75rem;
+    border-bottom: var(--border-medium);
+    margin-bottom: 1.5rem;
+}
+section h2.section-title .num {
+    color: var(--accent-teal);
+    font-weight: 700;
+    margin-right: 0.5rem;
+}
+p { margin: 0.85rem 0; }
+ul, ol { margin: 0.85rem 0; padding-left: 1.5rem; }
+li { margin: 0.4rem 0; }
+ol.steps { padding-left: 0; counter-reset: step; list-style: none; }
+ol.steps > li {
+    counter-increment: step;
+    padding-left: 2.75rem;
+    position: relative;
+    margin: 1.5rem 0;
+    min-height: 2rem;
+}
+ol.steps > li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1.85rem;
+    height: 1.85rem;
+    line-height: 1.7rem;
+    text-align: center;
+    background: var(--accent-teal);
+    border: var(--border-medium);
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 0.875rem;
+    color: var(--text-black);
+}
+code {
+    font-family: var(--mono);
+    font-size: 0.875em;
+    background: var(--bg-code);
+    padding: 0.1rem 0.35rem;
+    border-radius: 2px;
+    color: #B23A48;
+}
+.command {
+    display: block;
+    font-family: var(--mono);
+    font-size: 0.9375rem;
+    background: #0A0A0A;
+    color: var(--accent-teal);
+    border: var(--border-medium);
+    padding: 0.85rem 1.1rem;
+    margin: 0.75rem 0;
+    overflow-x: auto;
+    line-height: 1.5;
+}
+.command::before {
+    content: '❯ ';
+    color: #757575;
+}
+.callout {
+    border: var(--border-light);
+    padding: 1rem 1.25rem;
+    margin: 1.25rem 0;
+    border-left: 3px solid;
+}
+.callout.tip { background: #F4F8FF; border-left-color: #4A90E2; }
+.callout.warn { background: var(--bg-warning); border-left-color: #E89B3D; }
+.callout .label {
+    font-family: var(--mono);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+    display: block;
+}
+.callout.tip .label { color: #4A90E2; }
+.callout.warn .label { color: #E89B3D; }
+.callout p { margin: 0.4rem 0; }
+.skill-list {
+    background: var(--bg-card);
+    border: var(--border-light);
+    border-left: 3px solid var(--accent-teal);
+    padding: 1rem 1.5rem;
+    margin: 1.25rem 0;
+}
+.skill-list h4 {
+    font-family: var(--mono);
+    font-size: 0.875rem;
+    margin-bottom: 0.4rem;
+    color: var(--text-black);
+}
+.skill-list em {
+    font-style: normal;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    font-family: var(--mono);
+    display: block;
+    margin-bottom: 0.75rem;
+}
+
+/* sample preview */
+.sample-preview {
+    margin: 0 0 2rem;
+    padding: 1.75rem 0;
+    border-top: var(--border-medium);
+    border-bottom: var(--border-medium);
+}
+.sample-preview .label {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+.sample-preview h2 {
+    font-family: var(--mono);
+    font-size: 1.375rem;
+    color: var(--text-black);
+    margin-bottom: 0.5rem;
+    line-height: 1.25;
+}
+.sample-preview .subhead {
+    color: var(--text-gray);
+    margin-bottom: 1.25rem;
+    font-size: 0.9375rem;
+}
+.sample-frame-wrap {
+    position: relative;
+    border: var(--border-medium);
+    box-shadow: var(--shadow-sm);
+    background: var(--bg-card);
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+.sample-frame-wrap iframe {
+    width: 100%;
+    height: 600px;
+    border: 0;
+    display: block;
+    background: white;
+}
+.sample-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+}
+.sample-actions a.btn-secondary {
+    display: inline-block;
+    background: var(--text-black);
+    color: white;
+    padding: 0.6rem 1.1rem;
+    text-decoration: none;
+    font-family: var(--mono);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    border: var(--border-medium);
+    box-shadow: var(--shadow-sm);
+}
+.sample-actions a.btn-secondary:hover {
+    transform: translate(-2px, 2px);
+    box-shadow: -0.08rem 0.08rem 0 0 #0A0A0A;
+}
+.sample-actions .note {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    font-family: var(--mono);
+}
+footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: var(--border-medium);
+    color: var(--text-muted);
+    font-size: 0.875rem;
+}
+@media (max-width: 600px) {
+    body { padding: 1.5rem 1rem 4rem; font-size: 1rem; }
+    .hero h1 { font-size: 1.75rem; }
+    .hero .lead { font-size: 1.0625rem; }
+    .download-cta { padding: 1.25rem; }
+    .download-cta a.btn { width: 100%; text-align: center; }
+    .command { font-size: 0.8125rem; padding: 0.7rem 0.9rem; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+    <span class="eyebrow">Setup Guide</span>
+    <h1>Winning Angles — The Contradiction Engine</h1>
+    <p class="lead">Find winning cold-traffic ad <strong>angles</strong> — the belief you flip, which is what actually makes an ad convert, not the format or the creative. Three composable skills that research your market, decode the buyer, and hand you the angle on the tee.</p>
+    <ul class="outcomes">
+        <li>A market scan that surfaces the five buyer identities hiding in your market and scores each on size + how easy they are to convince</li>
+        <li>A full psychological decode of the buyer you pick — 10 sections + the media they consume + their exact vocabulary</li>
+        <li>The Swiss Army knife of contradiction plays, spelled out: which of the 6 blades fit your buyer, with a worked swing for each</li>
+    </ul>
+    <p class="video-credit">This is the full version of the skill from the YouTube video on finding cold-traffic ad angles with Claude Code.</p>
+</header>
+
+<div class="download-cta">
+    <div>
+        <div class="label">Step One</div>
+        <div class="title">Download the bundle</div>
+        <div class="meta">winning-angles-public.zip · all three skills + references included</div>
+    </div>
+    <a href="winning-angles-public.zip" class="btn" download>↓ Download .zip</a>
+</div>
+
+<div class="sample-preview">
+    <div class="label">Sample Output</div>
+    <h2>This is what a finished caddie read looks like</h2>
+    <p class="subhead">A real decode for a footwear challenger brand — the full 10-section psychology read, the media diet, the four angle layers, and the Swiss Army knife spelled out. Every finding is grounded in a real, found quote. This is the depth you get on your own buyer.</p>
+    <div class="sample-frame-wrap">
+        <iframe src="sample-winning-angles.html" loading="lazy" title="Sample Winning Angles decode"></iframe>
+    </div>
+    <div class="sample-actions">
+        <a href="sample-winning-angles.html" target="_blank" rel="noopener" class="btn-secondary">↗ Open sample in new tab</a>
+        <span class="note">scrolls inside — click "open in new tab" for the full view</span>
+    </div>
+</div>
+
+<section>
+    <h2 class="section-title"><span class="num">01</span>Get started in three steps</h2>
+    <p>You need <strong>Claude Code already installed</strong> (you're a paid Claude subscriber). That's the only assumption.</p>
+    <ol class="steps">
+        <li>
+            <strong>Download the zip</strong> using the button above. Move it to your Desktop and double-click to unzip. You'll get a folder called <code>winning-angles-public</code> containing three skills.
+        </li>
+        <li>
+            <strong>Copy the skills into your project's <code>.claude/skills/</code> folder</strong>, then open Claude Code there. In Terminal (Mac) or Command Prompt (Windows):
+            <code class="command">cd your-project &amp;&amp; claude</code>
+            The bundle holds <code>find-angles</code> (the front door), plus <code>belief-mapper</code> and <code>contradiction-engine</code> that it drives. Drop all three folders into <code>.claude/skills/</code>.
+        </li>
+        <li>
+            <strong>Run the front door on your product URL.</strong> Once you see the <code>❯</code> prompt:
+            <code class="command">/find-angles https://your-product-url.com</code>
+            It scans your market (5 scored buyer archetypes) and stops for you to pick one. Then it does the full decode + angle layers + the knife, and drops into a back-and-forth to land the angle you'd actually run.
+        </li>
+    </ol>
+
+    <div class="callout tip">
+        <span class="label">↳ How it works</span>
+        <p>This is not a one-prompt magic button — and that's the design. It does the heavy lifting (research, decode, organized fodder, starter swings), then <strong>you connect the invisible dots</strong> to make the actual idea. That's the high-value part, done ~12–200× faster than before.</p>
+    </div>
+</section>
+
+<section>
+    <h2 class="section-title"><span class="num">02</span>What's in the bundle</h2>
+    <p>Three composable skills that hand off to each other, plus their references:</p>
+
+    <div class="skill-list">
+        <h4>find-angles <em style="display:inline">— the front door</em></h4>
+        <em>The orchestrator. One URL in, the winning angle out (via dialogue).</em>
+        <p>Takes your product URL and runs the whole machine: delegates the research, directs the setup, and dialogues the angle with you. Drives the other two skills. Trigger: <code>/find-angles [url]</code>.</p>
+    </div>
+
+    <div class="skill-list">
+        <h4>belief-mapper <em style="display:inline">— the caddie read</em></h4>
+        <em>Research → decode → tee up the angle.</em>
+        <p>Scans the market for 5 buyer archetypes (scored on size + conversion), then on the one you pick: the full 10-section psychological decode, the media diet, and the four angle layers — accepted beliefs, contradiction fuel, guardrails, and the Swiss Army knife spelled out.</p>
+    </div>
+
+    <div class="skill-list">
+        <h4>contradiction-engine <em style="display:inline">— the Swiss Army knife</em></h4>
+        <em>Turn the belief map into angles you'd actually run.</em>
+        <p>Picks the belief that leaves your product standing, smart-selects which of the 6 contradiction blades fit (and skips the rest with reasons), proposes sharp angles, and loops with you to refine. One belief, many expressions. Includes the canonical blade definitions + verified examples.</p>
+    </div>
+
+    <p>Plus the shared <code>output-template.html</code> (consistent styling) and <code>principle-texts.md</code> (the decode's section principles).</p>
+</section>
+
+<section>
+    <h2 class="section-title"><span class="num">03</span>If something goes wrong</h2>
+    <p>Just describe what you saw to Claude Code — it can read its own skill files and walk you through fixes.</p>
+    <ul>
+        <li><strong>The output feels thin or generic</strong> — the research probably came up short. The skills are built to fail loudly and name the gated sources rather than fabricate; if a key source (reviews, a forum) was blocked, feed it a direct link or a different angle and re-run.</li>
+        <li><strong>The angles all feel the same</strong> — that means the blades were forced. The skill should smart-select only the blades that fit and skip the rest. Ask it to re-pick the belief, or change the posture (exposé vs. confidence).</li>
+        <li><strong>It skipped the market scan</strong> — make sure you ran <code>/find-angles</code> (the front door), not one of the sub-skills directly.</li>
+    </ul>
+</section>
+
+<footer>
+    <p>The Prompted · Winning Angles (full version). The free single-buyer version lives at the public skill repo.</p>
+</footer>
+
+</body>
+</html>

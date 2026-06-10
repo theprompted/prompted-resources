@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KANE — The All-Day Sufferer · Full Decode + Angle Layers</title>
+<style>
+  :root{
+    --bg:#F4F1EA; --card:#fff; --ink:#1a1a1a; --muted:#6b6b6b;
+    --teal:#0FB5AE; --teal-dk:#0a8079; --line:#e6e0d3;
+    --warm:#FBF7EE; --blue:#EEF6FF; --pink:#FFF0F4; --pink-ink:#9b1d47; --green:#E8F5E9; --green-ink:#1f7a33;
+    --shadow:5px 5px 0 rgba(15,181,174,.16);
+    --mono:'SF Mono',ui-monospace,Menlo,monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;padding:40px 24px 90px}
+  .wrap{max-width:1060px;margin:0 auto}
+  h1{font-family:var(--mono);font-size:25px;letter-spacing:-.5px;margin:0 0 2px}
+  .sub{color:var(--muted);font-family:var(--mono);font-size:13px;margin-bottom:6px}
+  .who{background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:16px 22px;box-shadow:var(--shadow);margin:16px 0 8px;font-size:14.5px}
+  .who b{color:var(--teal-dk)}
+  .grouphdr{font-family:var(--mono);font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#fff;background:var(--teal-dk);border-radius:8px;padding:9px 16px;margin:34px 0 4px}
+  .grouphdr span{font-family:-apple-system;text-transform:none;letter-spacing:0;font-size:12px;opacity:.85;display:block;margin-top:3px;font-weight:400}
+  .sec{background:#fff;border:1.5px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:16px 20px;margin-bottom:12px}
+  .sec h3{margin:0 0 2px;font-size:16px}
+  .sec .num{font-family:var(--mono);color:var(--teal);font-size:13px;margin-right:6px}
+  .principle{font-style:italic;color:var(--muted);font-size:12.5px;border-left:3px solid var(--line);padding-left:11px;margin:8px 0}
+  .preface{font-size:13.5px;color:#444;margin:8px 0 10px}
+  ul{margin:6px 0 2px;padding-left:20px}
+  li{margin:5px 0;font-size:14px}
+  li em{color:var(--ink);font-style:italic}
+  .contradiction{background:var(--pink);border-color:#f0c9d6}
+  .contradiction .tension{font-size:14.5px;margin:8px 0}
+  .contradiction .sharp{font-size:15px;font-weight:600;color:var(--pink-ink);margin-top:6px}
+  /* media diet */
+  .mc{margin:8px 0;padding:10px 14px;background:var(--warm);border:1px solid var(--line);border-radius:9px}
+  .mc .cat{font-weight:700;font-size:14px}
+  .mc .ex{font-size:13.5px;margin:4px 0}
+  .mc .why{font-size:12.5px;color:var(--muted);font-style:italic;margin-top:3px}
+  .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px}
+  .chip{background:var(--warm);border:1px solid var(--line);border-radius:18px;padding:4px 11px;font-size:13px;font-family:var(--mono)}
+  .hook{font-size:14.5px;margin:6px 0;padding-left:14px;border-left:3px solid var(--teal)}
+  /* angle layers */
+  .angle-banner{background:#0a8079;color:#eafffd;border-radius:10px;padding:11px 18px;margin:38px 0 6px;font-family:var(--mono);font-size:12px;letter-spacing:1px;text-transform:uppercase}
+  .angle-banner span{font-family:-apple-system;text-transform:none;letter-spacing:0;font-size:12px;opacity:.9;display:block;margin-top:3px;font-weight:400}
+  table{width:100%;border-collapse:collapse;margin-top:4px}
+  th,td{text-align:left;padding:11px 13px;vertical-align:top;font-size:13.5px;border-bottom:1px solid var(--line)}
+  th{font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);background:#faf8f2}
+  tr:last-child td{border-bottom:none}
+  .bel{font-weight:600;width:30%}
+  .load{font-family:var(--mono);font-weight:700;white-space:nowrap}
+  .load .bar{display:inline-block;height:6px;background:var(--teal);border-radius:4px;vertical-align:middle;margin-left:5px}
+  .fresh{font-family:var(--mono);font-size:10.5px;padding:2px 7px;border-radius:11px;white-space:nowrap}
+  .fresh.solid{background:var(--green);color:var(--green-ink)} .fresh.crack{background:#FFF3E0;color:#9a5b00}
+  .pain-cell{background:#FFF8EE}
+  .fuel-lab{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.5px;display:block;margin-bottom:2px;opacity:.8}
+  .fuel-lab.p{color:#9a5b00} .want b{color:var(--pink-ink)}
+  .offlimits{background:#FDECEA;border:1.5px solid #f0c4bd;border-radius:10px;padding:12px 18px;margin-top:10px;font-size:13.5px}
+  .offlimits b{color:#a3271a}
+  .swing{background:#0a8079;color:#eafffd;border-radius:13px;padding:18px 24px;margin-top:14px;box-shadow:var(--shadow);font-size:14.5px}
+  .swing b{color:#fff}
+  .src{color:var(--muted);font-size:11.5px;margin-top:28px;border-top:1px solid var(--line);padding-top:14px}
+  em.q{font-style:italic;color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🥾 KANE — The All-Day Sufferer</h1>
+  <div class="sub">FULL DECODE (10 psychology sections + media diet + vocabulary) → then the 4 ANGLE LAYERS · cold/blind, real sources</div>
+  <div class="who">
+    <b>The archetype.</b> The nurse, CNA, teacher, server, retail/warehouse worker, new parent — on their feet 8-12 hours, mostly <i>standing</i>, often on concrete, 10k-16k steps a shift. Not an athlete; their marathon is a double. By hour 8 their feet are screaming, and lately the ache follows them home and into their days off. They found Kane through an Instagram ad, half-hoping it's the thing that finally helps.
+  </div>
+
+  <!-- ===== PSYCHOLOGY GROUP ===== -->
+  <div class="grouphdr">PSYCHOLOGY<span>People buy with emotion and justify with logic later. This is the operating system beneath the decision.</span></div>
+
+  <div class="sec">
+    <h3><span class="num">01</span>Trigger Moments <span style="font-size:12px;color:var(--muted)">· when the desire is already forming</span></h3>
+    <div class="principle">Your ad doesn't create the desire. It meets them when it's already forming — the exact moment they're finally ready to hear it.</div>
+    <div class="preface">For this archetype, the trigger is almost never the ad — it's a specific moment their feet cross from "tired" to "I can't do this anymore."</div>
+    <ul>
+      <li>The <em>first step out of bed</em> in the morning, before the shift even starts, and the feet already hurt.</li>
+      <li>Hour 8 of a 12, doing the math on how many hours are left and feeling it in the arches.</li>
+      <li>Sitting down on a break and feeling the <em>throb</em> — then dreading standing back up.</li>
+      <li>Getting home, peeling off the shoes, and the relief is so sharp it's almost alarming.</li>
+      <li>A coworker, ten years older, saying "your feet just get used to it" — and quietly fearing they won't.</li>
+      <li>Picking up a second job / extra shifts and realizing the current shoes won't survive it.</li>
+      <li>Catching the Instagram ad <em>right after</em> a brutal shift, when they're most willing to spend to make it stop.</li>
+      <li>A flare of heel pain that lingers into the weekend — the first sign it's not just "tired feet" anymore.</li>
+    </ul>
+  </div>
+
+  <div class="sec">
+    <h3><span class="num">02</span>Limiting Beliefs <span style="font-size:12px;color:var(--muted)">· the stories that filter out your message</span></h3>
+    <div class="principle">The thing stopping them isn't price. It's a story they've told themselves so often it feels like fact.</div>
+    <div class="preface">Their beliefs are about toughness and thrift — recovery feels like an admission of weakness or a luxury they haven't earned.</div>
+    <ul>
+      <li>"Sore feet are just part of the job — everyone deals with it, I should suck it up."</li>
+      <li>"If I need a special shoe to function, I'm getting old / falling apart."</li>
+      <li>"Expensive shoes are a scam — I'll just buy two cheap pairs and rotate them."</li>
+      <li>"A 'recovery shoe' is for athletes. I didn't run a marathon; I just stood around."</li>
+      <li>"I've tried 'comfortable' shoes before and they all stopped working in a month."</li>
+      <li>"There's nothing that actually fixes this — it's the floors, the hours, my body."</li>
+    </ul>
+  </div>
+
+  <div class="sec">
+    <h3><span class="num">03</span>Private Shame / Frustration <span style="font-size:12px;color:var(--muted)">· what they'd never post</span></h3>
+    <div class="principle">What they complain about publicly is rarely what keeps them up at night. The real friction lives in what they'd never say out loud.</div>
+    <div class="preface">The shame is about the body failing earlier than expected, and about how the "good" shoes make them look.</div>
+    <ul>
+      <li>Feeling decades older than they are — needing "old-person shoes" in their 20s/30s.</li>
+      <li>The shoes that actually work are <em>"ugly as sin"</em> / <em>"dorky ones your grandmother would wear"</em> — and they're embarrassed to be seen in them.</li>
+      <li>Snapping at family after a shift because the foot pain has worn them down, then feeling guilty.</li>
+      <li>Quietly googling foot pain at 11pm, scared it's something permanent.</li>
+      <li>The resentment that they're spending their one body on a job that's grinding it down.</li>
+      <li>Feeling stupid for almost buying an Instagram "recovery shoe" — and stupider for still wanting to.</li>
+    </ul>
+  </div>
+
+  <div class="sec">
+    <h3><span class="num">04</span>Current Workarounds <span style="font-size:12px;color:var(--muted)">· what they're cobbling together now</span></h3>
+    <div class="principle">Before they find you, they're solving the problem badly. The workarounds reveal what they're ready to replace.</div>
+    <div class="preface">They've Frankensteined a whole survival kit — and the effort proves how much they care.</div>
+    <ul>
+      <li><em>"Change your shoes halfway through the shift"</em> — carrying a second pair to swap mid-day (the #1 repeated tip).</li>
+      <li>Drugstore gel insoles / Dr. Scholl's stuffed into existing shoes.</li>
+      <li>The Good Feet Store insoles ($$$, high-pressure retail) — or compression socks.</li>
+      <li>Default to <em>Hokas</em> (the nurse uniform) — maximal cushion, but bulky and not "recovery."</li>
+      <li>Soaking feet, rolling a frozen water bottle, elevating legs after the shift.</li>
+      <li>Just buying cheap shoes and replacing them every couple months when they "fall apart."</li>
+      <li>Ibuprofen before a long shift to get ahead of the ache.</li>
+      <li>Telling themselves to "push through" — the no-tool workaround.</li>
+    </ul>
+  </div>
+
+  <div class="sec">
+    <h3><span class="num">05</span>Aspirational Identity <span style="font-size:12px;color:var(--muted)">· who they want to become</span></h3>
+    <div class="principle">People buy the version of themselves they're trying to become. The features matter less than the identity they're reaching toward.</div>
+    <div class="preface">They want to be the person who has it handled — capable at work without paying for it at home.</div>
+    <ul>
+      <li>The colleague who's somehow still energetic at hour 11 ("how are you not dead?").</li>
+      <li>Someone who takes care of their body instead of just abusing it for the paycheck.</li>
+      <li>A person whose comfort shoes look like real, normal shoes — put-together, not "given up."</li>
+      <li>The parent who comes home with something left in the tank for their kids.</li>
+      <li>Smart, not soft — the one who found the thing that works, not the one who's complaining.</li>
+    </ul>
+  </div>
+
+  <div class="sec">
+    <h3><span class="num">06</span>Hidden Risks <span style="font-size:12px;color:var(--muted)">· the quiet hesitations that close the tab</span></h3>
+    <div class="principle">Every purchase carries an unspoken fear. Until you address it, they'll hesitate — even when they want to buy.</div>
+    <div class="preface">Having been burned by "comfortable" shoes before, the risk is wasting money on another letdown.</div>
+    <ul>
+      <li>"What if these are just another hyped shoe that stops working in a month?"</li>
+      <li>"What if it's a gimmick and I'm the sucker who fell for the Instagram ad?"</li>
+      <li>"What if they don't fit my actual job — too soft to stand in, only good for after?"</li>
+      <li>"$85 is a lot when I could buy two cheap pairs — what if I regret it?"</li>
+      <li>"What if they look dorky in person and I can't wear them where people see me?"</li>
+      <li>"What if the return is a hassle?" (the <em>"$10 return fee"</em> complaint stings here).</li>
+    </ul>
+  </div>
+
+  <div class="sec">
+    <h3><span class="num">07</span>Tiny Wins <span style="font-size:12px;color:var(--muted)">· the early evidence it's working</span></h3>
+    <div class="principle">Transformation is a series of small signals. These micro-victories are what they're really buying.</div>
+    <div class="preface">For aching feet, the wins are almost absurdly specific — the absence of a pain they'd normalized.</div>
+    <ul>
+      <li><em>"I can actually get up and walk by the end of my shift"</em> without wincing.</li>
+      <li>Not reaching down to rub the arch on every break.</li>
+      <li>Getting home and <em>not</em> immediately needing to lie down with feet up.</li>
+      <li>That first-step-out-of-bed in the morning not hurting.</li>
+      <li>Forgetting about their feet for a whole hour — the silence where the ache used to be.</li>
+      <li>A coworker asking "what are those?" because they actually look decent.</li>
+      <li>Still wanting to take the kids to the park after work.</li>
+      <li>Not buying ibuprofen this week.</li>
+    </ul>
+  </div>
+
+  <div class="sec">
+    <h3><span class="num">08</span>Moment of Triumph <span style="font-size:12px;color:var(--muted)">· the scene they've imagined</span></h3>
+    <div class="principle">There's a future moment they've rehearsed where the struggle is behind them. Your product is the bridge to it.</div>
+    <div class="preface">The triumph isn't athletic — it's a full day survived with something left over.</div>
+    <ul>
+      <li>Finishing a double and realizing, walking to the car, that their feet feel… fine.</li>
+      <li>Standing through a 12-hour shift and still playing on the floor with their kid that night.</li>
+      <li>Recommending them to a new grad: "trust me, get these on day one, save yourself the pain I went through."</li>
+      <li>A whole weekend with no foot pain to recover from — actually present, not horizontal.</li>
+      <li>Catching their reflection and thinking the shoes look <em>good</em>, not medical.</li>
+    </ul>
+  </div>
+
+  <div class="sec contradiction">
+    <h3><span class="num">09</span>Identity Contradiction <span style="font-size:12px;color:var(--muted)">· the two things they are at once</span></h3>
+    <div class="principle">They hold two beliefs at once: who they think they should be, and who they secretly are. The most resonant marketing lives in that tension.</div>
+    <div class="tension"><b>The tension:</b> They're the <i>tough one</i> who "pushes through" and doesn't complain — but they're also <i>quietly desperate</i> for someone to tell them their feet shouldn't have to hurt like this, and that needing help isn't weakness.</div>
+    <div class="sharp">The sharp version: "I'm proud I can take it — and I'm terrified that taking it is slowly wrecking me, and I don't want to need permission to stop."</div>
+  </div>
+
+  <div class="sec">
+    <h3><span class="num">10</span>Avoidance Identity <span style="font-size:12px;color:var(--muted)">· who they're terrified of becoming</span></h3>
+    <div class="principle">The other half of the story is who they're running from. This fear often drives behavior more than aspiration.</div>
+    <div class="preface">They're sprinting away from the worn-down, prematurely-old version of themselves.</div>
+    <ul>
+      <li>The burned-out coworker who's bitter, limping, and counting down to a retirement their body won't enjoy.</li>
+      <li>The person who "let themselves go" and just accepts chronic pain as normal.</li>
+      <li>The parent who's too wrecked after work to be present — snapping, on the couch, checked out.</li>
+      <li>The sucker who keeps wasting money on hyped products that never work.</li>
+      <li>Someone who needs full orthopedic "old person" footwear in their 30s.</li>
+    </ul>
+  </div>
+
+  <!-- ===== MEDIA DIET GROUP ===== -->
+  <div class="grouphdr">MEDIA DIET<span>The content that stops their scroll and shapes their taste — so your creative feels native, not intrusive.</span></div>
+
+  <div class="sec">
+    <h3>Image Content They Consume</h3>
+    <div class="principle">Ads that mirror their visual diet feel native. Ads that ignore it feel like interruptions.</div>
+    <div class="mc"><div class="cat">"My feet after a 12" relatable memes</div><div class="ex">Cartoon of a nurse melting into the floor; "POV: hour 11 of 12"; screaming-foot reaction images.</div><div class="why">They share these to feel seen by people who get it.</div></div>
+    <div class="mc"><div class="cat">Shoe-haul / "best shoes for standing all day" roundups</div><div class="ex">Side-by-side flatlays of Hoka, Brooks, Oofos, Dansko with pros/cons; "podiatrist-recommended" lists.</div><div class="why">Pure solution-shopping — they screenshot these.</div></div>
+    <div class="mc"><div class="cat">Before/after foot-care content</div><div class="ex">Compression socks, ice-roller routines, the frozen-water-bottle trick, sock tan lines.</div><div class="why">Proof other people fight the same battle.</div></div>
+    <div class="mc"><div class="cat">Nurse/server "fit check" + locker culture</div><div class="ex">Scrubs + shoe pics, "what's in my work bag" (incl. the 2nd pair of shoes), shift-survival kits.</div><div class="why">Identity belonging — the shoes are a status marker in the break room.</div></div>
+    <div class="mc"><div class="cat">"Worth it?" price-comparison posts</div><div class="ex">"$30 Costco vs $130 Brooks" debates; cost-per-wear math.</div><div class="why">They're talking themselves into (or out of) spending.</div></div>
+  </div>
+
+  <div class="sec">
+    <h3>Video Content They Consume</h3>
+    <div class="principle">Video ads that match this rhythm feel like content they chose to watch.</div>
+    <div class="mc"><div class="cat">"I tried [shoe] for a week on my feet all day" reviews</div><div class="ex">Real worker POV, day-by-day, "is it worth it" verdict — not glossy brand films.</div><div class="why">They trust a tired nurse over an ad.</div></div>
+    <div class="mc"><div class="cat">Podiatrist explainer TikToks</div><div class="ex">"Why your feet hurt after standing," heel-drop/arch breakdowns, "shoes I recommend to patients."</div><div class="why">Authority that validates the spend.</div></div>
+    <div class="mc"><div class="cat">12-hour-shift / day-in-the-life vlogs</div><div class="ex">Nurses/CNAs/servers filming the grind; the shoe-swap moment; the "feet are killing me" aside.</div><div class="why">Belonging + native product placement.</div></div>
+    <div class="mc"><div class="cat">"Recovery shoes — gimmick or worth it?" debate videos</div><div class="ex">Skeptic-vs-believer takes, comment wars about whether it's real.</div><div class="why">They're litigating their own purchase doubt.</div></div>
+  </div>
+
+  <div class="sec">
+    <h3>Words &amp; Hooks</h3>
+    <div class="principle">A single phrase that names what they've felt but never articulated does more than paragraphs.</div>
+    <p style="font-size:12.5px;color:var(--muted);margin:6px 0 2px"><b>Their vocabulary (use it verbatim):</b></p>
+    <div class="chips"><span class="chip">"on my feet all day"</span><span class="chip">"my feet are killing me"</span><span class="chip">"hour 8 of a 12"</span><span class="chip">"I wanna cut my feet off"</span><span class="chip">"standing on concrete"</span><span class="chip">"game changer"</span><span class="chip">"feet saver"</span><span class="chip">"ugly as sin but…"</span><span class="chip">"worth it?"</span><span class="chip">"second pair to switch into"</span><span class="chip">"12-hour shift"</span><span class="chip">"my dogs are barking"</span></div>
+    <p style="font-size:12.5px;color:var(--muted);margin:14px 0 2px"><b>Hooks (scroll-stoppers in their voice):</b></p>
+    <div class="hook">"You don't have a foot problem. You have a 12-hours-on-concrete problem."</div>
+    <div class="hook">"The shoes that actually save your feet shouldn't have to look like your grandmother's."</div>
+    <div class="hook">"Hour 8 shouldn't feel like hour 12."</div>
+    <div class="hook">"You've been changing your shoes mid-shift. What if you didn't have to?"</div>
+    <div class="hook">"Your feet aren't getting old. Your shoes are just quitting before you do."</div>
+    <div class="hook">"You're allowed to take your own pain seriously — you don't have to run a marathon to earn relief."</div>
+  </div>
+
+  <!-- ===== ANGLE LAYERS ===== -->
+  <div class="angle-banner">+ ANGLE LAYER A · The Accepted Beliefs<span>The category gospel for THIS archetype — ranked by how much rests on it, flagged solid vs cracking.</span></div>
+  <div class="sec">
+    <table>
+      <tr><th>What the market accepts</th><th>Load</th><th>State</th></tr>
+      <tr><td class="bel">"Sore feet are just part of a job on your feet — you toughen up / get used to it."</td><td class="load">10 <span class="bar" style="width:60px"></span></td><td><span class="fresh crack">CRACKING</span></td></tr>
+      <tr><td class="bel">"The shoes that actually work are ugly/clunky — comfort means looking dorky."</td><td class="load">8 <span class="bar" style="width:48px"></span></td><td><span class="fresh crack">CRACKING</span></td></tr>
+      <tr><td class="bel">"More cushion / max squish = more relief. Pile on the foam."</td><td class="load">7 <span class="bar" style="width:42px"></span></td><td><span class="fresh solid">SOLID</span></td></tr>
+      <tr><td class="bel">"A 'recovery shoe' is for athletes — you have to earn it with miles."</td><td class="load">6 <span class="bar" style="width:36px"></span></td><td><span class="fresh solid">SOLID</span></td></tr>
+    </table>
+  </div>
+
+  <div class="angle-banner">+ ANGLE LAYER B · The Contradiction Fuel<span>For the big beliefs: the felt pain when it fails + what they think they want vs. what they actually want.</span></div>
+  <div class="sec">
+    <table>
+      <tr><th>Belief</th><th>Felt pain when it fails</th><th>Want → actually-want</th></tr>
+      <tr>
+        <td class="bel">#1 "Sore feet are just part of the job."</td>
+        <td class="pain-cell"><span class="fuel-lab p">the betrayal</span>They "toughen up" for years — and the ache starts following them home, into days off. The new grad asking <em class="q">"when do your feet stop hurting?"</em> gets told "they don't." Toughing it out didn't build resilience; it normalized damage.</td>
+        <td class="want"><span class="fuel-lab">think they want…</span>to be tough enough to take it<br><span class="fuel-lab">actually want…</span><b>their everyday pain taken seriously</b> — permission to treat 12 hours on concrete as the real athletic event it is.</td>
+      </tr>
+      <tr>
+        <td class="bel">#2 "Comfort means looking dorky."</td>
+        <td class="pain-cell"><span class="fuel-lab p">the betrayal</span>The shoe that saves their feet is <em class="q">"ugly as sin"</em> — so relief comes with a side of embarrassment, and they hide the good shoes or won't wear them out. They're taxed for taking care of themselves.</td>
+        <td class="want"><span class="fuel-lab">think they want…</span>a comfy work shoe<br><span class="fuel-lab">actually want…</span><b>to stop choosing between feeling good and looking normal</b> — relief they'd actually wear to brunch.</td>
+      </tr>
+      <tr>
+        <td class="bel">#4 "Recovery shoes are for athletes."</td>
+        <td class="pain-cell"><span class="fuel-lab p">the betrayal</span>The nurse/parent feels like an impostor buying an "athlete's recovery shoe" — <em class="q">"I'm guilty of the Instagram ad purchase."</em> The relief is for anyone on their feet; the marketing made it a runners-only club.</td>
+        <td class="want"><span class="fuel-lab">think they want…</span>to qualify as "athlete enough"<br><span class="fuel-lab">actually want…</span><b>to be told they've earned it</b> without having run a single mile.</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="angle-banner">+ ANGLE LAYER C · The Guardrails<span>Who owns what (don't run into a moat) + the belief Kane can't attack.</span></div>
+  <div class="sec">
+    <table>
+      <tr><th>Player</th><th>Ground they own</th></tr>
+      <tr><td class="bel">OOFOS</td><td>Owns <b>"recovery as a medical claim"</b> (OOfoam, impact-absorption %). Don't out-science them on recovery — and this archetype barely cares about the science anyway.</td></tr>
+      <tr><td class="bel">HOKA</td><td>Owns <b>"max-cushion, podiatrist-recommended, the nurse default."</b> The real incumbent for THIS archetype — beating "I'll just get Hokas" is the actual job.</td></tr>
+      <tr><td class="bel">Birkenstock / Crocs / Dansko</td><td>Own <b>"the ugly-but-it-works clog."</b> The category Kane's style is built to escape.</td></tr>
+      <tr><td class="bel">"Just change your shoes mid-shift"</td><td>The free workaround — the truest competitor. The enemy is a habit, not only a brand.</td></tr>
+    </table>
+    <div class="offlimits">⛔ <b>Kane must NOT attack:</b> comfort/cushion itself (that's Kane's own product), or "recovery shoes are pointless" (Kane is one). The flip has to leave Kane standing as the recovery shoe you'd actually wear out — not torch the category.</div>
+  </div>
+
+  <div class="swing">
+    🏌️ <b>One step from the angle.</b> The richest fodder for The All-Day Sufferer: belief <b>#1 ("sore feet are just part of the job," load 10, cracking)</b> crossed with belief <b>#2 ("comfort = dorky," cracking)</b>. The opposite direction that leaves Kane standing — and dodges Oofos' science moat and Hoka's max-cushion moat — is something like: <i>You're not soft, and you're not getting old. You're an athlete who never gets to take the shoe off — and you've been wearing recovery gear that's either ugly or only good for after. Why isn't there one you'd actually wear all day, out in the world?</i> The math/identity play: 12 hrs on concrete × 5 days = more pounding than a marathoner, with none of the gear made for you. (Direction only — the actual angle is the Swiss-Army dialogue, Stage 2.)
+  </div>
+
+  <!-- ===== THE SWISS ARMY KNIFE — SPELLED OUT ===== -->
+  <div class="angle-banner" style="background:#1a1a1a">🔪 THE SWISS ARMY KNIFE · how to swing<span>The 6 blades, which ones fit THIS archetype, and a worked example for each that fits. Pick the one that feels truest — that's your angle.</span></div>
+
+  <div class="sec" style="border:2px solid #1a1a1a">
+    <p style="font-size:13.5px;margin:2px 0 14px"><b>The move (all blades share it):</b> the market's hero is secretly the villain — you contradict the accepted belief, <i>for a real reason</i>. Each blade is a different direction to make that cut. You don't run all six. You pick the ones that fit. <b>For The All-Day Sufferer, blades 1, 2, 4, and 6 fit. Blades 3 and 5 don't — and that's the skill.</b></p>
+
+    <table>
+      <tr><th style="width:18%">Blade</th><th style="width:30%">The move</th><th>Fits this archetype? → the worked swing</th></tr>
+
+      <tr>
+        <td><b>① The 180</b><br><span style="font-size:11px;color:var(--muted)">run to the opposite pole</span></td>
+        <td>Take the category's sacred virtue and run to the extreme opposite.</td>
+        <td style="background:#E8F5E9"><b>✅ FITS.</b> Recovery's virtue is <i>function over form</i> (ugly clogs, max foam). Run to the opposite pole — style IS the point.<br><b>Belief flipped:</b> "comfort means looking dorky." <b>Fuel:</b> "stop choosing between feeling good and looking normal."<br>💡 <em class="q">"The recovery shoe you'd actually wear to brunch. Relief shouldn't cost you the way you look."</em></td>
+      </tr>
+
+      <tr>
+        <td><b>② The Third Door</b><br><span style="font-size:11px;color:var(--muted)">refuse two camps, claim the merge</span></td>
+        <td>Two camps at war — refuse both, claim the fused middle nobody holds.</td>
+        <td style="background:#E8F5E9"><b>✅ FITS.</b> Two camps: <i>ugly clogs that work</i> (Crocs/Oofos) vs <i>cute sneakers that wreck your feet</i>. Kane is the third door.<br><b>Belief flipped:</b> "you pick comfort OR looks." <b>Fuel:</b> the want above.<br>💡 <em class="q">"Your two options were a clog you hide or a sneaker that kills you by hour 8. There's a third one."</em></td>
+      </tr>
+
+      <tr>
+        <td><b>③ The Cure Is the Cause</b><br><span style="font-size:11px;color:var(--muted)">the trusted fix causes it</span></td>
+        <td>The thing they trust to fix it is mechanically causing it.</td>
+        <td style="background:#FDECEA"><b>⚠️ SKIP.</b> There's no clean mechanism where their current shoe <i>causes</i> the foot pain (the concrete + hours cause it; the shoe just fails to help). Forcing "your shoe is causing it" would be a false mechanism. Doesn't fit — leave it folded.</td>
+      </tr>
+
+      <tr>
+        <td><b>④ The Innocent Suspect</b><br><span style="font-size:11px;color:var(--muted)">we blamed the wrong thing</span></td>
+        <td>Clear who they've been blaming; name the real, surprising culprit.</td>
+        <td style="background:#E8F5E9"><b>✅ FITS (strongest).</b> They blame <i>their own body</i> ("I'm getting old / falling apart"). Clear the suspect, name the real culprit.<br><b>Belief flipped:</b> "if my feet hurt, I'm aging." <b>Fuel:</b> Private Shame "old-person shoes in my 30s" + eavesdrop "standing on concrete."<br>💡 <em class="q">"Your feet aren't getting old. You're standing on concrete 12 hours in shoes that quit before you do."</em></td>
+      </tr>
+
+      <tr>
+        <td><b>⑤ The Wrong Battlefield</b><br><span style="font-size:11px;color:var(--muted)">change the metric</span></td>
+        <td>Declare the metric everyone competes on wrong; install a new one.</td>
+        <td style="background:#E8F5E9"><b>✅ FITS.</b> The category competes on <i>athletic credibility</i> (miles, recovery science — Oofos' turf). Change the metric to <i>hours on hard ground</i>.<br><b>Belief flipped:</b> "recovery shoes are for athletes who earned it." <b>Fuel:</b> "treat 12 hrs on concrete as the real athletic event."<br>💡 <em class="q">"A nurse on her feet 12 hours takes more pounding than a marathoner. Where's the recovery gear made for HER?"</em><br><span style="font-size:11.5px;color:var(--muted)">(Note: I mis-stated ⑤ as a skip earlier — re-checked: it fits well and dodges Oofos' moat by changing the axis. Both ④ and ⑤ are strong.)</span></td>
+      </tr>
+
+      <tr>
+        <td><b>⑥ The Comeback That Never Left</b><br><span style="font-size:11px;color:var(--muted)">declared-dead thing still works</span></td>
+        <td>A thing the market wrote off as dead never stopped working — with a defensible reason.</td>
+        <td style="background:#FDECEA"><b>⚠️ SKIP.</b> Nothing in this archetype's world is "declared dead but quietly winning." No revival to claim. Forcing it would be a costume. Leave it folded.</td>
+      </tr>
+    </table>
+
+    <p style="font-size:13.5px;margin:16px 0 2px"><b>So your shortlist is 4 swings (1, 2, 4, 5), and ④ The Innocent Suspect is the sharpest</b> — it protects the buyer's identity ("you're not getting old") while naming a villain they can rally against ("the concrete + shoes that quit"). Pick the one that feels truest, and that's where the angle dialogue (Stage 2) starts. <b>You don't have to assemble anything — the swing is already on the tee.</b></p>
+  </div>
+
+  <div class="src">
+    <b>Sources (real, found · cold/blind · open channels):</b> KANE site (Revive, "Active Recovery Shoes," $78–90, 10mm drop, arch support) · r/nursing "when do your feet stop hurting" (190+) &amp; "I wanna cut my feet off" (<em class="q">"feet hurt so bad by hour 8"</em>) · r/NoStupidQuestions "how do people survive 7-8 hr shifts" (470+, <em class="q">"mostly standing… excruciating"</em>; top tip: <em class="q">"change your shoes halfway through"</em>) · r/cna "12-hour shifts" · r/BuyItForLife "best shoes for standing all day" (270+, <em class="q">"the pain can actually subside… I suffered for years"</em>, <em class="q">"dorky ones your grandmother would [wear]"</em>) · r/cna shoes (<em class="q">"get up and walk by the end of my shift"</em>) · r/Residency "best hospital shoe for 80hr weeks" (310+) · podiatrist lists (Hoka/Oofos/Brooks/Dansko) · r/walking &amp; r/Frugal "are expensive shoes worth it" (<em class="q">"$120 now is cheaper than an injury"</em>; <em class="q">"tired of cheap shoes falling apart"</em>) · r/Ultramarathon Kane (<em class="q">"$10 return fee"</em>) · GQ &amp; r/SNKRS (<em class="q">"gimmicky af"</em>). ⚠️ Gated/not used: direct Kane Trustpilot/Amazon review text (reCAPTCHA/login).  scoring/segmentation is reconnaissance estimate.
+  </div>
+</div>
+</body>
+</html>
