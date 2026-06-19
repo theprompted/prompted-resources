@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parade Hunt &mdash; Final 5</title>
+<style>
+    /* Design system */
+    :root {
+        /* Colors */
+        --bg-page: #F8F8F7;
+        --bg-white: #ffffff;
+        --bg-blue: #EBF9FF;
+        --bg-purple: #F7F1FF;
+        --bg-yellow: #FFFDE7;
+        --bg-green: #E8F5E9;
+
+        /* Accent Colors */
+        --accent-teal: #53DBC9;
+        --accent-yellow: #FFDE00;
+        --accent-purple: #9D4EDD;
+        --accent-red: #E53935;
+
+        /* Text Colors */
+        --text-black: #000000;
+        --text-dark: #1a1a1a;
+        --text-gray: #4a4a4a;
+        --text-muted: #6b6b6b;
+
+        /* Shadows */
+        --shadow-lg: -0.31rem 0.31rem 0 0 #383838;
+        --shadow-sm: -0.19rem 0.19rem 0 0 #383838;
+
+        /* Border */
+        --border: 2px solid black;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        font-size: 1rem;
+        line-height: 1.7;
+        color: var(--text-dark);
+        background: var(--bg-page);
+        padding: 2rem 1.5rem;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    /* Typography - Headers use monospace */
+    h1, h2, h3, h4 {
+        font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+        font-weight: 700;
+        color: var(--text-black);
+    }
+
+    h1 { font-size: 2.25rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.125rem; }
+    h4 {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--text-gray);
+    }
+
+    /* Cards */
+    .card {
+        background: var(--bg-white);
+        border: var(--border);
+        box-shadow: var(--shadow-lg);
+        margin-bottom: 2rem;
+    }
+
+    .card-header {
+        padding: 1rem 1.5rem;
+        border-bottom: var(--border);
+        background: var(--bg-page);
+    }
+
+    .card-content {
+        padding: 1.5rem;
+    }
+
+    /* Colored section headers */
+    .section-blue { background: var(--bg-blue); }
+    .section-purple { background: var(--bg-purple); }
+    .section-yellow { background: var(--bg-yellow); }
+    .section-green { background: var(--bg-green); }
+
+    /* Code blocks */
+    code {
+        background: var(--bg-white);
+        border: 1px solid #ccc;
+        padding: 0.125rem 0.5rem;
+        font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+        font-size: 0.875rem;
+    }
+
+    .code-block {
+        background: var(--text-dark);
+        color: var(--accent-teal);
+        border: var(--border);
+        padding: 1rem 1.25rem;
+        font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+        font-size: 0.875rem;
+        margin: 1rem 0;
+        box-shadow: var(--shadow-sm);
+        white-space: pre-wrap;
+        overflow-x: auto;
+    }
+
+    /* Buttons */
+    .btn {
+        padding: 0.75rem 1.5rem;
+        background: var(--accent-teal);
+        color: var(--text-black);
+        border: var(--border);
+        font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        box-shadow: var(--shadow-sm);
+        transition: transform 0.1s ease;
+    }
+
+    .btn:hover {
+        transform: translate(2px, -2px);
+        box-shadow: -0.4rem 0.4rem 0 0 #383838;
+    }
+
+    .btn:active {
+        transform: translate(-2px, 2px);
+        box-shadow: -0.1rem 0.1rem 0 0 #383838;
+    }
+
+    /* Tags/badges */
+    .tag {
+        display: inline-block;
+        background: var(--accent-teal);
+        border: var(--border);
+        padding: 0.25rem 0.75rem;
+        font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+        font-size: 0.75rem;
+        font-weight: 700;
+    }
+
+    /* Numbered badges */
+    .num-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2rem;
+        height: 2rem;
+        background: var(--accent-teal);
+        border: var(--border);
+        border-radius: 50%;
+        font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+        font-size: 0.875rem;
+        font-weight: 700;
+    }
+
+    /* Lists */
+    ul, ol {
+        margin: 1rem 0;
+        padding-left: 1.5rem;
+    }
+
+    li {
+        margin-bottom: 0.75rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+        body { padding: 1rem; }
+        h1 { font-size: 1.75rem; }
+        .card-content { padding: 1.25rem; }
+    }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="card">
+    <div class="card-content">
+      <div style="width:3rem;height:3rem;background:var(--accent-teal);border:var(--border);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1rem;">&#127881;</div>
+      <h1>Your Parades &mdash; The Final 5</h1>
+      <p style="color:var(--text-muted);margin-top:0.5rem;">Seeded from: <em>&ldquo;New dad ~6 months in, sleep-deprived — woodworking in the garage on nap breaks&rdquo;</em></p>
+      <p style="color:var(--text-muted);margin-top:0.25rem;font-size:0.9rem;">Five crowds that keep refilling with new buyers &mdash; each one scored on how big, how passionate, and how open it is, then deep-audited into wedges, phrases, and first shirts.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><h2>The 5 at a glance</h2></div>
+    <div class="card-content">
+      <table style="width:100%;border-collapse:collapse;">
+        <thead><tr style="text-align:left;">
+          <th style="padding:0.6rem;border-bottom:var(--border);">#</th>
+          <th style="padding:0.6rem;border-bottom:var(--border);">Parade</th>
+          <th style="padding:0.6rem;border-bottom:var(--border);">Tier</th>
+        </tr></thead>
+        <tbody><tr><td style="padding:0.6rem;border-bottom:1px solid #ccc;font-weight:700;">1</td><td style="padding:0.6rem;border-bottom:1px solid #ccc;"><a href="#niche-1" style="color:var(--accent-purple);font-weight:700;text-decoration:none;">Brand-New / Newborn Survival Dads</a></td><td style="padding:0.6rem;border-bottom:1px solid #ccc;font-size:0.85rem;">CONFIDENCE PICK</td></tr><tr><td style="padding:0.6rem;border-bottom:1px solid #ccc;font-weight:700;">2</td><td style="padding:0.6rem;border-bottom:1px solid #ccc;"><a href="#niche-2" style="color:var(--accent-purple);font-weight:700;text-decoration:none;">Beginner Woodworkers</a></td><td style="padding:0.6rem;border-bottom:1px solid #ccc;font-size:0.85rem;">CONFIDENCE PICK</td></tr><tr><td style="padding:0.6rem;border-bottom:1px solid #ccc;font-weight:700;">3</td><td style="padding:0.6rem;border-bottom:1px solid #ccc;"><a href="#niche-3" style="color:var(--accent-purple);font-weight:700;text-decoration:none;">The Whittling / Hand-Carving Crowd</a></td><td style="padding:0.6rem;border-bottom:1px solid #ccc;font-size:0.85rem;">REPLENISHMENT PICK</td></tr><tr><td style="padding:0.6rem;border-bottom:1px solid #ccc;font-weight:700;">4</td><td style="padding:0.6rem;border-bottom:1px solid #ccc;"><a href="#niche-4" style="color:var(--accent-purple);font-weight:700;text-decoration:none;">The &#x27;Just One More Tool&#x27; Crowd</a></td><td style="padding:0.6rem;border-bottom:1px solid #ccc;font-size:0.85rem;">REPLENISHMENT PICK</td></tr><tr><td style="padding:0.6rem;border-bottom:1px solid #ccc;font-weight:700;">5</td><td style="padding:0.6rem;border-bottom:1px solid #ccc;"><a href="#niche-5" style="color:var(--accent-purple);font-weight:700;text-decoration:none;">The Dad-Who-Escapes-to-the-Garage</a></td><td style="padding:0.6rem;border-bottom:1px solid #ccc;font-size:0.85rem;">DARK HORSE</td></tr></tbody>
+      </table>
+      <p style="margin-top:1rem;font-size:0.9rem;color:var(--text-muted);">You don&rsquo;t have to take #1. The two confidence picks are the safest bets; the two replenishment picks have the most open lanes and the strongest repeat-buy behavior; the dark horse is the one where you get to <em>create</em> the joke instead of finding it.</p>
+    </div>
+  </div>
+
+  
+    <div class="card" id="niche-1">
+      <div class="card-header" style="background:var(--bg-blue);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;">
+        <h2 style="display:flex;align-items:center;gap:0.75rem;"><span class="num-badge">1</span> Brand-New / Newborn Survival Dads</h2>
+        <span class="tag">CONFIDENCE PICK</span>
+      </div>
+      <div class="card-content">
+        <div style="background:var(--bg-white);border-left:4px solid var(--accent-teal);padding:0.75rem 1rem;margin-bottom:1.25rem;">
+          Dads 0–12 months into their first baby. Wrecked, wired on coffee, secretly proud, drowning in firsts. They live in the gap between &#x27;I would die for this kid&#x27; and &#x27;I have not slept since March.&#x27; The crowd never shrinks — last year&#x27;s survivors graduate out and a fresh wave marches in behind them.
+        </div>
+
+        <h4>Why it keeps refilling (the replenishment engine)</h4>
+        <p style="margin-bottom:1.25rem;">Every stage is a new inside joke: the newborn fog, the first blowout, the 4-month sleep regression, the first sick day, the first word. A dad doesn&#x27;t buy one shirt and quit — each milestone earns a new stanza. And it&#x27;s heavily gift-driven (Father&#x27;s Day, baby showers, &#x27;first Father&#x27;s Day&#x27;), so the buyer often isn&#x27;t even the dad.</p>
+
+        <h4>Who's already in the lane</h4>
+        <ul style="margin-bottom:1.25rem;"><li>Amazon / Etsy: flooded with generic &#x27;Sleep Deprived New Dad&#x27; text tees — high volume, zero brand, zero posture.</li><li>No Shopify identity-brand has flag-planted here. The lane is wide open for a real voice.</li></ul>
+
+        <h4>Design wedges</h4>
+        <ul><li>Self-deprecating survival humor — lean into the exhaustion, not the Hallmark sentiment.</li>
+<li>The &#x27;firsts&#x27; as a serialized in-joke (one shirt per milestone).</li>
+<li>Coffee + no-sleep iconography fused with new-dad identity.</li>
+<li>Quiet pride underneath the chaos — the &#x27;I&#x27;m terrible at this and I love it&#x27; tone.</li></ul>
+
+        <h4 style="margin-top:1.25rem;">Starter phrases (shirt-ready)</h4>
+        <div style="margin-top:0.5rem;"><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">Running on coffee and 47 minutes of sleep</span><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">New dad. Send caffeine.</span><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">I survived the 4-month sleep regression</span><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">Professional baby-bouncer since 2026</span><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">Powered by naps that aren&#x27;t mine</span><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">Dad of one. Tired of ten.</span><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">I do my best parenting at 3am</span><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">Sleep is for dads without newborns</span><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">First-time dad, full-time zombie</span><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">Yes I&#x27;m tired. No I won&#x27;t stop showing you photos.</span></div>
+
+        <h4 style="margin-top:1.25rem;">First 5 shirts to test</h4>
+        <div style="margin-bottom:1rem;"><div style="display:flex;gap:0.9rem;align-items:flex-start;padding:0.9rem 0;border-bottom:1px dashed #ccc;"><span class="num-badge">1</span><div><div style="font-weight:700;margin-bottom:0.2rem;">&ldquo;Running on coffee and 47 minutes of sleep&rdquo;</div><div style="color:var(--text-muted);font-size:0.9rem;">Tired coffee cup with baby-bottle steam; rough hand-drawn line</div></div></div><div style="display:flex;gap:0.9rem;align-items:flex-start;padding:0.9rem 0;border-bottom:1px dashed #ccc;"><span class="num-badge">2</span><div><div style="font-weight:700;margin-bottom:0.2rem;">&ldquo;New dad. Send caffeine.&rdquo;</div><div style="color:var(--text-muted);font-size:0.9rem;">Bold condensed type, single coffee-ring stain</div></div></div><div style="display:flex;gap:0.9rem;align-items:flex-start;padding:0.9rem 0;border-bottom:1px dashed #ccc;"><span class="num-badge">3</span><div><div style="font-weight:700;margin-bottom:0.2rem;">&ldquo;I survived the 4-month sleep regression&rdquo;</div><div style="color:var(--text-muted);font-size:0.9rem;">Faux &#x27;achievement unlocked&#x27; badge, distressed</div></div></div><div style="display:flex;gap:0.9rem;align-items:flex-start;padding:0.9rem 0;border-bottom:1px dashed #ccc;"><span class="num-badge">4</span><div><div style="font-weight:700;margin-bottom:0.2rem;">&ldquo;I do my best parenting at 3am&rdquo;</div><div style="color:var(--text-muted);font-size:0.9rem;">Clock at 3:00, tiny footprints orbiting it</div></div></div><div style="display:flex;gap:0.9rem;align-items:flex-start;padding:0.9rem 0;border-bottom:1px dashed #ccc;"><span class="num-badge">5</span><div><div style="font-weight:700;margin-bottom:0.2rem;">&ldquo;First-time dad, full-time zombie&rdquo;</div><div style="color:var(--text-muted);font-size:0.9rem;">Simple zombie-shuffle dad silhouette holding a bottle</div></div></div></div>
+
+        <h4 style="margin-top:1.25rem;">Visual codes</h4>
+        <div style="margin:0.5rem 0;"><strong style="font-size:0.85rem;">Palette:</strong><br><span style="display:inline-block;margin:0 0.6rem 0.4rem 0;font-size:0.85rem;white-space:nowrap;"><span style="display:inline-block;width:1rem;height:1rem;background:#2B2B2B;border:1px solid #000;margin-right:0.4rem;vertical-align:middle;"></span>Charcoal #2B2B2B</span><span style="display:inline-block;margin:0 0.6rem 0.4rem 0;font-size:0.85rem;white-space:nowrap;"><span style="display:inline-block;width:1rem;height:1rem;background:#F4F0E6;border:1px solid #000;margin-right:0.4rem;vertical-align:middle;"></span>Cream #F4F0E6</span><span style="display:inline-block;margin:0 0.6rem 0.4rem 0;font-size:0.85rem;white-space:nowrap;"><span style="display:inline-block;width:1rem;height:1rem;background:#6B4F3A;border:1px solid #000;margin-right:0.4rem;vertical-align:middle;"></span>Faded coffee-brown #6B4F3A</span><span style="display:inline-block;margin:0 0.6rem 0.4rem 0;font-size:0.85rem;white-space:nowrap;">One muted accent (dusty blue #6E8CA0)</span></div>
+        <p style="font-size:0.9rem;margin:0.5rem 0;"><strong style="font-size:0.85rem;">Type:</strong> Worn condensed sans + a tired hand-scrawl secondary. Nothing crisp — everything a little smudged, like the wearer.</p>
+        <p style="font-size:0.9rem;margin:0.5rem 0;"><strong style="font-size:0.85rem;">Icons:</strong> Coffee rings, bottles, 3am clocks, footprints, &#x27;achievement unlocked&#x27; badges, eye-bags.</p>
+
+        <div style="background:var(--bg-blue);border:var(--border);box-shadow:var(--shadow-sm);padding:0.9rem 1.1rem;margin-top:1.25rem;">
+          <h4 style="color:var(--text-black);">Why this made the cut</h4>
+          <p style="margin-top:0.3rem;">Top-tier confidence pick. Dense identity + pain + self-mock signal, a crowd that fully refills every single year, and no identity brand owning it — just generic gift merch.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card" id="niche-2">
+      <div class="card-header" style="background:var(--bg-blue);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;">
+        <h2 style="display:flex;align-items:center;gap:0.75rem;"><span class="num-badge">2</span> Beginner Woodworkers</h2>
+        <span class="tag">CONFIDENCE PICK</span>
+      </div>
+      <div class="card-content">
+        <div style="background:var(--bg-white);border-left:4px solid var(--accent-teal);padding:0.75rem 1rem;margin-bottom:1.25rem;">
+          People in their first 1–2 years of woodworking. Garage hobbyists, weekend warriors, the &#x27;I bought a circular saw and a dream&#x27; crowd. They are gloriously bad at it and they know it — and that self-awareness is the whole personality.
+        </div>
+
+        <h4>Why it keeps refilling (the replenishment engine)</h4>
+        <p style="margin-bottom:1.25rem;">Woodworking is a wardrobe-ceiling risk for *experts* — but beginners are a different animal. Every botched cut, glued finger, and crooked first project is a fresh joke, and the skill ladder means there&#x27;s always a next embarrassment. New people pour in constantly (it&#x27;s one of the most-searched beginner hobbies). The identity is &#x27;lovable disaster,&#x27; which never gets old.</p>
+
+        <h4>Who's already in the lane</h4>
+        <ul style="margin-bottom:1.25rem;"><li>Amazon/Etsy/TeePublic/Zazzle: &#x27;measure twice cut once&#x27; dad-merch everywhere — generic, no posture.</li><li>Chummy Tees and similar do pun shirts but no flag-planted *beginner* identity brand.</li><li>Wide open for a self-mocking &#x27;we&#x27;re all bad at this together&#x27; voice.</li></ul>
+
+        <h4>Design wedges</h4>
+        <ul><li>The lovable-disaster posture — celebrate the failures, not the masterpieces.</li>
+<li>Beginner-specific in-jokes (the expert merch ignores this crowd entirely).</li>
+<li>&#x27;Measure twice, cut three times&#x27; energy as a brand voice, not a one-off pun.</li>
+<li>Sawdust-as-identity — the mess is the badge.</li></ul>
+
+        <h4 style="margin-top:1.25rem;">Starter phrases (shirt-ready)</h4>
+        <div style="margin-top:0.5rem;"><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">Measure twice. Cut three times. Still wrong.</span><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">I make firewood on purpose</span><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">Sawdust is just man-glitter</span><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">My woodshop: where straight lines come to die</span><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">I&#x27;m not a carpenter, I&#x27;m a wood-cost optimist</span><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">Some assembly required. By someone better.</span><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">I glued my fingers together again</span><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">Wood you believe I&#x27;m still learning</span><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">My first project was a learning experience (and a coaster, sort of)</span><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">Powered by sawdust and overconfidence</span></div>
+
+        <h4 style="margin-top:1.25rem;">First 5 shirts to test</h4>
+        <div style="margin-bottom:1rem;"><div style="display:flex;gap:0.9rem;align-items:flex-start;padding:0.9rem 0;border-bottom:1px dashed #ccc;"><span class="num-badge">1</span><div><div style="font-weight:700;margin-bottom:0.2rem;">&ldquo;Measure twice. Cut three times. Still wrong.&rdquo;</div><div style="color:var(--text-muted);font-size:0.9rem;">Tape measure with a crossed-out cut line; stamp-style type</div></div></div><div style="display:flex;gap:0.9rem;align-items:flex-start;padding:0.9rem 0;border-bottom:1px dashed #ccc;"><span class="num-badge">2</span><div><div style="font-weight:700;margin-bottom:0.2rem;">&ldquo;Sawdust is just man-glitter&rdquo;</div><div style="color:var(--text-muted);font-size:0.9rem;">Sprinkle of sawdust specks across bold lowercase text</div></div></div><div style="display:flex;gap:0.9rem;align-items:flex-start;padding:0.9rem 0;border-bottom:1px dashed #ccc;"><span class="num-badge">3</span><div><div style="font-weight:700;margin-bottom:0.2rem;">&ldquo;I make firewood on purpose&rdquo;</div><div style="color:var(--text-muted);font-size:0.9rem;">A wonky &#x27;project&#x27; that&#x27;s clearly just a wood pile</div></div></div><div style="display:flex;gap:0.9rem;align-items:flex-start;padding:0.9rem 0;border-bottom:1px dashed #ccc;"><span class="num-badge">4</span><div><div style="font-weight:700;margin-bottom:0.2rem;">&ldquo;My woodshop: where straight lines come to die&rdquo;</div><div style="color:var(--text-muted);font-size:0.9rem;">A crooked sawhorse + crooked board, deadpan</div></div></div><div style="display:flex;gap:0.9rem;align-items:flex-start;padding:0.9rem 0;border-bottom:1px dashed #ccc;"><span class="num-badge">5</span><div><div style="font-weight:700;margin-bottom:0.2rem;">&ldquo;Powered by sawdust and overconfidence&rdquo;</div><div style="color:var(--text-muted);font-size:0.9rem;">Vintage tool-emblem badge, slightly off-kilter on purpose</div></div></div></div>
+
+        <h4 style="margin-top:1.25rem;">Visual codes</h4>
+        <div style="margin:0.5rem 0;"><strong style="font-size:0.85rem;">Palette:</strong><br><span style="display:inline-block;margin:0 0.6rem 0.4rem 0;font-size:0.85rem;white-space:nowrap;"><span style="display:inline-block;width:1rem;height:1rem;background:#4A3526;border:1px solid #000;margin-right:0.4rem;vertical-align:middle;"></span>Walnut #4A3526</span><span style="display:inline-block;margin:0 0.6rem 0.4rem 0;font-size:0.85rem;white-space:nowrap;"><span style="display:inline-block;width:1rem;height:1rem;background:#D8C4A0;border:1px solid #000;margin-right:0.4rem;vertical-align:middle;"></span>Sawdust tan #D8C4A0</span><span style="display:inline-block;margin:0 0.6rem 0.4rem 0;font-size:0.85rem;white-space:nowrap;"><span style="display:inline-block;width:1rem;height:1rem;background:#1F1B16;border:1px solid #000;margin-right:0.4rem;vertical-align:middle;"></span>Off-black #1F1B16</span><span style="display:inline-block;margin:0 0.6rem 0.4rem 0;font-size:0.85rem;white-space:nowrap;"><span style="display:inline-block;width:1rem;height:1rem;background:#A6361F;border:1px solid #000;margin-right:0.4rem;vertical-align:middle;"></span>Workshop red accent #A6361F</span></div>
+        <p style="font-size:0.9rem;margin:0.5rem 0;"><strong style="font-size:0.85rem;">Type:</strong> Stamped-on-lumber stencil + a vintage tool-catalog serif. Industrial, worn, woodgrain texture welcome.</p>
+        <p style="font-size:0.9rem;margin:0.5rem 0;"><strong style="font-size:0.85rem;">Icons:</strong> Tape measures, sawhorses, wood grain, sawdust, crossed-out cut lines, &#x27;inspected by&#x27; stamps.</p>
+
+        <div style="background:var(--bg-blue);border:var(--border);box-shadow:var(--shadow-sm);padding:0.9rem 1.1rem;margin-top:1.25rem;">
+          <h4 style="color:var(--text-black);">Why this made the cut</h4>
+          <p style="margin-top:0.3rem;">Strongest crowd in the whole batch. Self-deprecation is off the charts, the entry crowd refills endlessly, and there&#x27;s no identity brand owning the lane — only generic POD.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card" id="niche-3">
+      <div class="card-header" style="background:var(--bg-green);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;">
+        <h2 style="display:flex;align-items:center;gap:0.75rem;"><span class="num-badge">3</span> The Whittling / Hand-Carving Crowd</h2>
+        <span class="tag">REPLENISHMENT PICK</span>
+      </div>
+      <div class="card-content">
+        <div style="background:var(--bg-white);border-left:4px solid var(--accent-teal);padding:0.75rem 1rem;margin-bottom:1.25rem;">
+          People who carve by hand — spoons, comfort birds, little figures — usually for the meditative quiet of it. A lot of overlap with bushcraft, GCSE/teen carvers, and &#x27;I needed something to do with my hands&#x27; adults. Slower, gentler energy than power-tool woodworking.
+        </div>
+
+        <h4>Why it keeps refilling (the replenishment engine)</h4>
+        <p style="margin-bottom:1.25rem;">Two engines: (1) the gear — knives, strops, basswood, gloves — is endlessly collectible and flex-worthy, and (2) every finished carving is a tiny new identity stamp. It&#x27;s a &#x27;practice forever, never finished&#x27; craft, so the in-jokes compound. The calm/meditative angle also pulls in a stress-relief crowd the loud-tool merch ignores.</p>
+
+        <h4>Who's already in the lane</h4>
+        <ul style="margin-bottom:1.25rem;"><li>Schaaf Tools sells some carver merch; Amazon/TeePublic have generic &#x27;whittle by whittle&#x27; puns.</li><li>No identity brand owns the calm/meditative-carver posture. Very open.</li></ul>
+
+        <h4>Design wedges</h4>
+        <ul><li>Calm-craft / &#x27;occupied hands, quiet mind&#x27; posture — the anti-hustle hobby.</li>
+<li>Gear-flex for knives, strops, basswood (the collectible angle).</li>
+<li>Beginner-friendly &#x27;practice on a bar of soap&#x27; in-jokes.</li>
+<li>Tiny-wins identity — &#x27;I made a slightly-lumpy spoon and I&#x27;m proud.&#x27;</li></ul>
+
+        <h4 style="margin-top:1.25rem;">Starter phrases (shirt-ready)</h4>
+        <div style="margin-top:0.5rem;"><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">Whittle by whittle</span><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">Occupied hands, quiet mind</span><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">I carve to stay calm. Mostly.</span><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">Just one more cut</span><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">Spoon hoarder</span><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">My therapy has a sharp edge</span><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">Basswood and good intentions</span><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">I&#x27;m not slow, I&#x27;m whittling</span><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">Made it lumpy. Made it mine.</span><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">Bandaids sold separately</span></div>
+
+        <h4 style="margin-top:1.25rem;">First 5 shirts to test</h4>
+        <div style="margin-bottom:1rem;"><div style="display:flex;gap:0.9rem;align-items:flex-start;padding:0.9rem 0;border-bottom:1px dashed #ccc;"><span class="num-badge">1</span><div><div style="font-weight:700;margin-bottom:0.2rem;">&ldquo;Whittle by whittle&rdquo;</div><div style="color:var(--text-muted);font-size:0.9rem;">A carving knife mid-stroke, soft hand-drawn shavings curling off</div></div></div><div style="display:flex;gap:0.9rem;align-items:flex-start;padding:0.9rem 0;border-bottom:1px dashed #ccc;"><span class="num-badge">2</span><div><div style="font-weight:700;margin-bottom:0.2rem;">&ldquo;Occupied hands, quiet mind&rdquo;</div><div style="color:var(--text-muted);font-size:0.9rem;">Minimal line-art hands holding a small carving, calm palette</div></div></div><div style="display:flex;gap:0.9rem;align-items:flex-start;padding:0.9rem 0;border-bottom:1px dashed #ccc;"><span class="num-badge">3</span><div><div style="font-weight:700;margin-bottom:0.2rem;">&ldquo;Spoon hoarder&rdquo;</div><div style="color:var(--text-muted);font-size:0.9rem;">A row of slightly-imperfect hand-carved spoons</div></div></div><div style="display:flex;gap:0.9rem;align-items:flex-start;padding:0.9rem 0;border-bottom:1px dashed #ccc;"><span class="num-badge">4</span><div><div style="font-weight:700;margin-bottom:0.2rem;">&ldquo;My therapy has a sharp edge&rdquo;</div><div style="color:var(--text-muted);font-size:0.9rem;">Single carving knife, deadpan serif</div></div></div><div style="display:flex;gap:0.9rem;align-items:flex-start;padding:0.9rem 0;border-bottom:1px dashed #ccc;"><span class="num-badge">5</span><div><div style="font-weight:700;margin-bottom:0.2rem;">&ldquo;Made it lumpy. Made it mine.&rdquo;</div><div style="color:var(--text-muted);font-size:0.9rem;">One charmingly-imperfect carved bird</div></div></div></div>
+
+        <h4 style="margin-top:1.25rem;">Visual codes</h4>
+        <div style="margin:0.5rem 0;"><strong style="font-size:0.85rem;">Palette:</strong><br><span style="display:inline-block;margin:0 0.6rem 0.4rem 0;font-size:0.85rem;white-space:nowrap;"><span style="display:inline-block;width:1rem;height:1rem;background:#EDE3CC;border:1px solid #000;margin-right:0.4rem;vertical-align:middle;"></span>Basswood cream #EDE3CC</span><span style="display:inline-block;margin:0 0.6rem 0.4rem 0;font-size:0.85rem;white-space:nowrap;"><span style="display:inline-block;width:1rem;height:1rem;background:#8C9B7A;border:1px solid #000;margin-right:0.4rem;vertical-align:middle;"></span>Soft sage #8C9B7A</span><span style="display:inline-block;margin:0 0.6rem 0.4rem 0;font-size:0.85rem;white-space:nowrap;"><span style="display:inline-block;width:1rem;height:1rem;background:#5A4632;border:1px solid #000;margin-right:0.4rem;vertical-align:middle;"></span>Bark brown #5A4632</span><span style="display:inline-block;margin:0 0.6rem 0.4rem 0;font-size:0.85rem;white-space:nowrap;"><span style="display:inline-block;width:1rem;height:1rem;background:#28241E;border:1px solid #000;margin-right:0.4rem;vertical-align:middle;"></span>Charcoal line #28241E</span></div>
+        <p style="font-size:0.9rem;margin:0.5rem 0;"><strong style="font-size:0.85rem;">Type:</strong> Gentle hand-lettering + a quiet humanist serif. Calm, tactile, never aggressive.</p>
+        <p style="font-size:0.9rem;margin:0.5rem 0;"><strong style="font-size:0.85rem;">Icons:</strong> Carving knives, wood shavings/curls, spoons, comfort birds, hands, basswood blocks.</p>
+
+        <div style="background:var(--bg-green);border:var(--border);box-shadow:var(--shadow-sm);padding:0.9rem 1.1rem;margin-top:1.25rem;">
+          <h4 style="color:var(--text-black);">Why this made the cut</h4>
+          <p style="margin-top:0.3rem;">Highest tactile gear-flex in the batch and a calm, passionate, wide-open lane. Smaller base but unusually devoted.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card" id="niche-4">
+      <div class="card-header" style="background:var(--bg-green);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;">
+        <h2 style="display:flex;align-items:center;gap:0.75rem;"><span class="num-badge">4</span> The &#x27;Just One More Tool&#x27; Crowd</h2>
+        <span class="tag">REPLENISHMENT PICK</span>
+      </div>
+      <div class="card-content">
+        <div style="background:var(--bg-white);border-left:4px solid var(--accent-teal);padding:0.75rem 1rem;margin-bottom:1.25rem;">
+          Tool-obsessed makers and dads whose hobby is half woodworking, half collecting the means to woodwork. The &#x27;I needed a reason to buy the tool, so I started the project&#x27; crowd. Brand loyalty runs deep (the battery-platform tribes are real).
+        </div>
+
+        <h4>Why it keeps refilling (the replenishment engine)</h4>
+        <p style="margin-bottom:1.25rem;">It&#x27;s the purest replenishment engine on the board: there is *always* one more tool, so the in-joke literally never closes. &#x27;Too many tools&#x27; is a running gag with its own memes. The identity is acquisitive and self-aware, and it&#x27;s wildly gift-driven (spouses buying &#x27;the tool he won&#x27;t buy himself&#x27;). Repeat-purchase behavior is baked into the personality.</p>
+
+        <h4>Who's already in the lane</h4>
+        <ul style="margin-bottom:1.25rem;"><li>Tons of generic &#x27;you can never have too many tools&#x27; POD; brand-platform fan merch exists but no neutral identity brand.</li><li>Open for a posture-led &#x27;tool addict, and proud&#x27; voice that isn&#x27;t tied to one manufacturer.</li></ul>
+
+        <h4>Design wedges</h4>
+        <ul><li>&#x27;Just one more tool&#x27; as the entire brand spine (endless serialized gag).</li>
+<li>The justification-comedy — &#x27;I bought the tool first, found the project later.&#x27;</li>
+<li>Spouse-gift angle (&#x27;the tool he won&#x27;t buy himself&#x27;).</li>
+<li>Battery-platform tribal humor (without naming a brand, to stay clean).</li></ul>
+
+        <h4 style="margin-top:1.25rem;">Starter phrases (shirt-ready)</h4>
+        <div style="margin-top:0.5rem;"><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">Just one more tool</span><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">I don&#x27;t have a tool problem. I have a tool solution.</span><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">Bought the tool. Found the project later.</span><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">You can never have too many tools (she disagrees)</span><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">My retirement plan is tools</span><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">It was on sale, your honor</span><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">Tool rich, time poor</span><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">I needed it. Define &#x27;needed.&#x27;</span><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">One more clamp won&#x27;t hurt</span><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">Powered by impulse purchases</span></div>
+
+        <h4 style="margin-top:1.25rem;">First 5 shirts to test</h4>
+        <div style="margin-bottom:1rem;"><div style="display:flex;gap:0.9rem;align-items:flex-start;padding:0.9rem 0;border-bottom:1px dashed #ccc;"><span class="num-badge">1</span><div><div style="font-weight:700;margin-bottom:0.2rem;">&ldquo;Just one more tool&rdquo;</div><div style="color:var(--text-muted);font-size:0.9rem;">A hand reaching for &#x27;one more&#x27; on an already-overflowing pegboard</div></div></div><div style="display:flex;gap:0.9rem;align-items:flex-start;padding:0.9rem 0;border-bottom:1px dashed #ccc;"><span class="num-badge">2</span><div><div style="font-weight:700;margin-bottom:0.2rem;">&ldquo;I don&#x27;t have a tool problem. I have a tool solution.&rdquo;</div><div style="color:var(--text-muted);font-size:0.9rem;">Deadpan stencil type over a faint pegboard pattern</div></div></div><div style="display:flex;gap:0.9rem;align-items:flex-start;padding:0.9rem 0;border-bottom:1px dashed #ccc;"><span class="num-badge">3</span><div><div style="font-weight:700;margin-bottom:0.2rem;">&ldquo;Bought the tool. Found the project later.&rdquo;</div><div style="color:var(--text-muted);font-size:0.9rem;">A pristine unused tool with a price tag still on</div></div></div><div style="display:flex;gap:0.9rem;align-items:flex-start;padding:0.9rem 0;border-bottom:1px dashed #ccc;"><span class="num-badge">4</span><div><div style="font-weight:700;margin-bottom:0.2rem;">&ldquo;You can never have too many tools (she disagrees)&rdquo;</div><div style="color:var(--text-muted);font-size:0.9rem;">Tiny parenthetical in a different, scolding font</div></div></div><div style="display:flex;gap:0.9rem;align-items:flex-start;padding:0.9rem 0;border-bottom:1px dashed #ccc;"><span class="num-badge">5</span><div><div style="font-weight:700;margin-bottom:0.2rem;">&ldquo;One more clamp won&#x27;t hurt&rdquo;</div><div style="color:var(--text-muted);font-size:0.9rem;">An absurd wall of clamps, one hand adding the next</div></div></div></div>
+
+        <h4 style="margin-top:1.25rem;">Visual codes</h4>
+        <div style="margin:0.5rem 0;"><strong style="font-size:0.85rem;">Palette:</strong><br><span style="display:inline-block;margin:0 0.6rem 0.4rem 0;font-size:0.85rem;white-space:nowrap;"><span style="display:inline-block;width:1rem;height:1rem;background:#C9A66B;border:1px solid #000;margin-right:0.4rem;vertical-align:middle;"></span>Pegboard tan #C9A66B</span><span style="display:inline-block;margin:0 0.6rem 0.4rem 0;font-size:0.85rem;white-space:nowrap;"><span style="display:inline-block;width:1rem;height:1rem;background:#1C1C1C;border:1px solid #000;margin-right:0.4rem;vertical-align:middle;"></span>Industrial black #1C1C1C</span><span style="display:inline-block;margin:0 0.6rem 0.4rem 0;font-size:0.85rem;white-space:nowrap;"><span style="display:inline-block;width:1rem;height:1rem;background:#E8B400;border:1px solid #000;margin-right:0.4rem;vertical-align:middle;"></span>Safety-yellow accent #E8B400</span><span style="display:inline-block;margin:0 0.6rem 0.4rem 0;font-size:0.85rem;white-space:nowrap;"><span style="display:inline-block;width:1rem;height:1rem;background:#7E8689;border:1px solid #000;margin-right:0.4rem;vertical-align:middle;"></span>Steel grey #7E8689</span></div>
+        <p style="font-size:0.9rem;margin:0.5rem 0;"><strong style="font-size:0.85rem;">Type:</strong> Bold stencil + price-tag/receipt secondary. Industrial, a little tongue-in-cheek.</p>
+        <p style="font-size:0.9rem;margin:0.5rem 0;"><strong style="font-size:0.85rem;">Icons:</strong> Pegboards, clamps, price tags, &#x27;on sale&#x27; bursts, overflowing toolboxes, battery packs (generic).</p>
+
+        <div style="background:var(--bg-green);border:var(--border);box-shadow:var(--shadow-sm);padding:0.9rem 1.1rem;margin-top:1.25rem;">
+          <h4 style="color:var(--text-black);">Why this made the cut</h4>
+          <p style="margin-top:0.3rem;">Replenishment by mechanism — the entire joke is endless acquisition, which maps perfectly to repeat shirt purchases. Strong gear + identity, gift-heavy, open-ish lane.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card" id="niche-5">
+      <div class="card-header" style="background:var(--bg-purple);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;">
+        <h2 style="display:flex;align-items:center;gap:0.75rem;"><span class="num-badge">5</span> The Dad-Who-Escapes-to-the-Garage</h2>
+        <span class="tag">DARK HORSE</span>
+      </div>
+      <div class="card-content">
+        <div style="background:var(--bg-white);border-left:4px solid var(--accent-teal);padding:0.75rem 1rem;margin-bottom:1.25rem;">
+          The tired dad whose sanctuary is the garage — the man cave, the workshop, the place he disappears to the moment the baby goes down. Half about making things, half about the 20 minutes of quiet. This is the literal intersection of &#x27;sleep-deprived new dad&#x27; and &#x27;nap-time woodworker.&#x27;
+        </div>
+
+        <h4>Why it keeps refilling (the replenishment engine)</h4>
+        <p style="margin-bottom:1.25rem;">The identity is emotional, not just functional — &#x27;the garage is the one place that&#x27;s mine.&#x27; That&#x27;s a feeling people re-buy. As the kids grow, the garage story evolves (escape → teaching the kid → the kid taking over the bench). It&#x27;s also a strong gift lane: families know exactly who &#x27;garage dad&#x27; is. The catch — and the opportunity — is that the self-mocking voice barely exists online, so whoever plants the flag *defines* it.</p>
+
+        <h4>Who's already in the lane</h4>
+        <ul style="margin-bottom:1.25rem;"><li>Generic &#x27;dad&#x27;s garage / man cave&#x27; signs and merch exist, but no posture-led identity brand.</li><li>Because the wedge isn&#x27;t pre-written, there&#x27;s almost no direct competition for a real voice here.</li></ul>
+
+        <h4>Design wedges</h4>
+        <ul><li>The garage-as-sanctuary emotional angle (re-buyable feeling, not a one-off joke).</li>
+<li>The fusion: exhausted dad + maker — nobody is serving this exact overlap.</li>
+<li>The evolving story (escape now → teaching the kid later).</li>
+<li>Quiet-pride tone over loud-tool bravado — differentiates from generic man-cave merch.</li></ul>
+
+        <h4 style="margin-top:1.25rem;">Starter phrases (shirt-ready)</h4>
+        <div style="margin-top:0.5rem;"><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">The garage is the one place that&#x27;s mine</span><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">Be right back. Going to the garage to &#x27;find a screwdriver.&#x27;</span><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">Dad&#x27;s hiding spot has power tools</span><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">I don&#x27;t have a workshop, I have a witness protection program</span><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">Naptime is shop time</span><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">Where dad goes to remember who he is</span><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">Out here making sawdust and avoiding bedtime</span><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">My happy place has a table saw</span><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">20 minutes of peace and a half-finished shelf</span><span style="display:inline-block;background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-sm);padding:0.4rem 0.8rem;margin:0 0.5rem 0.6rem 0;font-size:0.9rem;">The bench is calling and I must go</span></div>
+
+        <h4 style="margin-top:1.25rem;">First 5 shirts to test</h4>
+        <div style="margin-bottom:1rem;"><div style="display:flex;gap:0.9rem;align-items:flex-start;padding:0.9rem 0;border-bottom:1px dashed #ccc;"><span class="num-badge">1</span><div><div style="font-weight:700;margin-bottom:0.2rem;">&ldquo;Naptime is shop time&rdquo;</div><div style="color:var(--text-muted);font-size:0.9rem;">A baby monitor sitting on a workbench next to tools</div></div></div><div style="display:flex;gap:0.9rem;align-items:flex-start;padding:0.9rem 0;border-bottom:1px dashed #ccc;"><span class="num-badge">2</span><div><div style="font-weight:700;margin-bottom:0.2rem;">&ldquo;The garage is the one place that&#x27;s mine&rdquo;</div><div style="color:var(--text-muted);font-size:0.9rem;">Warm light spilling from a garage door at dusk, simple line-art</div></div></div><div style="display:flex;gap:0.9rem;align-items:flex-start;padding:0.9rem 0;border-bottom:1px dashed #ccc;"><span class="num-badge">3</span><div><div style="font-weight:700;margin-bottom:0.2rem;">&ldquo;Dad&#x27;s hiding spot has power tools&rdquo;</div><div style="color:var(--text-muted);font-size:0.9rem;">A cracked garage door with light beaming out, deadpan</div></div></div><div style="display:flex;gap:0.9rem;align-items:flex-start;padding:0.9rem 0;border-bottom:1px dashed #ccc;"><span class="num-badge">4</span><div><div style="font-weight:700;margin-bottom:0.2rem;">&ldquo;My happy place has a table saw&rdquo;</div><div style="color:var(--text-muted);font-size:0.9rem;">Minimal table-saw silhouette, calm palette</div></div></div><div style="display:flex;gap:0.9rem;align-items:flex-start;padding:0.9rem 0;border-bottom:1px dashed #ccc;"><span class="num-badge">5</span><div><div style="font-weight:700;margin-bottom:0.2rem;">&ldquo;20 minutes of peace and a half-finished shelf&rdquo;</div><div style="color:var(--text-muted);font-size:0.9rem;">A lopsided half-built shelf, affectionate</div></div></div></div>
+
+        <h4 style="margin-top:1.25rem;">Visual codes</h4>
+        <div style="margin:0.5rem 0;"><strong style="font-size:0.85rem;">Palette:</strong><br><span style="display:inline-block;margin:0 0.6rem 0.4rem 0;font-size:0.85rem;white-space:nowrap;"><span style="display:inline-block;width:1rem;height:1rem;background:#E0A458;border:1px solid #000;margin-right:0.4rem;vertical-align:middle;"></span>Warm garage-light amber #E0A458</span><span style="display:inline-block;margin:0 0.6rem 0.4rem 0;font-size:0.85rem;white-space:nowrap;"><span style="display:inline-block;width:1rem;height:1rem;background:#2C3A4A;border:1px solid #000;margin-right:0.4rem;vertical-align:middle;"></span>Dusk navy #2C3A4A</span><span style="display:inline-block;margin:0 0.6rem 0.4rem 0;font-size:0.85rem;white-space:nowrap;"><span style="display:inline-block;width:1rem;height:1rem;background:#D8C4A0;border:1px solid #000;margin-right:0.4rem;vertical-align:middle;"></span>Sawdust tan #D8C4A0</span><span style="display:inline-block;margin:0 0.6rem 0.4rem 0;font-size:0.85rem;white-space:nowrap;"><span style="display:inline-block;width:1rem;height:1rem;background:#1B1B1B;border:1px solid #000;margin-right:0.4rem;vertical-align:middle;"></span>Off-black #1B1B1B</span></div>
+        <p style="font-size:0.9rem;margin:0.5rem 0;"><strong style="font-size:0.85rem;">Type:</strong> Warm worn slab serif + a quiet hand secondary. Cozy-workshop, not aggressive-industrial.</p>
+        <p style="font-size:0.9rem;margin:0.5rem 0;"><strong style="font-size:0.85rem;">Icons:</strong> Garage doors with light, baby monitors on benches, workbenches, single warm bulb, half-finished projects.</p>
+
+        <div style="background:var(--bg-purple);border:var(--border);box-shadow:var(--shadow-sm);padding:0.9rem 1.1rem;margin-top:1.25rem;">
+          <h4 style="color:var(--text-black);">Why this made the cut</h4>
+          <p style="margin-top:0.3rem;">Lower on the rubric because these guys don&#x27;t roast themselves loudly online — so the wedge has to be CREATED, not harvested. But it&#x27;s the only crowd that fuses both halves of the seed, and that fusion is the differentiation.</p>
+        </div>
+      </div>
+    </div>
+
+  <div class="card">
+    <div class="card-content" style="color:var(--text-muted);font-size:0.85rem;">
+      <p>Pick the one you&rsquo;re drawn to, then the next step is to narrow it to a single pocket inside the crowd &mdash; the exact sub-group big enough to be worth it and easy to sell to &mdash; so your designs land dead-on instead of spread thin.</p>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

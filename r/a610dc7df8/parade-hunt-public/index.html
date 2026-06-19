@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Parade Hunt — Setup Guide</title>
+<style>
+:root {
+    --bg-page: #FAFAF9;
+    --bg-card: #FFFFFF;
+    --bg-code: #F4F1EB;
+    --bg-warning: #FFF4E5;
+    --accent-teal: #53DBC9;
+    --accent-teal-light: #C9F5EE;
+    --accent-purple: #9D4EDD;
+    --text-black: #0A0A0A;
+    --text-dark: #1a1a1a;
+    --text-gray: #4a4a4a;
+    --text-muted: #6b6b6b;
+    --border-light: 1px solid #E5E2DD;
+    --border-medium: 2px solid #0A0A0A;
+    --shadow-sm: -0.19rem 0.19rem 0 0 #0A0A0A;
+    --mono: 'SF Mono', 'Fira Code', 'JetBrains Mono', Consolas, Menlo, monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 1rem; }
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 1.0625rem; line-height: 1.7; color: var(--text-dark);
+    background: var(--bg-page); padding: 2rem 1.5rem 6rem; max-width: 760px; margin: 0 auto;
+}
+.hero { margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: var(--border-medium); }
+.hero .eyebrow {
+    display: inline-block; font-family: var(--mono); font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase; background: var(--accent-teal);
+    padding: 0.25rem 0.6rem; border: var(--border-medium); box-shadow: var(--shadow-sm);
+    margin-bottom: 1.25rem; color: #0A0A0A;
+}
+.hero h1 {
+    font-family: var(--mono); font-size: 2.25rem; line-height: 1.15; font-weight: 700;
+    letter-spacing: -0.02em; margin-bottom: 1rem; color: var(--text-black);
+}
+.hero .lead { font-size: 1.1875rem; line-height: 1.6; color: var(--text-gray); margin-bottom: 1.5rem; }
+.hero ul.outcomes { list-style: none; margin: 1.25rem 0 0; }
+.hero ul.outcomes li { padding: 0.4rem 0 0.4rem 1.5rem; position: relative; color: var(--text-gray); }
+.hero ul.outcomes li::before { content: '→'; position: absolute; left: 0; color: var(--accent-teal); font-weight: 700; font-family: var(--mono); }
+.hero .video-credit { font-style: italic; color: var(--text-muted); font-size: 0.9375rem; margin-top: 1.5rem; }
+.download-cta {
+    background: var(--accent-teal-light); border: var(--border-medium); box-shadow: var(--shadow-sm);
+    padding: 1.75rem; margin: 1.5rem 0 3rem; display: flex; flex-wrap: wrap;
+    align-items: center; justify-content: space-between; gap: 1rem;
+}
+.download-cta .label { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.25rem; }
+.download-cta .title { font-family: var(--mono); font-size: 1.125rem; font-weight: 700; color: var(--text-black); }
+.download-cta .meta { font-size: 0.875rem; color: var(--text-gray); margin-top: 0.25rem; }
+.download-cta a.btn {
+    display: inline-block; background: var(--text-black); color: white; padding: 0.875rem 1.5rem;
+    text-decoration: none; font-family: var(--mono); font-weight: 700; font-size: 0.9375rem;
+    letter-spacing: 0.05em; border: var(--border-medium); box-shadow: var(--shadow-sm); transition: transform 0.1s ease;
+}
+.download-cta a.btn:hover { transform: translate(-2px, 2px); box-shadow: -0.08rem 0.08rem 0 0 #0A0A0A; }
+section { margin: 3rem 0 2rem; }
+section h2.section-title {
+    font-family: var(--mono); font-size: 1.5rem; line-height: 1.2; letter-spacing: -0.01em;
+    color: var(--text-black); padding-bottom: 0.75rem; border-bottom: var(--border-medium); margin-bottom: 1.5rem;
+}
+section h2.section-title .num { color: var(--accent-teal); font-weight: 700; margin-right: 0.5rem; }
+p { margin: 0.85rem 0; }
+ul, ol { margin: 0.85rem 0; padding-left: 1.5rem; }
+li { margin: 0.4rem 0; }
+ol.steps { padding-left: 0; counter-reset: step; list-style: none; }
+ol.steps > li { counter-increment: step; padding-left: 2.75rem; position: relative; margin: 1.5rem 0; min-height: 2rem; }
+ol.steps > li::before {
+    content: counter(step); position: absolute; left: 0; top: 0; width: 1.85rem; height: 1.85rem;
+    line-height: 1.7rem; text-align: center; background: var(--accent-teal); border: var(--border-medium);
+    font-family: var(--mono); font-weight: 700; font-size: 0.875rem; color: var(--text-black);
+}
+code { font-family: var(--mono); font-size: 0.875em; background: var(--bg-code); padding: 0.1rem 0.35rem; border-radius: 2px; color: #B23A48; }
+.command {
+    display: block; font-family: var(--mono); font-size: 0.9375rem; background: #0A0A0A; color: var(--accent-teal);
+    border: var(--border-medium); padding: 0.85rem 1.1rem; margin: 0.75rem 0; overflow-x: auto; line-height: 1.5;
+}
+.command::before { content: '❯ '; color: #757575; }
+.callout { border: var(--border-light); padding: 1rem 1.25rem; margin: 1.25rem 0; border-left: 3px solid; }
+.callout.warn { background: var(--bg-warning); border-left-color: #E89B3D; }
+.callout .label { font-family: var(--mono); font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.4rem; display: block; }
+.callout.warn .label { color: #E89B3D; }
+.callout p { margin: 0.4rem 0; }
+.skill-list { background: var(--bg-card); border: var(--border-light); border-left: 3px solid var(--accent-teal); padding: 1rem 1.5rem; margin: 1.25rem 0; }
+.skill-list h4 { font-family: var(--mono); font-size: 0.875rem; margin-bottom: 0.4rem; color: var(--text-black); }
+.skill-list em { font-style: normal; color: var(--text-muted); font-size: 0.875rem; font-family: var(--mono); display: block; margin-bottom: 0.75rem; }
+.sample-preview { margin: 0 0 2rem; padding: 1.75rem 0; border-top: var(--border-medium); border-bottom: var(--border-medium); }
+.sample-preview .label { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.5rem; font-weight: 600; }
+.sample-preview h2 { font-family: var(--mono); font-size: 1.375rem; color: var(--text-black); margin-bottom: 0.5rem; line-height: 1.25; }
+.sample-preview .subhead { color: var(--text-gray); margin-bottom: 1.25rem; font-size: 0.9375rem; }
+.sample-frame-wrap { position: relative; border: var(--border-medium); box-shadow: var(--shadow-sm); background: var(--bg-card); overflow: hidden; margin-bottom: 1rem; }
+.sample-frame-wrap iframe { width: 100%; height: 600px; border: 0; display: block; background: white; }
+.sample-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+.sample-actions a.btn-secondary {
+    display: inline-block; background: var(--text-black); color: white; padding: 0.6rem 1.1rem; text-decoration: none;
+    font-family: var(--mono); font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.05em; border: var(--border-medium); box-shadow: var(--shadow-sm);
+}
+.sample-actions a.btn-secondary:hover { transform: translate(-2px, 2px); box-shadow: -0.08rem 0.08rem 0 0 #0A0A0A; }
+.sample-actions .note { font-size: 0.8125rem; color: var(--text-muted); font-family: var(--mono); }
+footer { margin-top: 4rem; padding-top: 2rem; border-top: var(--border-medium); color: var(--text-muted); font-size: 0.875rem; }
+@media (max-width: 600px) {
+    body { padding: 1.5rem 1rem 4rem; font-size: 1rem; }
+    .hero h1 { font-size: 1.75rem; }
+    .hero .lead { font-size: 1.0625rem; }
+    .download-cta { padding: 1.25rem; }
+    .download-cta a.btn { width: 100%; text-align: center; }
+    .command { font-size: 0.8125rem; padding: 0.7rem 0.9rem; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+    <span class="eyebrow">Setup Guide</span>
+    <h1>Parade Hunt</h1>
+    <p class="lead">Find the print-on-demand crowds worth chasing. It seeds and scores around thirty candidate crowds against each other, ranks them by size and how easily they buy, then deep-audits the winner into the language, design angles, and shirts to print.</p>
+    <ul class="outcomes">
+        <li>A market scan: ~30 candidate crowds seeded from what you tell it, each scored on size and ease-of-conversion, ranked so no two members chase the same one</li>
+        <li>A deep audit of any one: the crowd&rsquo;s in-group language, the design angles that fit, ~10&ndash;12 ready-to-print phrases, and the first 5 shirts to test</li>
+        <li>Delivered as a clean HTML report you can build designs straight from</li>
+    </ul>
+    <p class="video-credit">This is the full version of Parade Hunt from the YouTube video on finding print-on-demand crowds that sell.</p>
+</header>
+
+<div class="download-cta">
+    <div>
+        <div class="label">Step One</div>
+        <div class="title">Download the skill</div>
+        <div class="meta">parade-hunt-public.zip · the full seed + scan + audit skill</div>
+    </div>
+    <a href="parade-hunt-public.zip" class="btn" download>↓ Download .zip</a>
+</div>
+
+<div class="sample-preview">
+    <div class="label">Sample Output</div>
+    <h2>This is what a run looks like</h2>
+    <p class="subhead">A real run seeded from &ldquo;new dad, sleep-deprived, into garage woodworking.&rdquo; The scan surfaced and ranked the crowds; this is the deep audit &mdash; the in-group language, design angles, starter phrases, and first 5 shirts. This is the depth you get on whichever parade you pick.</p>
+    <div class="sample-frame-wrap">
+        <iframe src="sample-parade-hunt.html" loading="lazy" title="Sample Parade Hunt run"></iframe>
+    </div>
+    <div class="sample-actions">
+        <a href="sample-parade-hunt.html" target="_blank" rel="noopener" class="btn-secondary">↗ Open sample in new tab</a>
+        <span class="note">scrolls inside — click "open in new tab" for the full view</span>
+    </div>
+</div>
+
+<section>
+    <h2 class="section-title"><span class="num">01</span>Get started in three steps</h2>
+    <p>You need <strong>Claude Code already installed</strong> (you're a paid Claude subscriber). That's the only assumption.</p>
+    <ol class="steps">
+        <li>
+            <strong>Download the zip</strong> using the button above. Move it to your Desktop and double-click to unzip. You'll get a folder called <code>parade-hunt</code>.
+        </li>
+        <li>
+            <strong>Copy it into your skills folder.</strong> Move the <code>parade-hunt</code> folder into <code>.claude/skills/</code> in your project (or your home folder's <code>.claude/skills/</code> to make it available everywhere). If you're not sure, open Claude Code and ask it: <em>"install the parade-hunt skill from this folder."</em>
+            <code class="command">cp -r ~/Desktop/parade-hunt ~/.claude/skills/</code>
+        </li>
+        <li>
+            <strong>Run it.</strong> Open Claude Code and start the skill. It asks what you&rsquo;re into, seeds ~30 crowds from your answer, scores and ranks them, then deep-audits the parade you pick.
+            <code class="command">/parade-hunt</code>
+            <code class="command">find me parades</code>
+        </li>
+    </ol>
+
+    <div class="callout warn">
+        <span class="label">⚠ Heads up — give it room to research</span>
+        <p>The scan does real web research across each candidate crowd (their communities, videos, marketplaces) before it scores them. That&rsquo;s what makes the output specific instead of generic. A full scan plus audit takes a few minutes. Let it run.</p>
+    </div>
+</section>
+
+<section>
+    <h2 class="section-title"><span class="num">02</span>What's in the skill</h2>
+    <p>One skill, run as a guided flow:</p>
+
+    <div class="skill-list">
+        <h4>Step 1 — Seed + Scan</h4>
+        <em>Seeded, scored crowds</em>
+        <p>Asks what you&rsquo;re into, then seeds ~30 candidate crowds branched off your answer (so two people never get the same list), researches each, and scores them on size and ease-of-conversion. Ranked by opportunity, so you know which parade is worth building for. Then it asks which one to go deep on.</p>
+    </div>
+
+    <div class="skill-list">
+        <h4>Step 2 — Audit (the crowd)</h4>
+        <em>Their language + the angles</em>
+        <p>For the parade you pick: an honest read on whether it&rsquo;s a real refilling crowd, then the in-group language they actually use &mdash; the jokes, shared pains, and shorthand that belong on a shirt &mdash; and the design angle families that fit them.</p>
+    </div>
+
+    <div class="skill-list">
+        <h4>Step 3 — Audit (the designs)</h4>
+        <em>Phrases, shirts, and the look</em>
+        <p>A starter phrase library (~10&ndash;12, shirt-ready, in the crowd&rsquo;s own words), the first 5 shirts to test, and the visual codes (palette, type, iconography) that signal &ldquo;this is for us.&rdquo; Everything written up as a clean HTML report.</p>
+    </div>
+</section>
+
+<section>
+    <h2 class="section-title"><span class="num">03</span>If something goes wrong</h2>
+    <p>Just describe what you saw to Claude Code. It can read its own skill file, see where it stopped, and pick up from there.</p>
+    <ul>
+        <li><strong>Output feels generic</strong> — it usually means the research step got skipped or thin. Tell it to "redo the scan with real web research first" and name where the crowd hangs out (their communities, the marketplaces they buy on, their videos).</li>
+        <li><strong>It gave you crowds but no audit</strong> — tell it "now deep-audit the one I picked." The full audit (language, angles, phrases, shirts) is the whole point.</li>
+        <li><strong>The skill isn't found</strong> — confirm the <code>parade-hunt</code> folder is inside <code>.claude/skills/</code> and restart Claude Code.</li>
+    </ul>
+</section>
+
+<footer>
+    The Prompted · Parade Hunt (full version). The free single-crowd version lives at the public skill repo.
+</footer>
+
+</body>
+</html>
