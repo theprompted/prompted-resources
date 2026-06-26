@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Overlap — Nurse Ad Examples</title>
+<style>
+  :root{
+    --bg-page:#F8F8F7; --bg-white:#ffffff; --bg-blue:#EBF9FF; --bg-purple:#F7F1FF;
+    --bg-yellow:#FFFDE7; --bg-green:#E8F5E9;
+    --accent-teal:#53DBC9; --accent-yellow:#FFDE00; --accent-purple:#9D4EDD; --accent-red:#E53935;
+    --text-black:#000000; --text-dark:#1a1a1a; --text-gray:#4a4a4a; --text-muted:#6b6b6b;
+    --shadow-lg:-0.31rem 0.31rem 0 0 #383838; --shadow-sm:-0.19rem 0.19rem 0 0 #383838;
+    --border:2px solid black;
+    --mono:ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg-page);color:var(--text-dark);
+    font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.55;}
+  h1,h2,h3,h4{font-family:var(--mono);font-weight:700;color:var(--text-black);margin:0;}
+  .wrap{max-width:1080px;margin:0 auto;padding:2.5rem 1.5rem 5rem;}
+
+  .page-head{margin-bottom:.5rem}
+  .page-head h1{font-size:2rem;letter-spacing:-.5px}
+  .tag{display:inline-block;font-family:var(--mono);font-size:.72rem;font-weight:700;
+    background:var(--accent-teal);border:var(--border);box-shadow:var(--shadow-sm);
+    padding:.25rem .6rem;margin-bottom:1rem;text-transform:uppercase;letter-spacing:.5px;}
+  .lede{color:var(--text-gray);font-size:1.05rem;max-width:760px;margin:0 0 2rem;}
+  .lede b{color:var(--text-black)}
+
+  .model-strip{display:flex;gap:.6rem;flex-wrap:wrap;margin:0 0 2.5rem}
+  .circle{flex:1;min-width:200px;background:var(--bg-white);border:var(--border);
+    box-shadow:var(--shadow-sm);padding:.85rem 1rem;}
+  .circle .n{font-family:var(--mono);font-size:.7rem;color:var(--text-muted);font-weight:700}
+  .circle .t{font-family:var(--mono);font-weight:700;font-size:1rem;margin:.15rem 0}
+  .circle.c1{background:var(--bg-blue)} .circle.c2{background:var(--bg-purple)} .circle.c3{background:var(--bg-green)}
+  .circle .d{font-size:.85rem;color:var(--text-gray)}
+
+  .card{background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-lg);
+    margin-bottom:2.5rem;overflow:hidden;}
+  .card-grid{display:grid;grid-template-columns:340px 1fr;}
+  .card-img{border-right:var(--border);background:var(--bg-page);display:flex;align-items:center;justify-content:center;padding:1.25rem;}
+  .card-img img{width:100%;height:auto;border:var(--border);box-shadow:var(--shadow-sm);display:block;}
+  .card-body{padding:1.5rem 1.75rem;}
+  .reason{display:inline-block;font-family:var(--mono);font-size:.72rem;font-weight:700;
+    border:var(--border);box-shadow:var(--shadow-sm);padding:.25rem .6rem;margin-bottom:.75rem;text-transform:uppercase;}
+  .r1{background:var(--accent-teal)} .r2{background:var(--accent-yellow)} .r3{background:var(--bg-purple)}
+  .card-body h2{font-size:1.4rem;margin-bottom:.5rem}
+  .what{color:var(--text-gray);font-size:1rem;margin:0 0 1.1rem}
+  .what b{color:var(--text-black)}
+  .label{font-family:var(--mono);font-size:.7rem;font-weight:700;color:var(--text-muted);
+    text-transform:uppercase;letter-spacing:.5px;margin:1rem 0 .4rem}
+  .prompt{font-family:var(--mono);font-size:.8rem;line-height:1.5;color:var(--text-dark);
+    background:var(--bg-page);border:var(--border);padding:.9rem 1rem;white-space:pre-wrap;}
+  .footer{font-family:var(--mono);font-size:.8rem;color:var(--text-muted);
+    border-top:var(--border);padding-top:1rem;margin-top:1rem;}
+
+  @media (max-width:760px){
+    .card-grid{grid-template-columns:1fr}
+    .card-img{border-right:none;border-bottom:var(--border)}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="page-head">
+    <span class="tag">The Overlap</span>
+    <h1>One design. Three ads.</h1>
+  </div>
+  <p class="lede">
+    The same nurse design, turned into three completely different ads. They're different not because the generator got creative,
+    but because each one sits in <b>the overlap</b> of three things: who she is, what she wants, and a design that's easy for AI to render cleanly.
+    Each ad below speaks to a different <b>reason people buy a shirt</b>. Same design held exact via a reference image. One prompt each.
+  </p>
+
+  <div class="model-strip">
+    <div class="circle c1"><div class="n">CIRCLE 1</div><div class="t">Who they are</div><div class="d">A 12-hour-shift nurse, dark humor, quiet pride.</div></div>
+    <div class="circle c2"><div class="n">CIRCLE 2</div><div class="t">What they want</div><div class="d">Be seen · Feel something · Gift it.</div></div>
+    <div class="circle c3"><div class="n">CIRCLE 3</div><div class="t">Easy for AI</div><div class="d">A clear, legible design it renders without a fight.</div></div>
+  </div>
+
+  <!-- AD 1 -->
+  <div class="card">
+    <div class="card-grid">
+      <div class="card-img">
+        <img src="01-be-seen.png" alt="Nurse leaving the hospital at sunrise">
+      </div>
+      <div class="card-body">
+        <span class="reason r1">Want 1 · Be seen wearing it</span>
+        <h2>Leaving the hospital at sunrise.</h2>
+        <p class="what"><b>The "what":</b> She wants to be seen wearing it in a circumstance that says who she is.
+        Walking out after a night shift, coffee in hand, the shirt makes the claim public, <i>this is me, and I survived another one.</i>
+        The setting (the hospital doors, the staff entrance) does the identity work.</p>
+        <div class="label">The prompt</div>
+        <div class="prompt">A nurse in her late 30s walking out of the hospital doors at sunrise after a night shift, a coffee cup in one hand held low at her hip, wearing the cream tee under an open jacket, golden morning light, a quiet confident half-smile, arms relaxed so the chest is clear. The shirt MUST use the EXACT design from the attached reference image, same retro groovy "THIS NURSE IS STRONGER THAN HER THIRD COFFEE" artwork, same warm mustard/orange/brown colors, same daisy and coffee-cup elements, on a cream/natural t-shirt. The design must be LARGE, occupying at least 55-60% of the visible chest, fully legible, sharp focus, facing the camera, ONLY on the front. Real photographic ad. Even flattering light on the chest so the text reads clearly.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AD 2 -->
+  <div class="card">
+    <div class="card-grid">
+      <div class="card-img">
+        <img src="02-feel.png" alt="Nurse mid-laugh at the joke on her shirt">
+      </div>
+      <div class="card-body">
+        <span class="reason r2">Want 2 · Feel something</span>
+        <h2>Mid-laugh at her own shirt.</h2>
+        <p class="what"><b>The "what":</b> She just wants to feel a certain thing, here, the humor, the in-on-the-joke pride.
+        The ad sells the <i>feeling</i>, not the setting: tight framing, a real laugh, the mug to the side.
+        She sees herself in that moment and wants to feel it too.</p>
+        <div class="label">The prompt</div>
+        <div class="prompt">Tight confident portrait of a nurse mid-laugh at the joke on her own shirt, head tilted with genuine joy, holding a coffee mug to the side at hip level so the chest is fully clear, warm cozy kitchen light. The shirt MUST use the EXACT design from the attached reference image, same retro groovy "THIS NURSE IS STRONGER THAN HER THIRD COFFEE" artwork, same warm mustard/orange/brown colors, same daisy and coffee-cup elements, on a cream/natural t-shirt. The design must be LARGE, occupying at least 55-60% of the visible chest, fully legible, sharp focus, facing the camera, ONLY on the front. Real photographic ad. Even flattering light on the chest so the text reads clearly.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AD 3 -->
+  <div class="card">
+    <div class="card-grid">
+      <div class="card-img">
+        <img src="03-gift.png" alt="Nurse handing the shirt to a coworker">
+      </div>
+      <div class="card-body">
+        <span class="reason r3">Want 3 · Gift it</span>
+        <h2>Handing it to a coworker.</h2>
+        <p class="what"><b>The "what":</b> She wants to give it to someone who'd get it. In print on demand the buyer is often not the wearer,
+        it's the daughter, the partner, the work friend. So the ad shows the <i>giving moment</i>: the shirt held open and facing the camera so you can read exactly what you'd be gifting.
+        Sentimentality baked in beats any old t-shirt.</p>
+        <div class="label">The prompt</div>
+        <div class="prompt">A nurse handing a folded cream tee held open and facing the camera so the design reads clearly, to a beaming coworker in scrubs, warm break-room moment with coffee mugs on the counter behind them. The shirt MUST use the EXACT design from the attached reference image, same retro groovy "THIS NURSE IS STRONGER THAN HER THIRD COFFEE" artwork, same warm mustard/orange/brown colors, same daisy and coffee-cup elements, on a cream/natural t-shirt. The design must be LARGE, occupying at least 55-60% of the visible chest, fully legible, sharp focus, facing the camera, ONLY on the front. Real photographic ad. Even flattering light on the chest so the text reads clearly.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    Same design, three ads, one prompt each. Tell your agent to write 100 of these prompts and send them to a model, and it generates them all for you.
+  </div>
+
+</div>
+</body>
+</html>

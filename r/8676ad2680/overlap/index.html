@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>The Overlap — Setup Guide</title>
+<style>
+:root {
+    --bg-page: #FAFAF9;
+    --bg-card: #FFFFFF;
+    --bg-code: #F4F1EB;
+    --bg-callout: #FFFDE7;
+    --bg-warning: #FFF4E5;
+    --accent-teal: #53DBC9;
+    --accent-teal-light: #C9F5EE;
+    --accent-purple: #9D4EDD;
+    --text-black: #0A0A0A;
+    --text-dark: #1a1a1a;
+    --text-gray: #4a4a4a;
+    --text-muted: #6b6b6b;
+    --border-light: 1px solid #E5E2DD;
+    --border-medium: 2px solid #0A0A0A;
+    --shadow-sm: -0.19rem 0.19rem 0 0 #0A0A0A;
+    --mono: 'SF Mono', 'Fira Code', 'JetBrains Mono', Consolas, Menlo, monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 1rem; }
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: var(--text-dark);
+    background: var(--bg-page);
+    padding: 2rem 1.5rem 6rem;
+    max-width: 760px;
+    margin: 0 auto;
+}
+.hero {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: var(--border-medium);
+}
+.hero .eyebrow {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--accent-teal);
+    padding: 0.25rem 0.6rem;
+    border: var(--border-medium);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 1.25rem;
+    color: #0A0A0A;
+}
+.hero h1 {
+    font-family: var(--mono);
+    font-size: 2.25rem;
+    line-height: 1.15;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+    color: var(--text-black);
+}
+.hero .lead {
+    font-size: 1.1875rem;
+    line-height: 1.6;
+    color: var(--text-gray);
+    margin-bottom: 1.5rem;
+}
+.hero ul.outcomes {
+    list-style: none;
+    margin: 1.25rem 0 0;
+}
+.hero ul.outcomes li {
+    padding: 0.4rem 0 0.4rem 1.5rem;
+    position: relative;
+    color: var(--text-gray);
+}
+.hero ul.outcomes li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent-teal);
+    font-weight: 700;
+    font-family: var(--mono);
+}
+.hero .video-credit {
+    font-style: italic;
+    color: var(--text-muted);
+    font-size: 0.9375rem;
+    margin-top: 1.5rem;
+}
+.download-cta {
+    background: var(--accent-teal-light);
+    border: var(--border-medium);
+    box-shadow: var(--shadow-sm);
+    padding: 1.75rem;
+    margin: 1.5rem 0 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+.download-cta .label {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.25rem;
+}
+.download-cta .title {
+    font-family: var(--mono);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--text-black);
+}
+.download-cta .meta {
+    font-size: 0.875rem;
+    color: var(--text-gray);
+    margin-top: 0.25rem;
+}
+.download-cta a.btn {
+    display: inline-block;
+    background: var(--text-black);
+    color: white;
+    padding: 0.875rem 1.5rem;
+    text-decoration: none;
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 0.9375rem;
+    letter-spacing: 0.05em;
+    border: var(--border-medium);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.1s ease;
+}
+.download-cta a.btn:hover {
+    transform: translate(-2px, 2px);
+    box-shadow: -0.08rem 0.08rem 0 0 #0A0A0A;
+}
+section { margin: 3rem 0 2rem; }
+section h2.section-title {
+    font-family: var(--mono);
+    font-size: 1.5rem;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--text-black);
+    padding-bottom: 0.75rem;
+    border-bottom: var(--border-medium);
+    margin-bottom: 1.5rem;
+}
+section h2.section-title .num {
+    color: var(--accent-teal);
+    font-weight: 700;
+    margin-right: 0.5rem;
+}
+p { margin: 0.85rem 0; }
+ul, ol { margin: 0.85rem 0; padding-left: 1.5rem; }
+li { margin: 0.4rem 0; }
+ol.steps { padding-left: 0; counter-reset: step; list-style: none; }
+ol.steps > li {
+    counter-increment: step;
+    padding-left: 2.75rem;
+    position: relative;
+    margin: 1.5rem 0;
+    min-height: 2rem;
+}
+ol.steps > li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1.85rem;
+    height: 1.85rem;
+    line-height: 1.7rem;
+    text-align: center;
+    background: var(--accent-teal);
+    border: var(--border-medium);
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 0.875rem;
+    color: var(--text-black);
+}
+code {
+    font-family: var(--mono);
+    font-size: 0.875em;
+    background: var(--bg-code);
+    padding: 0.1rem 0.35rem;
+    border-radius: 2px;
+    color: #B23A48;
+}
+.command {
+    display: block;
+    font-family: var(--mono);
+    font-size: 0.9375rem;
+    background: #0A0A0A;
+    color: var(--accent-teal);
+    border: var(--border-medium);
+    padding: 0.85rem 1.1rem;
+    margin: 0.75rem 0;
+    overflow-x: auto;
+    line-height: 1.5;
+}
+.command::before {
+    content: '❯ ';
+    color: #757575;
+}
+.callout {
+    border: var(--border-light);
+    padding: 1rem 1.25rem;
+    margin: 1.25rem 0;
+    border-left: 3px solid;
+}
+.callout.tip { background: #F4F8FF; border-left-color: #4A90E2; }
+.callout.warn { background: var(--bg-warning); border-left-color: #E89B3D; }
+.callout .label {
+    font-family: var(--mono);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+    display: block;
+}
+.callout.tip .label { color: #4A90E2; }
+.callout.warn .label { color: #E89B3D; }
+.callout p { margin: 0.4rem 0; }
+.skill-list {
+    background: var(--bg-card);
+    border: var(--border-light);
+    border-left: 3px solid var(--accent-teal);
+    padding: 1rem 1.5rem;
+    margin: 1.25rem 0;
+}
+.skill-list h4 {
+    font-family: var(--mono);
+    font-size: 0.875rem;
+    margin-bottom: 0.4rem;
+    color: var(--text-black);
+}
+.skill-list em {
+    font-style: normal;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    font-family: var(--mono);
+    display: block;
+    margin-bottom: 0.75rem;
+}
+
+/* sample preview */
+.sample-preview {
+    margin: 0 0 2rem;
+    padding: 1.75rem 0;
+    border-top: var(--border-medium);
+    border-bottom: var(--border-medium);
+}
+.sample-preview .label {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+.sample-preview h2 {
+    font-family: var(--mono);
+    font-size: 1.375rem;
+    color: var(--text-black);
+    margin-bottom: 0.5rem;
+    line-height: 1.25;
+}
+.sample-preview .subhead {
+    color: var(--text-gray);
+    margin-bottom: 1.25rem;
+    font-size: 0.9375rem;
+}
+.sample-frame-wrap {
+    position: relative;
+    border: var(--border-medium);
+    box-shadow: var(--shadow-sm);
+    background: var(--bg-card);
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+.sample-frame-wrap iframe {
+    width: 100%;
+    height: 600px;
+    border: 0;
+    display: block;
+    background: white;
+}
+.sample-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+}
+.sample-actions a.btn-secondary {
+    display: inline-block;
+    background: var(--text-black);
+    color: white;
+    padding: 0.6rem 1.1rem;
+    text-decoration: none;
+    font-family: var(--mono);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    border: var(--border-medium);
+    box-shadow: var(--shadow-sm);
+}
+.sample-actions a.btn-secondary:hover {
+    transform: translate(-2px, 2px);
+    box-shadow: -0.08rem 0.08rem 0 0 #0A0A0A;
+}
+.sample-actions .note {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    font-family: var(--mono);
+}
+footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: var(--border-medium);
+    color: var(--text-muted);
+    font-size: 0.875rem;
+}
+@media (max-width: 600px) {
+    body { padding: 1.5rem 1rem 4rem; font-size: 1rem; }
+    .hero h1 { font-size: 1.75rem; }
+    .hero .lead { font-size: 1.0625rem; }
+    .download-cta { padding: 1.25rem; }
+    .download-cta a.btn { width: 100%; text-align: center; }
+    .command { font-size: 0.8125rem; padding: 0.7rem 0.9rem; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+    <span class="eyebrow">Setup Guide</span>
+    <h1>The Overlap</h1>
+    <p class="lead">Turn one finished design into a batch of <strong>finished ad images</strong> — built on the three reasons people buy, with the design held pixel-faithful across every scene.</p>
+    <ul class="outcomes">
+        <li>Point it at one design + your buyer, and it generates the ad images for you — no copy-pasting into a model</li>
+        <li>N images per buying reason: <em>be seen</em>, <em>feel something</em>, <em>gift it</em></li>
+        <li>Every scene keeps the design large, legible, and chest-forward — the things that make an ad convert</li>
+    </ul>
+    <p class="video-credit">This is the full version of the system from the YouTube video <em>"Make 100 Print-on-Demand Ads in 100 Seconds With AI."</em></p>
+</header>
+
+<div class="download-cta">
+    <div>
+        <div class="label">Step One</div>
+        <div class="title">Download the bundle</div>
+        <div class="meta">overlap.zip · the full skill, self-contained</div>
+    </div>
+    <a href="overlap.zip" class="btn" download>↓ Download .zip</a>
+</div>
+
+<div class="sample-preview">
+    <div class="label">Sample Output</div>
+    <h2>This is what it produces</h2>
+    <p class="subhead">One nurse design, run through the three reasons. Same artwork held exact across every scene — be seen (outside her shift), feel something (the joke landing), gift it (handed to a coworker). This is the kind of batch you get from a single design.</p>
+    <div class="sample-frame-wrap">
+        <iframe src="sample-overlap.html" loading="lazy" title="Sample Overlap ad scenes"></iframe>
+    </div>
+    <div class="sample-actions">
+        <a href="sample-overlap.html" target="_blank" rel="noopener" class="btn-secondary">↗ Open sample in new tab</a>
+        <span class="note">scrolls inside — click "open in new tab" for the full view</span>
+    </div>
+</div>
+
+<section>
+    <h2 class="section-title"><span class="num">01</span>Get started in four steps</h2>
+    <p>You need <strong>Claude Code already installed</strong> (you're a paid Claude subscriber) and a <strong>fal.ai API key</strong> (that's what generates the images). That's the only assumption — Claude Code installs the rest.</p>
+    <ol class="steps">
+        <li>
+            <strong>Download the zip</strong> using the button above. Move it to your Desktop and double-click to unzip. You'll get a folder called <code>overlap</code>.
+        </li>
+        <li>
+            <strong>Open Claude Code in that folder.</strong> In Terminal (Mac) or Command Prompt (Windows):
+            <code class="command">cd ~/Desktop/overlap &amp;&amp; claude</code>
+            <em style="font-size:0.875rem; color: var(--text-muted);">Windows: <code>cd %USERPROFILE%\Desktop\overlap &amp;&amp; claude</code></em>
+        </li>
+        <li>
+            <strong>Add your fal.ai key.</strong> Once you see the <code>❯</code> prompt, tell Claude Code:
+            <code class="command">set up the overlap skill — here's my fal.ai key: ...</code>
+            It will install the skill and the <code>fal-client</code> library, and save your key to a local <code>.env</code>. Grab a key at <code>fal.ai</code> if you don't have one.
+        </li>
+        <li>
+            <strong>Run it on a design.</strong> Point it at any finished design and tell it who buys:
+            <code class="command">/overlap — design: ~/Desktop/my-design.png — buyer: an ER nurse who lives on coffee</code>
+            It writes the prompts, shows them, and on your ok generates the images — grouped by reason, named for you, into an <code>images/</code> folder with a review grid.
+        </li>
+    </ol>
+
+    <div class="callout warn">
+        <span class="label">⚠ Heads up — image credits</span>
+        <p>Image generation runs on your fal.ai key, so each batch costs a few cents per image. Start with a small count per reason (3–5) to dial in your design, then scale the count up once the scenes look right.</p>
+    </div>
+</section>
+
+<section>
+    <h2 class="section-title"><span class="num">02</span>What's in the bundle</h2>
+    <p>One skill that does the whole chain — write the scene prompts, generate the images, build a review grid:</p>
+
+    <div class="skill-list">
+        <h4>overlap</h4>
+        <em>Flat design → finished ad scenes, held pixel-faithful</em>
+        <p>Takes one design + a buyer and writes N reference-image prompts per buying reason (be seen / feel something / gift it), each engineered to keep the design ≥55–60% of the chest, legible, and facing the camera. Then it batch-generates the images via NanoBanana 2 (<code>/edit</code> mode, the design locked as the reference) and builds a keep/regenerate review grid. Trigger phrases: "turn this design into ads", "run the overlap", "make ad scenes from this design".</p>
+    </div>
+
+    <p>The three reasons are the default; if your buyer's wants differ, give the skill yours and it builds the batch around those instead.</p>
+</section>
+
+<section>
+    <h2 class="section-title"><span class="num">03</span>If something goes wrong</h2>
+    <p>Just describe what you saw to Claude Code. It can read its own skill and the generation script, parse error messages, and walk you through fixes interactively.</p>
+    <p>The most common issues:</p>
+    <ul>
+        <li><strong>The text on the shirt comes out garbled</strong> — long on-shirt phrases (8+ words) garble in some models. Shorten the design's text or re-run; a clean reference image in = a clean design held across every scene out.</li>
+        <li><strong>The design is hidden by arms / turned away</strong> — tell the skill to bake a clearer posture into the prompt (arms relaxed at the sides, prop held to the hip). Arms across the chest ruins the ad.</li>
+        <li><strong>fal.ai returns 401</strong> — your <code>FAL_KEY</code> is missing or wrong. Tell Claude Code and it'll help you re-check your <code>.env</code>.</li>
+    </ul>
+</section>
+
+</body>
+</html>
