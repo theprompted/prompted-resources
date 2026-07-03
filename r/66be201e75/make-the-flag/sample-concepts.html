@@ -1,0 +1,322 @@
+<title>Make The Flag (demo combine) — The Just-Caught-The-Bug New Golfer</title>
+<style>
+:root{--bg-page:#F8F8F7;--bg-white:#fff;--bg-blue:#EBF9FF;--bg-purple:#F7F1FF;--bg-green:#E8F5E9;--bg-yellow:#FFFDE7;
+--accent-teal:#1FA697;--accent-purple:#9D4EDD;--accent-green:#2E9E4F;--accent-amber:#B8860B;--text-black:#000;--text-dark:#1a1a1a;--text-gray:#4a4a4a;--text-muted:#6b6b6b;
+--shadow-lg:-0.31rem 0.31rem 0 0 #383838;--shadow-sm:-0.19rem 0.19rem 0 0 #383838;--border:2px solid #000;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg-page);color:var(--text-dark);font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.6;}
+header{border-bottom:var(--border);background:var(--bg-white);padding:22px 26px;}
+header h1{margin:0;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:22px;color:#000;}
+header .sub{color:var(--text-muted);font-size:13px;margin-top:6px;}
+header .chain{margin-top:12px;font-family:ui-monospace,Menlo,monospace;font-size:11px;color:var(--text-gray);}
+header .chain b{color:var(--accent-teal);}
+main{max-width:940px;margin:0 auto;padding:28px 22px 90px;}
+.demo{background:var(--bg-yellow);border:1.5px solid var(--accent-amber);box-shadow:var(--shadow-sm);padding:13px 17px;margin:0 0 16px;font-size:13.5px;color:#5a4a00;}
+.demo b{font-family:ui-monospace,Menlo,monospace;text-transform:uppercase;font-size:11px;letter-spacing:.5px;color:var(--accent-amber);}
+.gate{background:var(--bg-purple);border:1.5px solid var(--accent-purple);box-shadow:var(--shadow-sm);padding:14px 18px;margin:0 0 30px;font-size:14px;}
+.gate b{color:var(--accent-purple);font-family:ui-monospace,Menlo,monospace;text-transform:uppercase;font-size:12px;letter-spacing:.5px;}
+section.flag{background:var(--bg-white);border:var(--border);box-shadow:var(--shadow-lg);padding:20px 22px;margin:0 0 26px;}
+.fhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;}
+.fnum{font-family:ui-monospace,Menlo,monospace;font-size:12px;font-weight:700;background:var(--accent-teal);color:#000;border:1.5px solid #000;padding:3px 9px;box-shadow:var(--shadow-sm);}
+.fname{font-size:20px;font-weight:700;color:#000;}
+.fwhy{color:var(--text-gray);font-size:14px;margin:12px 0 18px;}
+.concept{border-top:1.5px dashed #ddd;padding:16px 0 4px;}
+.chead{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;}
+.clabel{font-size:16px;font-weight:700;color:var(--text-dark);}
+.ctags{display:flex;gap:6px;align-items:center;flex-shrink:0;}
+.ctype{font-family:ui-monospace,Menlo,monospace;font-size:10px;font-weight:700;letter-spacing:.5px;border:1.5px solid #000;padding:2px 7px;}
+.ct-phrase{background:var(--bg-blue);} .ct-word-mark{background:var(--bg-purple);} .ct-design-motif{background:var(--bg-green);}
+.cmode{font-family:ui-monospace,Menlo,monospace;font-size:10px;color:var(--text-muted);text-transform:uppercase;}
+.cmeta{margin:6px 0 8px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.ctee{font-size:11px;font-weight:700;color:#0a6b5e;background:var(--bg-green);border:1px solid #b7e0c8;padding:2px 8px;}
+.ctool{font-family:ui-monospace,Menlo,monospace;font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.5px;}
+.cwhy{color:var(--text-gray);font-size:13.5px;margin:6px 0 10px;}
+.cprompt-lbl{font-family:ui-monospace,Menlo,monospace;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted);margin:0 0 4px;}
+.cprompt{white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;line-height:1.55;background:#f6fbf7;border:1.5px solid #d9ecdf;padding:11px 13px;margin:0;color:#243;}
+@media(max-width:640px){.clabel{font-size:15px}.cprompt{font-size:12px}}
+</style>
+<header>
+ <h1>MAKE THE FLAG</h1>
+ <div class="sub">The Just-Caught-The-Bug New Golfer &nbsp;·&nbsp; into golf under ~2 years, still bad, obsessed on purpose, doesn't care</div>
+ <div class="chain">/parade-hunt &rarr; pick the pocket &rarr; /identity-decoder &rarr; <b>/make-the-flag (you are here)</b></div>
+</header>
+<main>
+ <div class="demo"><b>&#9888; demo combine — not the normal flow.</b> &nbsp;Each prompt renders the design ALREADY ON a Bella+Canvas tee (pocket-resonant color) staged on a resonant golf flat-lay, so we skip the separate mockup step and generate fast. In the real flow the design and the flat-lay stay two separate steps (flat-lay is downstream). Photographic scene &rarr; NB2 text-to-image, not Ideogram-on-black.</div>
+ <div class="gate"><b>&#9432; gate — nothing generated yet.</b> &nbsp;5 flags, 5 concepts each, each a combined design-on-tee flat-lay prompt. Generation happens only on your say-so.</div>
+ 
+    <section class="flag">
+      <div class="fhead"><span class="fnum">FLAG 4</span><span class="fname">The thing they love loudly</span></div>
+      <div class="fwhy">The whole identity is loud, self-aware obsession — they literally call it an 'addiction' as a badge ('crippling addiction to golf', 'when your wife supports your addiction'). Loudest flag for this pocket.</div>
+      <div class="concepts">
+        <div class="concept">
+          <div class="chead">
+            <span class="clabel">"Golf Addict" — vintage athletic</span>
+            <span class="ctags"><span class="ctype ct-phrase">PHRASE</span><span class="cmode">funny</span></span>
+          </div>
+          <div class="cmeta"><span class="ctee">Bella+Canvas heather forest green</span> <span class="ctool">NB2 text-to-image</span></div>
+          <div class="cwhy">Their own word, flipped confession to badge, in a worn varsity look. Short (2 words), renders clean on a scene.</div>
+          <div class="cprompt-lbl">generation prompt — design ON tee, ON flat-lay (combined)</div>
+          <pre class="cprompt">A flat-lay product photo of a Bella+Canvas heather forest green t-shirt laid flat and neatly smoothed on a weathered dark wood table. Printed large and centered on the chest in cream ink: bold collegiate-athletic block letters "GOLF ADDICT", slightly arched, heavy 1970s university-athletic weight with subtle faded distress, two small crossed golf clubs beneath with a tiny heart where they cross. Styled around the shirt: a worn leather golf glove, three wooden tees, and a single golf ball resting in the corner. Soft natural window light from the left, gentle shadows, shallow depth of field. Overhead top-down flat-lay, premium product photography. The design is sharp, legible, and large on the chest.</pre>
+        </div>
+        <div class="concept">
+          <div class="chead">
+            <span class="clabel">GOLFMAXXING (definition)</span>
+            <span class="ctags"><span class="ctype ct-phrase">PHRASE</span><span class="cmode">funny</span></span>
+          </div>
+          <div class="cmeta"><span class="ctee">Bella+Canvas black</span> <span class="ctool">NB2 text-to-image</span></div>
+          <div class="cwhy">The proven B&amp;B maxxing/definition format. The '(verb)' + mock-dictionary framing makes the addiction a badge. Definition line is long — flag for garble, shorten if needed.</div>
+          <div class="cprompt-lbl">generation prompt — design ON tee, ON flat-lay (combined)</div>
+          <pre class="cprompt">A flat-lay product photo of a Bella+Canvas black t-shirt laid flat and smoothed on a green golf-turf surface. Printed centered on the chest in clean white ink in a stacked definition layout: large bold sans-serif "GOLFMAXXING" at top, a small line-art golf flag with a tiny heart below, then small text "/gawlf-mak-sing/", then italic "(verb)", then a short hand-lettered line "Rebuilding Life Around A Tiny White Ball". Styled around the shirt: a scorecard with a golf pencil, a sleeve of balls, and a divot tool. Bright even daylight, crisp shadows. Overhead top-down flat-lay, premium product photography. Keep all shirt text sharp and legible.</pre>
+        </div>
+        <div class="concept">
+          <div class="chead">
+            <span class="clabel">the obsessed-golfer crest</span>
+            <span class="ctags"><span class="ctype ct-design-motif">DESIGN-MOTIF</span><span class="cmode">both</span></span>
+          </div>
+          <div class="cmeta"><span class="ctee">Bella+Canvas heather navy</span> <span class="ctool">NB2 text-to-image</span></div>
+          <div class="cwhy">A mock country-club members crest — reads as identity with almost no text, wearable straight or with a wink. Design carries it.</div>
+          <div class="cprompt-lbl">generation prompt — design ON tee, ON flat-lay (combined)</div>
+          <pre class="cprompt">A flat-lay product photo of a Bella+Canvas heather navy t-shirt laid flat on a linen cloth. Printed centered on the chest in cream ink: a symmetrical heraldic crest in the style of a vintage golf-club members badge — crossed clubs behind a central shield, a golf ball at the center, a small tee and tiny heart flanking it, a thin banner beneath reading "EST. THIS SUMMER" in small serif caps. Styled around the shirt: a folded argyle sock, a leather glove, and two tees. Warm morning light, soft shadows, shallow depth of field. Overhead top-down flat-lay, premium product photography. Crest sharp and finely detailed on the chest.</pre>
+        </div>
+        <div class="concept">
+          <div class="chead">
+            <span class="clabel">"Hooked" — script word-mark</span>
+            <span class="ctags"><span class="ctype ct-word-mark">WORD-MARK</span><span class="cmode">both</span></span>
+          </div>
+          <div class="cmeta"><span class="ctee">Bella+Canvas natural cream</span> <span class="ctool">NB2 text-to-image</span></div>
+          <div class="cwhy">One word from their vocab ('still hooked / caught the bug'), doubles as a golf pun (a hook). Minimal script.</div>
+          <div class="cprompt-lbl">generation prompt — design ON tee, ON flat-lay (combined)</div>
+          <pre class="cprompt">A flat-lay product photo of a Bella+Canvas natural cream t-shirt laid flat on pale weathered wood. Printed centered on the chest in soft black ink: a single large flowing hand-lettered cursive script word "Hooked", lowercase with a long tapering tail, a tiny line-art golf ball tucked above it. Styled around the shirt: a straw visor, a single tee, and a small sprig of dried grass as a prop. Soft diffused natural light, gentle shadows, shallow depth of field. Overhead top-down flat-lay, boutique product photography. Script sharp and legible, generous breathing room.</pre>
+        </div>
+        <div class="concept">
+          <div class="chead">
+            <span class="clabel">"More Range Than Skill"</span>
+            <span class="ctags"><span class="ctype ct-phrase">PHRASE</span><span class="cmode">funny</span></span>
+          </div>
+          <div class="cmeta"><span class="ctee">Bella+Canvas heather grey</span> <span class="ctool">NB2 text-to-image</span></div>
+          <div class="cwhy">Self-mock the gear-vs-ability gap ('lucky you, brand new clubs'). Funny because true and self-said.</div>
+          <div class="cprompt-lbl">generation prompt — design ON tee, ON flat-lay (combined)</div>
+          <pre class="cprompt">A flat-lay product photo of a Bella+Canvas heather grey t-shirt laid flat on weathered wood. Printed large and centered on the chest in black ink: bold Helvetica-Black stacked text "MORE RANGE" / "THAN SKILL", all caps, tight spacing, with a small line-art tipped-over bucket of range balls between the lines and a tiny heart, subtle faded distress. Styled around the shirt: a small pyramid of range balls, a golf glove, and a couple of broken tees. Bright natural light, crisp shadows, shallow depth of field. Overhead top-down flat-lay, premium product photography. Text sharp and legible on the chest.</pre>
+        </div></div>
+    </section>
+    <section class="flag">
+      <div class="fhead"><span class="fnum">FLAG 9</span><span class="fname">You feel this too, right?</span></div>
+      <div class="fwhy">Bonding over how brutal and irrational the game is ('golf is really f***ing hard', 'one good shot brings me back'). Second-loudest — pure nod material.</div>
+      <div class="concepts">
+        <div class="concept">
+          <div class="chead">
+            <span class="clabel">"One Good Shot &amp; I'm Back"</span>
+            <span class="ctags"><span class="ctype ct-phrase">PHRASE</span><span class="cmode">funny</span></span>
+          </div>
+          <div class="cmeta"><span class="ctee">Bella+Canvas heather grey</span> <span class="ctool">NB2 text-to-image</span></div>
+          <div class="cwhy">Verbatim sentiment ('one good shot brings me back') — the exact hook that keeps every beginner going. Vintage-stripe treatment.</div>
+          <div class="cprompt-lbl">generation prompt — design ON tee, ON flat-lay (combined)</div>
+          <pre class="cprompt">A flat-lay product photo of a Bella+Canvas heather grey t-shirt laid flat on weathered wood. Printed centered on the chest: a vintage retro 70s design — a rectangular band of horizontal sunset stripes in forest green, gold, cream and burnt orange with heavy faded grunge distress, a black silhouette of a golfer at the top of the backswing over the stripes, bold black serif text "ONE GOOD SHOT" arched above and "AND I'M BACK" below, flanked by small black stars. Styled around the shirt: a golf glove, a sleeve of balls, a few tees. Warm natural light, soft shadows. Overhead top-down flat-lay, premium product photography. Design sharp and legible, about 10 inches wide on the chest.</pre>
+        </div>
+        <div class="concept">
+          <div class="chead">
+            <span class="clabel">the deadpan shank doodle</span>
+            <span class="ctags"><span class="ctype ct-design-motif">DESIGN-MOTIF</span><span class="cmode">funny</span></span>
+          </div>
+          <div class="cmeta"><span class="ctee">Bella+Canvas heather olive green</span> <span class="ctool">NB2 text-to-image</span></div>
+          <div class="cwhy">A tiny cartoon reacting to a shanked shot — carries the shared pain with minimal words. 90s-cartoon character.</div>
+          <div class="cprompt-lbl">generation prompt — design ON tee, ON flat-lay (combined)</div>
+          <pre class="cprompt">A flat-lay product photo of a Bella+Canvas heather olive green t-shirt laid flat on green golf turf. Printed centered on the chest: a vintage 1990s cartoon-style illustration of a golfer watching a ball rocket sideways off the club with a flat deadpan face and small motion lines, heavy black ink outlines, a comic burst of rays behind him, yellow and cream accents, slight halftone; bold hand-drawn cartoon text "GOLF IS HARD" arched above and small "(and i love it)" below. Styled around the shirt: a snapped tee, a scorecard, a ball. Bright daylight, crisp shadows. Overhead top-down flat-lay, premium product photography. Illustration and text sharp and legible.</pre>
+        </div>
+        <div class="concept">
+          <div class="chead">
+            <span class="clabel">"It's Fine. The Swing's Fine."</span>
+            <span class="ctags"><span class="ctype ct-phrase">PHRASE</span><span class="cmode">funny</span></span>
+          </div>
+          <div class="cmeta"><span class="ctee">Bella+Canvas black</span> <span class="ctool">NB2 text-to-image</span></div>
+          <div class="cwhy">Framework 'relatable overwhelm' shape for golf's low-grade suffering. Trimmed to two short lines.</div>
+          <div class="cprompt-lbl">generation prompt — design ON tee, ON flat-lay (combined)</div>
+          <pre class="cprompt">A flat-lay product photo of a Bella+Canvas black t-shirt laid flat on dark weathered wood. Printed centered on the chest in white ink: deadpan bold sans-serif stacked text "IT'S FINE." / "THE SWING'S FINE.", all caps, tight spacing, typewriter-flat, a tiny line-art snapped tee in the corner with a tiny heart, subtle distress on the letters. Styled around the shirt: a coffee cup, a broken tee, a single ball. Moody low natural light, soft shadows, shallow depth of field. Overhead top-down flat-lay, premium product photography. Text sharp and legible on the chest.</pre>
+        </div>
+        <div class="concept">
+          <div class="chead">
+            <span class="clabel">"Golf Is Hard." — deadpan minimal</span>
+            <span class="ctags"><span class="ctype ct-word-mark">WORD-MARK</span><span class="cmode">funny</span></span>
+          </div>
+          <div class="cmeta"><span class="ctee">Bella+Canvas heather grey</span> <span class="ctool">NB2 text-to-image</span></div>
+          <div class="cwhy">The most-repeated true thing in the threads, stated flat and tiny. Understatement is the joke.</div>
+          <div class="cprompt-lbl">generation prompt — design ON tee, ON flat-lay (combined)</div>
+          <pre class="cprompt">A flat-lay product photo of a Bella+Canvas heather grey t-shirt laid flat on pale weathered wood. Printed small and centered low on the chest in black ink: understated plain bold sans-serif "GOLF IS HARD." with a single tiny line-art golf ball beside the period, lots of empty shirt space above it, deadpan minimalist layout. Styled around the shirt sparingly: one tee and one ball only, lots of negative space in the flat-lay too. Soft even natural light, gentle shadows. Overhead top-down flat-lay, minimalist premium product photography. Small text sharp and legible.</pre>
+        </div>
+        <div class="concept">
+          <div class="chead">
+            <span class="clabel">"We All Have Our Own Victories"</span>
+            <span class="ctags"><span class="ctype ct-phrase">PHRASE</span><span class="cmode">sincere</span></span>
+          </div>
+          <div class="cmeta"><span class="ctee">Bella+Canvas natural cream</span> <span class="ctool">NB2 text-to-image</span></div>
+          <div class="cwhy">Verbatim from a real comment — the sincere bond (a bogey golfer's 260 drive counts). Warm, gift-friendly.</div>
+          <div class="cprompt-lbl">generation prompt — design ON tee, ON flat-lay (combined)</div>
+          <pre class="cprompt">A flat-lay product photo of a Bella+Canvas natural cream t-shirt folded and styled on a woven rattan tray with a small golf tee and a sprig of dried grass as props. Printed centered on the chest in soft black ink: delicate hand-lettered cursive script "we all have our own victories", lowercase and flowing, with a thin horizontal line of three small line-art golf flags in holes beneath. Boutique gift-shop styling, feminine and soft. Warm natural light, shallow depth of field. Overhead top-down flat-lay, boutique product photography. Script sharp and legible.</pre>
+        </div></div>
+    </section>
+    <section class="flag">
+      <div class="fhead"><span class="fnum">FLAG 2</span><span class="fname">The hard-won stage they earned</span></div>
+      <div class="fwhy">The milestone posts are the emotional core for NEW golfers ('first par, only playing a year', 'first round under 100'). Small to a vet, HUGE to them.</div>
+      <div class="concepts">
+        <div class="concept">
+          <div class="chead">
+            <span class="clabel">"Broke 100" earned patch</span>
+            <span class="ctags"><span class="ctype ct-design-motif">DESIGN-MOTIF</span><span class="cmode">sincere</span></span>
+          </div>
+          <div class="cmeta"><span class="ctee">Bella+Canvas heather forest green</span> <span class="ctool">NB2 text-to-image</span></div>
+          <div class="cwhy">Their first real milestone worn as an earned patch. Number carries it. Real: 'first round under 100'.</div>
+          <div class="cprompt-lbl">generation prompt — design ON tee, ON flat-lay (combined)</div>
+          <pre class="cprompt">A flat-lay product photo of a Bella+Canvas heather forest green t-shirt laid flat on weathered wood. Printed centered on the chest: a circular vintage merit-badge patch in cream and gold — a bold "100" at center crossed by a downward arrow, a small golf flag above, an arched banner reading "BROKE IT" in serif caps along the top curve, a thin rope border around the circle. Styled around the shirt: a scorecard with a circled score, a golf pencil, a ball. Warm natural light, soft shadows, shallow depth of field. Overhead top-down flat-lay, premium product photography. Patch sharp and finely detailed on the chest.</pre>
+        </div>
+        <div class="concept">
+          <div class="chead">
+            <span class="clabel">"First Par Club"</span>
+            <span class="ctags"><span class="ctype ct-phrase">PHRASE</span><span class="cmode">sincere</span></span>
+          </div>
+          <div class="cmeta"><span class="ctee">Bella+Canvas heather navy</span> <span class="ctool">NB2 text-to-image</span></div>
+          <div class="cwhy">'Got my first par today' is a landmark post. Framing it a 'club' makes membership the badge. Short text.</div>
+          <div class="cprompt-lbl">generation prompt — design ON tee, ON flat-lay (combined)</div>
+          <pre class="cprompt">A flat-lay product photo of a Bella+Canvas heather navy t-shirt laid flat on linen. Printed centered on the chest in cream ink: collegiate arched block letters "FIRST PAR CLUB" at top like a varsity crest with subtle distress, a line-art golf flag in a hole below framed by two small radiating lines, a thin banner beneath reading "MEMBERS ONLY" in serif caps. Styled around the shirt: a leather glove, two tees, a ball. Soft morning light, gentle shadows, shallow depth of field. Overhead top-down flat-lay, premium product photography. Text sharp and legible on the chest.</pre>
+        </div>
+        <div class="concept">
+          <div class="chead">
+            <span class="clabel">"Bogey Golfer &amp; Proud"</span>
+            <span class="ctags"><span class="ctype ct-phrase">PHRASE</span><span class="cmode">both</span></span>
+          </div>
+          <div class="cmeta"><span class="ctee">Bella+Canvas heather grey</span> <span class="ctool">NB2 text-to-image</span></div>
+          <div class="cwhy">Names the exact stage they're at (not scratch, not terrible), worn without apology. Their real self-description.</div>
+          <div class="cprompt-lbl">generation prompt — design ON tee, ON flat-lay (combined)</div>
+          <pre class="cprompt">A flat-lay product photo of a Bella+Canvas heather grey t-shirt laid flat on weathered wood. Printed centered on the chest in black ink: bold Helvetica-Black stacked text "BOGEY GOLFER" / "&amp; PROUD OF IT", all caps, tight spacing, a small line-art scorecard with a pencil and a tiny heart between the lines, subtle faded distress. Styled around the shirt: a scorecard, a golf pencil, a ball, a tee. Bright natural light, crisp shadows, shallow depth of field. Overhead top-down flat-lay, premium product photography. Text sharp and legible on the chest.</pre>
+        </div>
+        <div class="concept">
+          <div class="chead">
+            <span class="clabel">"Est. This Summer" stamp</span>
+            <span class="ctags"><span class="ctype ct-word-mark">WORD-MARK</span><span class="cmode">sincere</span></span>
+          </div>
+          <div class="cmeta"><span class="ctee">Bella+Canvas natural cream</span> <span class="ctool">NB2 text-to-image</span></div>
+          <div class="cwhy">Marks how NEW they are as the badge, not a weakness — 'started this summer and I've been addicted'. Freshness IS the pride.</div>
+          <div class="cprompt-lbl">generation prompt — design ON tee, ON flat-lay (combined)</div>
+          <pre class="cprompt">A flat-lay product photo of a Bella+Canvas natural cream t-shirt laid flat on pale wood. Printed centered on the chest in soft black ink: a small clean serif stamp reading "GOLFER" in larger caps over "EST. THIS SUMMER" in smaller caps with a thin rule between, a tiny line-art sprouting golf tee with a small leaf above and two delicate radiating lines. Styled around the shirt: a single tee, a ball, a sprig of green. Soft diffused light, gentle shadows, shallow depth of field. Overhead top-down flat-lay, boutique product photography. Stamp sharp and legible, generous negative space.</pre>
+        </div>
+        <div class="concept">
+          <div class="chead">
+            <span class="clabel">the circled-scorecard motif</span>
+            <span class="ctags"><span class="ctype ct-design-motif">DESIGN-MOTIF</span><span class="cmode">sincere</span></span>
+          </div>
+          <div class="cmeta"><span class="ctee">Bella+Canvas heather grey</span> <span class="ctool">NB2 text-to-image</span></div>
+          <div class="cwhy">A tiny scorecard with one number circled — reads as 'I earned this' with almost no words, deeply personal.</div>
+          <div class="cprompt-lbl">generation prompt — design ON tee, ON flat-lay (combined)</div>
+          <pre class="cprompt">A flat-lay product photo of a Bella+Canvas heather grey t-shirt laid flat on weathered wood. Printed centered on the chest: a minimalist thin line-art golf scorecard in clean white with one score in the grid hand-circled in a warm gold loop and a tiny gold star beside it, a short line of small serif caps beneath reading "MY FIRST GOOD ONE". Styled around the shirt: an actual paper scorecard, a golf pencil, a ball. Soft natural light, gentle shadows, shallow depth of field. Overhead top-down flat-lay, premium product photography. Design sharp and legible on the chest.</pre>
+        </div></div>
+    </section>
+    <section class="flag">
+      <div class="fhead"><span class="fnum">FLAG 7</span><span class="fname">My attitude, deal with it</span></div>
+      <div class="fwhy">Defensive-proud reaction to gatekeeping + beginner shame ('play the clubs you hit best, f*** everyone else', 'nobody cares what clubs you play', 'don't be that guy'). They wear 'I'm new and I don't care' as a badge.</div>
+      <div class="concepts">
+        <div class="concept">
+          <div class="chead">
+            <span class="clabel">"Play The Clubs You Hit Best"</span>
+            <span class="ctags"><span class="ctype ct-phrase">PHRASE</span><span class="cmode">funny</span></span>
+          </div>
+          <div class="cmeta"><span class="ctee">Bella+Canvas black</span> <span class="ctool">NB2 text-to-image</span></div>
+          <div class="cwhy">Near-verbatim the top-voted anti-gatekeeping reply. The pocket already cheers this line. Trimmed to fit.</div>
+          <div class="cprompt-lbl">generation prompt — design ON tee, ON flat-lay (combined)</div>
+          <pre class="cprompt">A flat-lay product photo of a Bella+Canvas black t-shirt laid flat on dark weathered wood. Printed centered on the chest in white ink: bold condensed stacked text "PLAY THE CLUBS" / "YOU HIT BEST." / "IGNORE THE REST.", all caps, confident, subtle distress, a small line-art club dropped at an angle beneath with motion lines and a tiny heart. Styled around the shirt: a golf glove, a couple of mismatched tees, a ball. Bright natural light, crisp shadows, shallow depth of field. Overhead top-down flat-lay, premium product photography. Text sharp and legible on the chest.</pre>
+        </div>
+        <div class="concept">
+          <div class="chead">
+            <span class="clabel">"Nobody Cares About Your Handicap"</span>
+            <span class="ctags"><span class="ctype ct-phrase">PHRASE</span><span class="cmode">funny</span></span>
+          </div>
+          <div class="cmeta"><span class="ctee">Bella+Canvas heather grey</span> <span class="ctool">NB2 text-to-image</span></div>
+          <div class="cwhy">Flips the shamed thing into a shrug ('nobody cares what clubs you play'). Deadpan defiance.</div>
+          <div class="cprompt-lbl">generation prompt — design ON tee, ON flat-lay (combined)</div>
+          <pre class="cprompt">A flat-lay product photo of a Bella+Canvas heather grey t-shirt laid flat on weathered wood. Printed centered on the chest in black ink: flat deadpan bold sans-serif stacked text "NOBODY CARES" / "ABOUT YOUR HANDICAP", all caps, tight spacing, unbothered, a single small line-art golf flag beneath with a tiny heart, subtle distress. Styled around the shirt: a scorecard, a golf pencil, a ball, a tee. Even natural light, soft shadows, shallow depth of field. Overhead top-down flat-lay, premium product photography. Text sharp and legible on the chest.</pre>
+        </div>
+        <div class="concept">
+          <div class="chead">
+            <span class="clabel">"New. Loud. Not Sorry."</span>
+            <span class="ctags"><span class="ctype ct-phrase">PHRASE</span><span class="cmode">funny</span></span>
+          </div>
+          <div class="cmeta"><span class="ctee">Bella+Canvas black</span> <span class="ctool">NB2 text-to-image</span></div>
+          <div class="cwhy">Framework 'deadpan defiance' shape (short, flat) for the new-golfer chip on the shoulder.</div>
+          <div class="cprompt-lbl">generation prompt — design ON tee, ON flat-lay (combined)</div>
+          <pre class="cprompt">A flat-lay product photo of a Bella+Canvas black t-shirt laid flat on dark wood. Printed centered on the chest in white ink: three heavy condensed words in a bold vertical stack "NEW." / "LOUD." / "NOT SORRY.", each on its own line, high-contrast, a thin rule between the last two, a tiny line-art tee with a heart at the very bottom. Styled around the shirt: a single ball, a tee, a folded cap. Moody directional light, crisp shadows, shallow depth of field. Overhead top-down flat-lay, premium product photography. Text sharp and legible on the chest.</pre>
+        </div>
+        <div class="concept">
+          <div class="chead">
+            <span class="clabel">"Don't Be That Guy" icon</span>
+            <span class="ctags"><span class="ctype ct-design-motif">DESIGN-MOTIF</span><span class="cmode">funny</span></span>
+          </div>
+          <div class="cmeta"><span class="ctee">Bella+Canvas heather grey</span> <span class="ctool">NB2 text-to-image</span></div>
+          <div class="cwhy">Their anti-gatekeeper in-joke as a small icon (crossed-out snob) — attitude with minimal text. 90s-cartoon.</div>
+          <div class="cprompt-lbl">generation prompt — design ON tee, ON flat-lay (combined)</div>
+          <pre class="cprompt">A flat-lay product photo of a Bella+Canvas heather grey t-shirt laid flat on weathered wood. Printed centered on the chest: a vintage 1990s cartoon-style illustration of a snobby golfer with nose turned up, monocle and flat cap, inside a bold red circle-with-a-slash 'no' symbol crossing him out, heavy black ink outlines, slight halftone, cream and red accents; bold hand-drawn cartoon text beneath reads "DON'T BE THAT GUY". Styled around the shirt: a golf glove, a couple of tees, a ball. Bright daylight, crisp shadows, shallow depth of field. Overhead top-down flat-lay, premium product photography. Illustration and text sharp and legible.</pre>
+        </div>
+        <div class="concept">
+          <div class="chead">
+            <span class="clabel">"Range Rat" stencil word-mark</span>
+            <span class="ctags"><span class="ctype ct-word-mark">WORD-MARK</span><span class="cmode">both</span></span>
+          </div>
+          <div class="cmeta"><span class="ctee">Bella+Canvas heather military green</span> <span class="ctool">NB2 text-to-image</span></div>
+          <div class="cwhy">Their self-label for grinding the range instead of the course — worn defiantly. Real vocab ('range rat').</div>
+          <div class="cprompt-lbl">generation prompt — design ON tee, ON flat-lay (combined)</div>
+          <pre class="cprompt">A flat-lay product photo of a Bella+Canvas heather military green t-shirt laid flat on weathered wood. Printed centered on the chest in cream ink: gritty military-stencil block letters "RANGE RAT", all caps with stencil gaps and rough spray-edge distress, a small line-art rat silhouette holding a golf club over its shoulder beside the words. Styled around the shirt: a large bucket of range balls, a worn glove, scattered tees. Bright natural light, crisp shadows, shallow depth of field. Overhead top-down flat-lay, premium product photography. Text sharp and legible on the chest.</pre>
+        </div></div>
+    </section>
+    <section class="flag">
+      <div class="fhead"><span class="fnum">FLAG 1</span><span class="fname">The place that defines them</span></div>
+      <div class="fwhy">The range/course as the sanctuary they escape TO from 'screaming toddlers' and a worse vice. Present and sincere, though secondary to the loud flags.</div>
+      <div class="concepts">
+        <div class="concept">
+          <div class="chead">
+            <span class="clabel">"The Range Is My Therapy"</span>
+            <span class="ctags"><span class="ctype ct-phrase">PHRASE</span><span class="cmode">sincere</span></span>
+          </div>
+          <div class="cmeta"><span class="ctee">Bella+Canvas heather sage green</span> <span class="ctool">NB2 text-to-image</span></div>
+          <div class="cwhy">Their real framing (a whole thread on golf's mental benefit, 'clear my head'). The place = the escape. Gift-friendly.</div>
+          <div class="cprompt-lbl">generation prompt — design ON tee, ON flat-lay (combined)</div>
+          <pre class="cprompt">A flat-lay product photo of a Bella+Canvas heather sage green t-shirt folded and styled on a linen surface with a golf tee and a sprig of eucalyptus as props. Printed centered on the chest in soft cream ink: delicate hand-lettered cursive script "the range is my therapy", lowercase and flowing, with a small one-line-art scene of a single flag on a distant green and a low sun beneath. Warm calm natural light, shallow depth of field. Overhead top-down flat-lay, boutique product photography. Script sharp and legible on the chest.</pre>
+        </div>
+        <div class="concept">
+          <div class="chead">
+            <span class="clabel">"8AM Tee Time &gt; Everything"</span>
+            <span class="ctags"><span class="ctype ct-phrase">PHRASE</span><span class="cmode">both</span></span>
+          </div>
+          <div class="cmeta"><span class="ctee">Bella+Canvas heather grey</span> <span class="ctool">NB2 text-to-image</span></div>
+          <div class="cwhy">Straight from 'coffee, screaming toddlers, and I'll soon have some time to myself'. Names the sacred escape.</div>
+          <div class="cprompt-lbl">generation prompt — design ON tee, ON flat-lay (combined)</div>
+          <pre class="cprompt">A flat-lay product photo of a Bella+Canvas heather grey t-shirt laid flat on weathered wood beside a real cup of black coffee. Printed centered on the chest in black ink: large bold sans-serif "8AM TEE TIME" with smaller "&gt; everything else" directly beneath, a small line-art coffee cup with steam next to a golf tee between them with a tiny heart, subtle distress on the big letters. Styled around the shirt: the coffee cup, a couple of tees, a ball, a folded cap. Early-morning golden light, long soft shadows, shallow depth of field. Overhead top-down flat-lay, premium product photography. Text sharp and legible on the chest.</pre>
+        </div>
+        <div class="concept">
+          <div class="chead">
+            <span class="clabel">the dawn-range skyline scene</span>
+            <span class="ctags"><span class="ctype ct-design-motif">DESIGN-MOTIF</span><span class="cmode">sincere</span></span>
+          </div>
+          <div class="cmeta"><span class="ctee">Bella+Canvas natural cream</span> <span class="ctool">NB2 text-to-image</span></div>
+          <div class="cwhy">A quiet sunrise-over-the-range scene — reads as 'this is my peaceful place' with no words. Low-key, gift-friendly.</div>
+          <div class="cprompt-lbl">generation prompt — design ON tee, ON flat-lay (combined)</div>
+          <pre class="cprompt">A flat-lay product photo of a Bella+Canvas natural cream t-shirt folded and styled on a woven rattan tray with a sprig of dried grass as a prop. Printed centered on the chest: a simple hand-drawn single-line illustration of an empty driving range at sunrise — a low rising sun, a few distant flags, a lone bucket of balls in the foreground — in soft olive green and warm gold line work, and a very small lowercase script word "quiet" tucked in a corner. Soft warm natural light, shallow depth of field. Overhead top-down flat-lay, boutique cottagecore-adjacent product photography. Illustration sharp and legible on the chest.</pre>
+        </div>
+        <div class="concept">
+          <div class="chead">
+            <span class="clabel">"My Happy Place" + range icon</span>
+            <span class="ctags"><span class="ctype ct-phrase">PHRASE</span><span class="cmode">sincere</span></span>
+          </div>
+          <div class="cmeta"><span class="ctee">Bella+Canvas heather sage green</span> <span class="ctool">NB2 text-to-image</span></div>
+          <div class="cwhy">The framework's place shape ('X Is My Happy Place') for the range they escape to.</div>
+          <div class="cprompt-lbl">generation prompt — design ON tee, ON flat-lay (combined)</div>
+          <pre class="cprompt">A flat-lay product photo of a Bella+Canvas heather sage green t-shirt laid flat on linen. Printed centered on the chest in cream ink: a small line-art icon of a bucket of range balls beside a single flag at top with two delicate radiating lines and a tiny heart, and relaxed hand-lettered cursive script "my happy place" beneath, lowercase and flowing. Styled around the shirt: a golf tee, a ball, a small sprig of green. Soft diffused light, gentle shadows, shallow depth of field. Overhead top-down flat-lay, boutique product photography. Design sharp and legible, generous negative space.</pre>
+        </div>
+        <div class="concept">
+          <div class="chead">
+            <span class="clabel">"Home Range" coordinates stamp</span>
+            <span class="ctags"><span class="ctype ct-word-mark">WORD-MARK</span><span class="cmode">sincere</span></span>
+          </div>
+          <div class="cmeta"><span class="ctee">Bella+Canvas heather navy</span> <span class="ctool">NB2 text-to-image</span></div>
+          <div class="cwhy">A blank for THEIR spot — the place that defines them, personalized. Reads as belonging to specific sacred ground.</div>
+          <div class="cprompt-lbl">generation prompt — design ON tee, ON flat-lay (combined)</div>
+          <pre class="cprompt">A flat-lay product photo of a Bella+Canvas heather navy t-shirt laid flat on weathered wood. Printed centered on the chest in cream ink: an engraved-style serif stamp reading "HOME RANGE" in clean caps over a smaller line of monospace map coordinates with a thin rule between, a tiny line-art flag-in-hole icon above with two delicate radiating lines and a heart. (Coordinates are a fill-in-the-blank per buyer.) Styled around the shirt: a leather glove, two tees, a ball. Warm natural light, soft shadows, shallow depth of field. Overhead top-down flat-lay, premium product photography. Stamp sharp and legible on the chest.</pre>
+        </div></div>
+    </section>
+</main>
