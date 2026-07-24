@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tattoos, Not Fashion — Amateur Birdwatchers</title>
+<style>
+  :root {
+    --bg: #FAFAF9; --card: #fff; --ink: #0A0A0A; --body: #1a1a1a; --gray: #4a4a4a;
+    --muted: #6b6b6b; --teal: #53DBC9; --teal-lt: #C9F5EE; --purple: #9D4EDD;
+    --code-bg: #0A0A0A; --code-fg: #53DBC9;
+    --border: 2px solid #0A0A0A; --shadow: -0.19rem 0.19rem 0 0 #0A0A0A;
+    --mono: 'SF Mono','Fira Code','JetBrains Mono',Consolas,Menlo,monospace;
+    --sans: system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:var(--sans); font-size:1.0625rem; line-height:1.7; color:var(--body);
+    background:var(--bg); padding:2rem 1.5rem 5rem; max-width:820px; margin:0 auto; }
+  .header { margin-bottom:2.5rem; padding-bottom:2rem; border-bottom:var(--border); }
+  .icon { font-size:2rem; }
+  h1 { font-family:var(--mono); font-size:2.1rem; letter-spacing:-0.02em; margin:.6rem 0 .5rem; color:var(--ink); }
+  .promise { font-size:1.15rem; color:var(--gray); margin-bottom:1rem; }
+  .pocket-tag { display:inline-block; font-family:var(--mono); font-size:.75rem; font-weight:700;
+    letter-spacing:.1em; text-transform:uppercase; background:var(--teal); border:var(--border);
+    box-shadow:var(--shadow); padding:.3rem .7rem; color:var(--ink); }
+  h2 { font-family:var(--mono); font-size:1.4rem; letter-spacing:-.01em; color:var(--ink);
+    padding-bottom:.6rem; border-bottom:var(--border); margin:3rem 0 1.25rem; }
+  h3 { font-family:var(--mono); font-size:1rem; color:var(--ink); margin:1.5rem 0 .5rem; }
+  p { margin:.8rem 0; }
+  .lens ul { list-style:none; margin:.85rem 0; }
+  .lens li { padding:.35rem 0 .35rem 1.6rem; position:relative; color:var(--gray); }
+  .lens li::before { content:'→'; position:absolute; left:0; color:var(--teal); font-weight:700; font-family:var(--mono); }
+  .brief { background:var(--card); border:1px solid #E5E2DD; border-left:3px solid var(--teal);
+    padding:1.25rem 1.5rem; margin:1.25rem 0; }
+  .split { font-family:var(--mono); font-weight:700; color:var(--ink); }
+  .howto { background:#F4F8FF; border-left:3px solid #4A90E2; padding:1rem 1.25rem; margin:1.25rem 0; font-size:.95rem; }
+  .reason-banner { font-family:var(--mono); font-weight:700; font-size:.95rem; text-transform:uppercase;
+    letter-spacing:.06em; color:var(--ink); background:var(--teal-lt); border:var(--border);
+    box-shadow:var(--shadow); padding:.7rem 1rem; margin:2.5rem 0 1.25rem; }
+  .reason-banner .why { display:block; font-weight:400; text-transform:none; letter-spacing:0;
+    font-family:var(--sans); color:var(--gray); font-size:.9rem; margin-top:.35rem; }
+  .concept { border:1px solid #E5E2DD; background:var(--card); padding:1.1rem 1.35rem; margin:1rem 0; }
+  .concept .top { display:flex; align-items:baseline; gap:.6rem; flex-wrap:wrap; }
+  .badge { font-family:var(--mono); font-weight:700; font-size:.8rem; background:var(--ink); color:#fff;
+    width:1.9rem; height:1.9rem; display:inline-flex; align-items:center; justify-content:center; border:var(--border); flex:0 0 auto; }
+  .title { font-family:var(--mono); font-weight:700; font-size:1.05rem; color:var(--ink); }
+  .type { font-family:var(--mono); font-size:.72rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase;
+    color:var(--purple); border:1px solid var(--purple); padding:.1rem .45rem; border-radius:2px; }
+  .why { color:var(--gray); font-size:.96rem; margin:.6rem 0 .75rem; }
+  .code-block { display:block; font-family:var(--mono); font-size:.85rem; line-height:1.55;
+    background:var(--code-bg); color:var(--code-fg); border:var(--border); padding:.85rem 1.05rem;
+    overflow-x:auto; white-space:pre-wrap; word-break:break-word; }
+  .gate { background:#FFFDE7; border:var(--border); box-shadow:var(--shadow); padding:1.5rem 1.75rem; margin:3rem 0 1rem; }
+  .gate h2 { border:0; margin:0 0 .5rem; padding:0; }
+  footer { margin-top:3rem; padding-top:1.5rem; border-top:var(--border); color:var(--muted);
+    font-family:var(--mono); font-size:.82rem; }
+  @media(max-width:600px){ body{padding:1.5rem 1rem 4rem;} h1{font-size:1.7rem;} }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <span class="icon">🖋</span>
+  <h1>Tattoos, Not Fashion</h1>
+  <p class="promise">Not designs that look good for a day — designs they'd wear like a tattoo and never take off.</p>
+  <span class="pocket-tag">Pocket: amateur birdwatchers</span>
+</div>
+
+<section class="lens">
+  <h2>The lens these were made through</h2>
+  <p>A design sells when it's worn <strong>like a tattoo</strong> — something you'd never take off, because it says who you are — not when it merely "looks good." People get tattoos for three reasons, and the order is the whole point:</p>
+  <ul>
+    <li><strong>Honor / remember</strong> — "this is who I became, what I love, the moment that hooked me"</li>
+    <li><strong>Statement / belief</strong> — "this is what I stand for, the line I'll defend at the dinner table"</li>
+    <li><strong>Improve looks</strong> — "this is simply a nice design" (dead last — the mistake designers start from)</li>
+  </ul>
+  <p>Those three reasons are the lens. Every design below is built from one of them, in the proportion this crowd actually lives in.</p>
+</section>
+
+<section>
+  <h2>The brief</h2>
+  <div class="brief">
+    <h3>Who she is</h3>
+    <p>She got hooked by one bird — a spark bird — and now she's up before dawn with a thermos, scanning the hedgerow, keeping a life list she'd defend with her life. She knows she gets teased for it (the binoculars, the vest, the "isn't that a retirement hobby?"), and she wears the teasing like a badge. Her people talk in shorthand — LBJ, big year, patch — and she loves that outsiders don't get it.</p>
+    <h3>What that told us for the designs</h3>
+    <p>Belief leads: her whole identity is a cheerful defiance of a hobby the world calls boring, and she has a tribe with its own language to wave. Honor sits close behind — the spark bird, the life list, the dawn ritual are real personal history worth marking. Looks stays small: there's a genuine field-guide aesthetic she'd save, but a pretty-only bird would feel hollow next to the identity. <span class="split">So the batch is 10 belief, 7 honor, 3 looks.</span></p>
+  </div>
+</section>
+
+<div class="howto">
+  <strong>How to read each one:</strong> a one-line <em>why it's hers</em>, then the ready-to-run generation prompt. The tag says Phrase / Word / Design·mark — whether the design is a line, a coined word, or a near-textless illustration.
+</div>
+
+<!-- ===================== BELIEF (10) ===================== -->
+<div class="reason-banner">10 of 20 · the #1 reason: statement / belief
+  <span class="why">Her identity is a cheerful defiance of a hobby the world underrates — everything she'd wear answers it, and her tribe has its own language to flag.</span>
+</div>
+
+<div class="concept"><div class="top"><span class="badge">1</span><span class="title">Not A Retirement Hobby</span><span class="type">Phrase</span></div>
+<p class="why">The exact teasing she gets, flipped into a flag. It answers the wound head-on and does it grinning.</p>
+<code class="code-block">A t-shirt graphic design on a solid black background. The phrase "NOT A RETIREMENT HOBBY" stacked on three centered lines in bold clean sans-serif block letters, the word "RETIREMENT" on its own middle line at the heaviest weight. A small thin line-art pair of binoculars centered above the text, and a single delicate feather beneath. White ink only, single color, flat design, thin line-art style, dry and self-possessed. Clean and airy with breathing room between all elements. No gradients, no shadows, no mockup, no t-shirt.</code></div>
+
+<div class="concept"><div class="top"><span class="badge">2</span><span class="title">Yes, I Stopped The Car For That</span><span class="type">Phrase</span></div>
+<p class="why">Every birder has done it. It's the deal-with-it line that says the hobby runs her, and she's fine with that.</p>
+<code class="code-block">A t-shirt graphic design on a solid black background. Hand-lettered script reading "Yes, I Stopped The Car For That" arced gently across the upper third, each word capitalized, relaxed and confident. Below it, a small thin line-art hawk in silhouette perched as if just spotted. White ink only, single color, flat design, thin line-art style, warm and knowing. Clean and airy with breathing room between all elements. No gradients, no shadows, no mockup, no t-shirt.</code></div>
+
+<div class="concept"><div class="top"><span class="badge">3</span><span class="title">LBJ</span><span class="type">Word · definition</span></div>
+<p class="why">"Little Brown Job" — the inside term for a bird you can't quite ID. Only her tribe reads it on sight; that's the whole point.</p>
+<code class="code-block">A t-shirt graphic design on a solid black background. Large bold clean sans-serif block letters "LBJ" centered at top, not rounded or bubbly, structured and confident like a professional logo. Small delicate thin radiating lines and a tiny feather accent above. Generous spacing between elements. Below, a small thin line-art nondescript little bird on a twig. Below that in small clean text "/el·bee·jay/" and below that in small italic text "(noun)". Below that in a clean uniform arc, hand-lettered script reads "That Little Brown Bird You Can't Identify" with each word capitalized. White ink only, single color, flat design, thin line-art style icons. Clean and airy with breathing room between all elements. No gradients, no shadows, no mockup, no t-shirt.</code></div>
+
+<div class="concept"><div class="top"><span class="badge">4</span><span class="title">Ask Me About My Life List</span><span class="type">Phrase</span></div>
+<p class="why">A dare and an invitation at once — the tribe recognizes "life list" instantly, outsiders have to ask, and she'd love that.</p>
+<code class="code-block">A t-shirt graphic design on a solid black background. The phrase "ASK ME ABOUT MY LIFE LIST" in bold clean sans-serif block letters on three centered lines, "LIFE LIST" on the bottom line at the heaviest weight. A tiny thin line-art checklist with a single check mark sits above the text. White ink only, single color, flat design, thin line-art style, proud and a little mischievous. Clean and airy with breathing room between all elements. No gradients, no shadows, no mockup, no t-shirt.</code></div>
+
+<div class="concept"><div class="top"><span class="badge">5</span><span class="title">Birdmaxxing</span><span class="type">Word · definition</span></div>
+<p class="why">The coined-word flag — the mock-definition format turns the whole obsession into an identity she claims out loud.</p>
+<code class="code-block">A t-shirt graphic design on a solid black background. Large bold clean sans-serif block letters "BIRDMAXXING" centered at top, not rounded or bubbly, structured and confident like a professional logo. Small delicate thin radiating lines and a tiny star accent above. Generous spacing between elements. Below, a small thin line-art bird mid-flight. Below that in small clean text "/burd·mak·sing/" and below that in small italic text "(verb)". Below that in a clean uniform arc, hand-lettered script reads "Planning The Whole Day Around One Bird" with each word capitalized. White ink only, single color, flat design, thin line-art style icons. Clean and airy with breathing room between all elements. No gradients, no shadows, no mockup, no t-shirt.</code></div>
+
+<div class="concept"><div class="top"><span class="badge">6</span><span class="title">Quiet, I Hear Something</span><span class="type">Phrase</span></div>
+<p class="why">The whispered command every birding companion has heard. It's an inside moment worn on the chest — funny to her people, invisible to everyone else.</p>
+<code class="code-block">A t-shirt graphic design on a solid black background. Hand-lettered script reading "Quiet — I Hear Something" centered across the middle, relaxed and confident, each word capitalized. A small thin line-art ear-and-soundwave motif sits above, and a tiny songbird perches beneath. White ink only, single color, flat design, thin line-art style, warm and knowing. Clean and airy with breathing room between all elements. No gradients, no shadows, no mockup, no t-shirt.</code></div>
+
+<div class="concept"><div class="top"><span class="badge">7</span><span class="title">Team Big Year</span><span class="type">Phrase</span></div>
+<p class="why">"Big year" is the tribe's holy grail — the year you count every species you can. Wearing the team badge flags her all-in status.</p>
+<code class="code-block">A t-shirt graphic design on a solid black background. The words "TEAM BIG YEAR" in bold clean sans-serif block letters on two centered lines, "BIG YEAR" on the lower line at the heaviest weight, arranged inside a thin single-line circular ring like a team crest. A tiny thin line-art bird sits centered above the words inside the ring. White ink only, single color, flat design, thin line-art style, proud and dignified. Clean and airy with breathing room between all elements. No gradients, no shadows, no mockup, no t-shirt.</code></div>
+
+<div class="concept"><div class="top"><span class="badge">8</span><span class="title">I Brake For Raptors</span><span class="type">Phrase</span></div>
+<p class="why">The bumper-sticker cadence she's earned honestly — a wry warning to anyone driving with her.</p>
+<code class="code-block">A t-shirt graphic design on a solid black background. The phrase "I BRAKE FOR RAPTORS" in bold clean sans-serif block letters on two centered lines, "RAPTORS" on the lower line at the heaviest weight. A small thin line-art perched hawk silhouette sits to the right of the text as an accent. White ink only, single color, flat design, thin line-art style, dry and self-possessed. Clean and airy with breathing room between all elements. No gradients, no shadows, no mockup, no t-shirt.</code></div>
+
+<div class="concept"><div class="top"><span class="badge">9</span><span class="title">Patch Loyalty</span><span class="type">Phrase</span></div>
+<p class="why">"Patch" is the local spot a birder returns to for years. It's quiet devotion the tribe respects — a value, not a joke.</p>
+<code class="code-block">A t-shirt graphic design on a solid black background. The two words "PATCH LOYALTY" centered in bold clean sans-serif block letters, "PATCH" stacked above "LOYALTY" at equal weight. A small thin line-art motif of a single tree with a bird above it sits centered above the words. White ink only, single color, flat design, thin line-art style, quietly proud. Clean and airy with breathing room between all elements. No gradients, no shadows, no mockup, no t-shirt.</code></div>
+
+<div class="concept"><div class="top"><span class="badge">10</span><span class="title">Spark Bird Club</span><span class="type">Word · mark</span></div>
+<p class="why">Everyone has a "spark bird" — the one that started it all. It's a tribe password and a warm origin nod in one.</p>
+<code class="code-block">A t-shirt graphic design on a solid black background. The words "SPARK BIRD CLUB" set as a compact three-line lockup in clean sans-serif block letters, "SPARK BIRD" heaviest on the top two lines and "CLUB" smaller beneath. A small thin line-art bird with three tiny radiating spark lines behind it sits centered above the lockup. White ink only, single color, flat design, thin line-art style, warm and knowing. Clean and airy with breathing room between all elements. No gradients, no shadows, no mockup, no t-shirt.</code></div>
+
+<!-- ===================== HONOR (7) ===================== -->
+<div class="reason-banner">7 of 20 · the #2 reason: honor / remember
+  <span class="why">The spark bird, the life list, the dawn ritual are real personal history — worth marking quietly, in her own symbols.</span>
+</div>
+
+<div class="concept"><div class="top"><span class="badge">11</span><span class="title">The Dawn Patrol</span><span class="type">Phrase</span></div>
+<p class="why">Honors the ritual — up before the sun, out in the cold — that only the committed keep. It marks who she became.</p>
+<code class="code-block">A t-shirt graphic design on a solid black background. Hand-lettered script "The Dawn Patrol" centered across the middle, each word capitalized. Above it, a thin line-art horizon line with a small rising sun and one bird in flight crossing it. White ink only, single color, flat design, thin line-art style, proud and dignified. Clean and airy with breathing room between all elements. No gradients, no shadows, no mockup, no t-shirt.</code></div>
+
+<div class="concept"><div class="top"><span class="badge">12</span><span class="title">First Sighting Seal</span><span class="type">Design·mark · seal</span></div>
+<p class="why">A personalizable crest marking her first rare find — the moment the hobby became hers. Dated to her own day.</p>
+<code class="code-block">A t-shirt graphic design on a solid black background. A circular seal: thin single-line outer ring with the words "FIRST SIGHTING" arced along the top inside the ring and a date placeholder arced along the bottom, a small detailed thin line-art bird centered inside the ring. White ink only, single color, flat design, thin line-art style, proud and dignified. Clean and airy with breathing room between all elements. No gradients, no shadows, no mockup, no t-shirt.</code></div>
+
+<div class="concept"><div class="top"><span class="badge">13</span><span class="title">The Life List</span><span class="type">Design·mark · ledger</span></div>
+<p class="why">Her running tally of every species seen, rendered as a quiet ledger motif — the record of everything she's honored with her attention.</p>
+<code class="code-block">A t-shirt graphic design on a solid black background. A vertical thin line-art ledger motif: a slim column of short horizontal rule lines like a checklist, each with a tiny check mark, and a small delicate bird silhouette perched at the top of the column. No sentence text. White ink only, single color, flat design, thin line-art style, quietly proud. Clean and airy with breathing room between all elements. No gradients, no shadows, no mockup, no t-shirt.</code></div>
+
+<div class="concept"><div class="top"><span class="badge">14</span><span class="title">My Spark Bird</span><span class="type">Design·mark · personalizable</span></div>
+<p class="why">A framed portrait of the one bird that started it — leave the species open so each wearer sets their own.</p>
+<code class="code-block">A t-shirt graphic design on a solid black background. A single detailed thin line-art songbird centered inside a slim rectangular frame, with the small hand-lettered words "my spark bird" in script beneath the frame. White ink only, single color, flat design, thin line-art style, warm and knowing. Clean and airy with breathing room between all elements. No gradients, no shadows, no mockup, no t-shirt.</code></div>
+
+<div class="concept"><div class="top"><span class="badge">15</span><span class="title">Home Patch Est.</span><span class="type">Design·mark · personalizable</span></div>
+<p class="why">Her local birding spot as a founding date — the place she returns to, honored like a home ground.</p>
+<code class="code-block">A t-shirt graphic design on a solid black background. Centered, a small thin line-art tree with a bird, and beneath it in clean sans-serif the words "HOME PATCH" with a smaller "EST. ____" line under it, the year left as an underscore placeholder. White ink only, single color, flat design, thin line-art style, quietly proud. Clean and airy with breathing room between all elements. No gradients, no shadows, no mockup, no t-shirt.</code></div>
+
+<div class="concept"><div class="top"><span class="badge">16</span><span class="title">Feathers I've Known</span><span class="type">Design·mark · motif</span></div>
+<p class="why">A quiet study of a few favorite feathers — a near-textless way to honor the birds she's spent years with.</p>
+<code class="code-block">A t-shirt graphic design on a solid black background. Three or four distinct thin line-art feathers arranged in a gentle fan across the center, each rendered with delicate detail, varied lengths. No sentence text, or at most the small script words "feathers I've known" beneath. White ink only, single color, flat design, thin line-art style, warm and knowing. Clean and airy with breathing room between all elements. No gradients, no shadows, no mockup, no t-shirt.</code></div>
+
+<div class="concept"><div class="top"><span class="badge">17</span><span class="title">Migration Route</span><span class="type">Design·mark · motif</span></div>
+<p class="why">The seasonal journey she waits all year for, drawn as a quiet dotted flight path — a nod to what she keeps showing up for.</p>
+<code class="code-block">A t-shirt graphic design on a solid black background. A thin line-art dotted arc sweeping across the design like a flight path, with a small V-formation of birds following it and a tiny compass rose in one corner. No sentence text. White ink only, single color, flat design, thin line-art style, proud and dignified. Clean and airy with breathing room between all elements. No gradients, no shadows, no mockup, no t-shirt.</code></div>
+
+<!-- ===================== LOOKS (3) ===================== -->
+<div class="reason-banner">3 of 20 · the #3 reason: improve looks
+  <span class="why">There's a real field-guide aesthetic she'd save — kept small and a little ironic, because a pretty-only bird would feel hollow next to the identity.</span>
+</div>
+
+<div class="concept"><div class="top"><span class="badge">18</span><span class="title">Field Guide Study</span><span class="type">Design·mark · line-art</span></div>
+<p class="why">One beautiful bird rendered like a plate from a vintage field guide — pretty for its own sake, and she knows it.</p>
+<code class="code-block">A t-shirt graphic design on a solid black background. A single elegant thin line-art bird perched on a branch, drawn in the detailed style of a classic field-guide illustration plate, centered with generous space around it. No text. White ink only, single color, flat design, thin line-art style, calm and refined. Clean and airy with breathing room between all elements. No gradients, no shadows, no mockup, no t-shirt.</code></div>
+
+<div class="concept"><div class="top"><span class="badge">19</span><span class="title">Dawn Still-Life</span><span class="type">Design·mark · still-life</span></div>
+<p class="why">Her ritual objects — thermos, binoculars, notebook — arranged as a quiet flat-lay. The scene she loves, minimal words.</p>
+<code class="code-block">A t-shirt graphic design on a solid black background. A tidy thin line-art flat-lay of birding ritual objects arranged together: a thermos, a pair of binoculars, a small open notebook with a pencil, and a single feather. Balanced composition, generous spacing. No text. White ink only, single color, flat design, thin line-art style, calm and warm. Clean and airy with breathing room between all elements. No gradients, no shadows, no mockup, no t-shirt.</code></div>
+
+<div class="concept"><div class="top"><span class="badge">20</span><span class="title">Silhouette Set</span><span class="type">Design·mark · line-art</span></div>
+<p class="why">A clean row of bird silhouettes — the purely aesthetic option, included partly for contrast with the identity-heavy ones above.</p>
+<code class="code-block">A t-shirt graphic design on a solid black background. A single horizontal row of five small distinct bird silhouettes in thin line-art, evenly spaced across the center, each a different species posture. No text. White ink only, single color, flat design, thin line-art style, clean and minimal. Clean and airy with breathing room between all elements. No gradients, no shadows, no mockup, no t-shirt.</code></div>
+
+<div class="gate">
+  <h2>Your move</h2>
+  <p>That's 20 concepts + ready-to-run prompts, weighted 10 belief / 7 honor / 3 looks to how this crowd actually lives. Want to generate a few samples so you can see them, or leave it here with the concepts and prompts?</p>
+</div>
+
+<footer>/tattoos-not-fashion · amateur birdwatchers · 20 concepts · 10 belief / 7 honor / 3 looks</footer>
+
+</body>
+</html>
